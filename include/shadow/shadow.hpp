@@ -2,7 +2,8 @@
 // ---------- Include ----------
 #include <string>
 #include <unordered_map>
-#include <shSys.hpp>
+#include <stdlib.h>
+#include <iostream>
 
 // ---------- Include C----------
 extern "C" {
@@ -12,18 +13,11 @@ extern "C" {
 #include "raylib.h"
 }
 // ---------- Shadow ----------
+#include <shDefinitions.hpp>
 
 //Shadow Library
 namespace sh
 {
-    namespace auditorium
-    {
-        void createWindow();
-        void closeWindow();
-        void reloadWindow();
-        void resizeWindow();
-    }
-
     //Load into game
     namespace play
     {

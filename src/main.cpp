@@ -4,7 +4,7 @@
 int main()
 {
     try { startApp(); }
-	catch (shSys::sh_Panic)
+	catch (sh::sh_Panic)
 	{
 		std::cin.get();
 		return EXIT_FAILURE;

@@ -1,4 +1,8 @@
+// ---------- Include ----------
 #include <shadow.hpp>
+
+// ---------- Shadow ----------
+
 void sh::play::ShadowPlay()
 {
     
