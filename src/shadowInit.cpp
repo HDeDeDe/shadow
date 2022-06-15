@@ -4,5 +4,5 @@
 void startApp()
 {
 	std::cout << "[SHADOW - INFO] Starting..." << std::endl;
-	shGame::ShadowGame();
+	shPlay::ShadowPlay();
 }

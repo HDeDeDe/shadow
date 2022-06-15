@@ -18,4 +18,7 @@ namespace shSys
     //Panic handlers
     void panic(sh_Panic issue);
     bool isPanicing();
+
+	//Initialize window manager
+	void initAuditorium();
 }

@@ -1,21 +1,20 @@
 #pragma once
-
-#include <iostream>
+// ---------- Include ----------
 #include <string>
-#include <stdlib.h>
 #include <unordered_map>
 #include <shSys.hpp>
-
+// ---------- Include C----------
 extern "C" {
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
 #include "raylib.h"
 }
-
+// ---------- Shadow ----------
 //Load into game
-namespace shGame
+namespace shPlay
 {
     //Main loop
-    void ShadowGame();
+    void ShadowPlay();
 }
+

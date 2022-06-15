@@ -1,6 +1,6 @@
 #include <shadow.hpp>
 
-void shGame::ShadowGame()
+void shPlay::ShadowPlay()
 {
 
 }
