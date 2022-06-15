@@ -1,6 +1,11 @@
 #include <shadow.hpp>
-
-void shPlay::ShadowPlay()
+void sh::play::ShadowPlay()
 {
-
+    shSys::initAuditorium();
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+        ClearBackground(WHITE);
+        EndDrawing();
+    }
 }

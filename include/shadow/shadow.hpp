@@ -3,18 +3,31 @@
 #include <string>
 #include <unordered_map>
 #include <shSys.hpp>
+
 // ---------- Include C----------
 extern "C" {
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
+//#include "lua.h"
+//#include "lualib.h"
+//#include "lauxlib.h"
 #include "raylib.h"
 }
 // ---------- Shadow ----------
-//Load into game
-namespace shPlay
-{
-    //Main loop
-    void ShadowPlay();
-}
 
+//Shadow Library
+namespace sh
+{
+    namespace auditorium
+    {
+        void createWindow();
+        void closeWindow();
+        void reloadWindow();
+        void resizeWindow();
+    }
+
+    //Load into game
+    namespace play
+    {
+        //Main loop
+        void ShadowPlay();
+    }
+}
