@@ -13,6 +13,7 @@ extern "C" {
 #include "raylib.h"
 }
 
+//Load into game
 namespace shGame
 {
     //Main loop
