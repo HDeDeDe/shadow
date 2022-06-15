@@ -6,3 +6,6 @@ Raylib 4.0.0
 Lua 5.4.2  
 g++  
 VSCode (peferably)  
+  
+
+**Shadow is 64 bit only**
