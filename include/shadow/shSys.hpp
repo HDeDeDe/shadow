@@ -10,4 +10,6 @@ namespace shSys
 
 	//Initialize window manager
 	void initAuditorium();
+	//Initialize texture manager
+	void initTextureMan();
 }

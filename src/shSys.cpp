@@ -25,6 +25,12 @@ void shSys::panic(sh::sh_Panic issue)
 	{
 		std::cout << "[SHADOW - ERROR] An unsuported resolution was provided." << std::endl;
 	} break;
+
+	case sh::sh_Panic::panic_no_gl_context:
+	{
+		std::cout << "[SHADOW - ERROR] A texture was accesed without an OpenGL context." << std::endl;
+	} break;
+
 	default: break;
 	}
 	throw issue;

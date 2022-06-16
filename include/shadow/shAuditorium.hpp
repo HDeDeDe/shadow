@@ -10,4 +10,7 @@ namespace sh {namespace auditorium{
     void reloadWindow();
     void resizeWindow(int width, int height);
     void renameWindow(const char* name);
+    bool isActive();
+    void textureLoadAll();
+    void textureUnloadAll();
 }}

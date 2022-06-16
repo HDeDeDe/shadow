@@ -4,10 +4,12 @@
 #include <shSys.hpp>
 // ---------- Shadow ----------
 
+//Variables -----
 int m_width = 0;
 int m_height = 0;
 std::string m_name = { 0 };
-
+bool m_active = false;
+//Sys calls -----
 void shSys::initAuditorium()
 {
     m_width = 360;
@@ -15,7 +17,7 @@ void shSys::initAuditorium()
     m_name = "[SHADOW] Starting...";
     sh::auditorium::createWindow();
 }
-
+//Auditorium ----
 void sh::auditorium::createWindow()
 {
     if ((m_width < 360) || (m_height < 240))
@@ -23,16 +25,21 @@ void sh::auditorium::createWindow()
         shSys::panic(sh::sh_Panic::panic_resolution);
     }
     InitWindow(m_width, m_height, m_name.c_str());
+    m_active = true;
 }
+
 void sh::auditorium::closeWindow()
 {
+    m_active = false;
     CloseWindow();
 }
+
 void sh::auditorium::reloadWindow()
 {
     sh::auditorium::closeWindow();
     sh::auditorium::createWindow();
 }
+
 void sh::auditorium::resizeWindow(int width, int height)
 {
     if (width < 360)
@@ -48,4 +55,15 @@ void sh::auditorium::resizeWindow(int width, int height)
     m_width = width;
     m_height = height;
     SetWindowSize(m_width, m_height);
+}
+
+void sh::auditorium::renameWindow(const char* name)
+{
+    m_name = name;
+    SetWindowTitle(m_name.c_str());
+}
+
+bool sh::auditorium::isActive()
+{
+    return m_active;
 }

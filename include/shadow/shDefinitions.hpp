@@ -13,6 +13,20 @@ namespace sh
 		//A manual crash was initiated
 		panic_manual,
         //An unsuported resolution was provided 
-        panic_resolution
+        panic_resolution,
+		//A texture was loaded without a proper opengl context
+		panic_no_gl_context
 	} sh_Panic;
+	//Stores relevant Theatric position data
+	typedef struct Dimension {
+		float X = 0.0f;
+		float Y = 0.0f;
+		float Z = 0.0f;
+		float Width = 1.0f;
+		float Height = 1.0f;
+		float Length = 1.0f;
+		float Roll = 0.0f;
+		float Pitch = 0.0f;
+		float Yaw = 0.0f;
+	} Dimension;
 }
