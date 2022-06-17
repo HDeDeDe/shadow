@@ -1,5 +1,6 @@
 // ---------- Include ----------
 #include <shadow.hpp>
+#include <shAuditorium.hpp>
 
 // ---------- Shadow ----------
 
