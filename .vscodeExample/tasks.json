@@ -1,0 +1,39 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ build active file",
+            "command": "path/to/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-std=c++17",
+                "${workspaceFolder}\\src\\*.cpp",
+                "-L${workspaceFolder}\\platform\\PlatformHere",
+                "-lraylib",
+                "-llua54",
+                "-Lpath/to/libraries",
+                "-lopengl32",
+                "-lgdi32",
+                "-lwinmm",
+                "-I${workspaceFolder}/include/lua",
+                "-I${workspaceFolder}/include/shadow",
+                "-Ipath\\to\\raylib\\src",
+                "-o",
+                "${workspaceFolder}\\Shadow"
+            ],
+            "options": {
+                "cwd": ""
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Nightmare Nightmare Nightmare Nightmare Nightmare Nightmare"
+        }
+    ],
+    "version": "2.0.0"
+}
