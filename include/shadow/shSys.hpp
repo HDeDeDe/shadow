@@ -12,4 +12,6 @@ namespace shSys
 	void initAuditorium();
 	//Initialize texture manager
 	void initTextureMan();
+	//Clean up texture manager
+	void cleanTextureMan();
 }

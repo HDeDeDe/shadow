@@ -4,7 +4,7 @@
 
 // ---------- Shadow ----------
 
-void sh::play::ShadowPlay()
+void sh::play::ShadowStart()
 {
     
     while (!WindowShouldClose())

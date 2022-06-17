@@ -7,6 +7,11 @@
 Image missing_ram = Image{ MISSING_DATA, MISSING_WIDTH, MISSING_HEIGHT, 1, MISSING_FORMAT };
 Texture missing_vram = Texture{ 0 };
 
+void shSys::initTextureMan()
+{
+	missing_vram = LoadTextureFromImage(missing_ram);
+}
+
 //sh_Texture
 sh::auditorium::texture::sh_Texture::sh_Texture(std::string texture_location, std::string texture_reference) 
 {

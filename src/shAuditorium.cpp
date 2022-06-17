@@ -15,6 +15,7 @@ void shSys::initAuditorium()
     m_height = 240;
     m_name = "[SHADOW] Starting...";
     sh::auditorium::createWindow();
+    shSys::initTextureMan();
 }
 //Auditorium ----
 void sh::auditorium::createWindow()

@@ -22,6 +22,6 @@ namespace sh
     namespace play
     {
         //Main loop
-        void ShadowPlay();
+        void ShadowStart();
     }
 }
