@@ -1,0 +1,8 @@
+{
+    "makefile.configurations": [
+        {
+            "name": "BuildOSX",
+            "makeArgs": ["RAYLIB=/path/to/raylib/src"]
+        }
+    ]
+}

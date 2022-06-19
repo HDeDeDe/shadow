@@ -1,0 +1,25 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "MacOS: Make Shadow",
+            "command": "make",
+            "args": [
+                "MACOS",
+                "RAYLIB=/path/to/raylib/src"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Nightmare Nightmare"
+        }
+    ],
+    "version": "2.0.0"
+}
