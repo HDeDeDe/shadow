@@ -32,6 +32,11 @@ void shSys::panic(sh::sh_Panic issue)
 		std::cout << "[SHADOW - ERROR] A texture was accesed without an OpenGL context." << std::endl;
 	} break;
 
+	case sh::sh_Panic::panic_default_corrupted:
+	{
+		std::cout << "[SHADOW - ERROR] The default settings have been corrupted." << std::endl;
+	} break;
+
 	default: break;
 	}
 	throw issue;

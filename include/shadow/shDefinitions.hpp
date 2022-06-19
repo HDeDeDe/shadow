@@ -15,7 +15,9 @@ namespace sh
         //An unsuported resolution was provided 
         panic_resolution,
 		//A texture was loaded without a proper opengl context
-		panic_no_gl_context
+		panic_no_gl_context,
+		//The default settings have been corrupted
+		panic_default_corrupted
 	} sh_Panic;
 	//Stores relevant Theatric position data
 	typedef struct Dimension {
