@@ -2,11 +2,19 @@
 Shadow is a game engine built on lua and raylib with the goal of being easy to use and easy to port. 
 
 ## Requirements
-[Raylib 4.0.0](https://github.com/raysan5/raylib/releases/tag/4.0.0)  
+[Raylib 4.0.0](https://github.com/raysan5/raylib/releases/tag/4.0.0) (Get source code download)  
 [Lua 5.4.2](http://luabinaries.sourceforge.net/) (use release 1)  
-[MSYS2](https://www.msys2.org/) (needed for g++ and x86_64-w64-mingw32\lib)  
 [VSCode](https://code.visualstudio.com/) (peferably)  
+### Windows
+[MSYS2](https://www.msys2.org/) (Need for make, gcc, and libraries)  
+### MacOS
+[Homebrew](https://brew.sh/) (Need for gcc)  
 **Shadow will not support 32 bit systems**  
+## Setup
+### Windows
+1. Install MSYS2. It will default to: `C:\msys64`
+### VSCode
+Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).
 ## Goals
 Shadow will have the following features at minimum:  
 - Window management (Auditorium)
@@ -18,4 +26,4 @@ Shadow will have the following features at minimum:
 - Data compression
 - Steam integration
 - Netcode (maybe, hoplefully, I really want to add this but have no clue how)
-- VR (pipedream, not at all a priority)
+- VR (pipedream, not at all a priority)  
