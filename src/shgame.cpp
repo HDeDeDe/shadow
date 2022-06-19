@@ -20,7 +20,7 @@ void sh::play::ShadowStart()
             break;
         }
         BeginDrawing();
-        ClearBackground(WHITE);
+        ClearBackground(BLACK);
         DrawTexture(sh_cached->getTexture(), 0, 0, WHITE);
         DrawFPS(0, 0);
         EndDrawing();

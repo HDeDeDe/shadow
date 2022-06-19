@@ -1,2 +1,2 @@
-const char* lua_default_settings = 
+const char* lua_default_video = 
 "window = { x = 1280, y = 720, name = \"Super Vergil\" }\n";

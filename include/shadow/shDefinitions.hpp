@@ -32,4 +32,27 @@ namespace sh
 		float Yaw = 0.0f;
 	} Dimension;
 	inline bool gameLoopActive = false;
+	
+	//Launch flags
+	namespace flags
+	{
+		enum class argCase : unsigned char
+		{
+			none = 0,
+			demo,
+			windowed,
+			novid,
+			noSound,
+			help
+		};
+		//Run in demo mode
+		inline bool demo = false;
+		//Force windowed mode at launch
+		inline bool windowed = false;
+		//Disable intro videos
+		inline bool noVid = false;
+		//Disable all audio
+		inline bool noSound = false;
+
+	}
 }

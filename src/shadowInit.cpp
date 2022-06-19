@@ -19,7 +19,7 @@ void loadSettings()
 {
 	lua_State *L = luaL_newstate();
 
-	int r = luaL_dostring(L, lua_default_settings);
+	int r = luaL_dostring(L, lua_default_video);
 
 	if(r == LUA_OK)
 	{
