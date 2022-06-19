@@ -1,5 +1,5 @@
-CWIN = g++ -fdiagnostics-color=always
-COSX = g++-11 -fdiagnostics-color=always
+CWIN = g++ -fdiagnostics-color=always -g -std=c++17
+COSX = g++-11 -fdiagnostics-color=always -g -std=c++17
 
 WIN32compile:
-	${CWIN} -g -std=c++17 \src\*.cpp
+	${CWIN} \src\*.cpp
