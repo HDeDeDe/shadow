@@ -6,6 +6,7 @@
 
 void sh::play::ShadowStart()
 {
+
     sh::auditorium::texture::sh_TextureManager::Create("super_vergil", "./resource/supe.png");
     std::cout << GetWorkingDirectory() << std::endl;
     sh::auditorium::texture::sh_TextureManager::Load("super_vergil");

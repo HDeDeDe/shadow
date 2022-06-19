@@ -5,3 +5,4 @@
 #include <iostream>
 // ---------- Shadow ----------
 void startApp();
+void loadSettings();
