@@ -23,7 +23,7 @@ C:\msys64\mingw64\bin
 git clone https://github.com/HDeDeDe/shadow
 ```
 otherwise download the master as a zip and extract to a prefered location.
-5. Download the Raylib 4.0.0 source and extract to a prefered known location.
+5. Download the Raylib 4.0.0 source and extract to a prefered known location.  
 ### MacOS
 **ONLY TESTED ON MONTERY**
 1. Follow the instructions on [brew.sh](https://brew.sh/) to install homebrew, then make sure it is up to date
@@ -36,7 +36,7 @@ brew install gcc
 ```
 git clone https://github.com/HDeDeDe/shadow
 ```
-in a prefered location, or download the master as zip.
+in a prefered location, or download the master as zip.  
 5. Download the Raylib 4.0.0 source and extract to a prefered known location.
 
 ### Compilation
