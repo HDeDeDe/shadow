@@ -6,6 +6,7 @@ bool Panicing = false;
 void shSys::panic(sh::sh_Panic issue)
 {
 	Panicing = true;
+	sh::gameLoopActive = false;
 	switch (issue)
 	{
 	case sh::sh_Panic::panic_loaded_texture: 

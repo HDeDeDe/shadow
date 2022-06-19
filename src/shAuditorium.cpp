@@ -1,6 +1,7 @@
 // ---------- Include ----------
 #include <shadow.hpp>
 #include <shAuditorium.hpp>
+#include <rlgl.h>
 // ---------- Shadow ----------
 
 //Variables -----
@@ -11,6 +12,7 @@ bool m_active = false;
 //Sys calls -----
 void shSys::initAuditorium()
 {
+    SetExitKey(KEY_NULL);
     m_width = 360;
     m_height = 240;
     m_name = "[SHADOW] Starting...";
@@ -25,12 +27,15 @@ void sh::auditorium::createWindow()
         shSys::panic(sh::sh_Panic::panic_resolution);
     }
     InitWindow(m_width, m_height, m_name.c_str());
+    
     m_active = true;
+    textReloadAll();
 }
 
 void sh::auditorium::closeWindow()
 {
     m_active = false;
+    textDeloadAll();
     CloseWindow();
 }
 

@@ -29,4 +29,5 @@ namespace sh
 		float Pitch = 0.0f;
 		float Yaw = 0.0f;
 	} Dimension;
+	inline bool gameLoopActive = false;
 }
