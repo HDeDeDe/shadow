@@ -13,7 +13,7 @@ Shadow is a game engine built on lua 5.4.2 and raylib with the goal of being eas
 ## Setup
 ### Windows
 1. Install MSYS2. It will default to `C:\msys64`, if your copy is not installed there, be sure to remember where it is installed.
-2. Add the following to your user environment variables (replace with location of install):
+2. Add the following to your user environment variables (replace with location of install if necessary):
 ```
 C:\msys64\mingw64\bin
 ```
@@ -37,7 +37,7 @@ brew install gcc
 git clone https://github.com/HDeDeDe/shadow
 ```
 in a prefered location, or download the master as zip.  
-5. Download the Raylib 4.0.0 source and extract to a prefered known location.
+5. Download the Raylib 4.0.0 source and extract to a prefered known location.  
 
 ### Compilation
 To compile a working executable, navigate to the root folder of the project and run:
@@ -49,7 +49,9 @@ If you are on windows, replace `make` with `C:\msys64\usr\bin\make.exe` or its e
 ```
 WIN64MINGWLIBS=/path/to/msys64/mingw64/x86_64-w64-mingw32/lib
 ```
-to the above command.
+to the above command.  
+  
+Note: When running the executable on MacOS, run it from the terminal with `./Shadow`, as directly launching it may result in unknown issues occurring.
 ## Setup VSCode
 Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
 Clone the repository, then copy the files from .vscodeExample to .vscode and replace any instances of /path/to/ or platform with the apropriate values.
