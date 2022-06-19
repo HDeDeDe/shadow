@@ -1,1 +1,0 @@
-This is where you should store your library files for easy access

@@ -1,10 +1,10 @@
 #Not Defined
-RAYLIB? = ballsToTheWall
-WIN64MINGWLIBS? = 3AMFunny
+RAYLIB? = insertHere
+WIN64MINGWLIBS = /c/msys64/mingw64/x86_64-w64-mingw32/lib
 #Predefined
 GCCWIN = g++
-GCCOSX = g++-11
-TARGETOSX = -o ./Shadow
+GCCMACOS = g++-11
+TARGETMACOS = -o ./Shadow
 TARGETWIN64 = -o ./Shadow.exe
 SRC = ./src/*.cpp
 CFLAGS = -fdiagnostics-color=always -std=c++17 -g
@@ -15,6 +15,6 @@ SHADOWLIB = -llua54 -lraylib
 WIN64: 
 	${GCCWIN} ${CFLAGS} ${SRC} ${LIBFOLDER}win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} -I${RAYLIB} ${TARGETWIN64}
 
-OSX: 
-	${GCCOSX} ${CFLAGS} ${SRC} ${LIBFOLDER}osx ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} -I${RAYLIB} ${TARGETOSX}
+MACOS: 
+	${GCCMACOS} ${CFLAGS} ${SRC} ${LIBFOLDER}macos ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} -I${RAYLIB} ${TARGETMACOS}
 #	@echo "cd 'dirname $$0'\n./Shadow" > Shadow.command

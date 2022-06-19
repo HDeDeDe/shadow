@@ -11,12 +11,6 @@ x64/
 .DS_STORE
 *.pdb
 Shadow.exe
-platform/*
-!platform/OOPS.md
-*.dll
-*.so
-*.lib
-*.dylib
 Shadow
 Shadow.dSYM/
 *.command
