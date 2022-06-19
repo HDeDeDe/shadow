@@ -12,7 +12,11 @@ Shadow is a game engine built on lua and raylib with the goal of being easy to u
 **Shadow will not support 32 bit systems**  
 ## Setup
 ### Windows
-1. Install MSYS2. It will default to: `C:\msys64`
+1. Install MSYS2. It will default to `C:\msys64`, if your copy is not installed there, be sure to remember where it is installed.
+2. Add the following to your user environment variables:
+```
+C:\msys64\mingw64\bin
+```
 ### VSCode
 Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).
 ## Goals
