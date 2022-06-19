@@ -19,3 +19,4 @@ platform/*
 *.dylib
 Shadow
 Shadow.dSYM/
+*.command
