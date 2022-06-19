@@ -20,3 +20,4 @@ platform/*
 Shadow
 Shadow.dSYM/
 *.command
+!include/shadow
