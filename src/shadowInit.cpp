@@ -1,7 +1,7 @@
 // ---------- Include ----------
 #include <shInit.hpp>
 #include <shadow.hpp>
-
+#include <
 // ---------- Shadow ----------
 void startApp()
 {
@@ -12,3 +12,4 @@ void startApp()
 	shSys::cleanTextureMan();
 	std::cout << "[SHADOW - INFO] Exiting..." << std::endl;
 }
+
