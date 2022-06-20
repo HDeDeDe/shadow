@@ -13,6 +13,8 @@ namespace sh {
         void resizeWindow(int width, int height);
         void renameWindow(const char* name);
         bool isActive();
+        void setVsync(bool flag);
+        void setMSAA(bool flag);
 
         //Textures are actively managed by Auditorium
         namespace texture

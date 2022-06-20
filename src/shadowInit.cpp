@@ -26,6 +26,8 @@ void loadSettings()
 		int l_resX = 360;
 		int l_resY = 240;
 		std::string l_winName = { 0 };
+		bool l_vsync = false;
+		bool l_MSAA = false;
 		lua_getglobal(L, "window");
 		if(lua_istable(L, -1))
 		{
@@ -43,11 +45,22 @@ void loadSettings()
 			lua_gettable(L, -2);
 			l_winName = lua_tostring(L, -1);
 			lua_pop(L, 1);
+
+			lua_pushstring(L, "vsync");
+			lua_gettable(L, -2);
+			l_vsync = lua_toboolean(L, -1);
+			lua_pop(L, 1);
+
+			lua_pushstring(L, "MSAA");
+			lua_gettable(L, -2);
+			l_MSAA = lua_toboolean(L, -1);
+			lua_pop(L, 1);
 		}
 		else{shSys::panic(sh::sh_Panic::panic_default_corrupted);}
 		sh::auditorium::resizeWindow(l_resX, l_resY);
 		sh::auditorium::renameWindow(l_winName.c_str());
-		sh::auditorium::reloadWindow();
+		sh::auditorium::setVsync(l_vsync);
+		sh::auditorium::setMSAA(l_MSAA);
 	}
 	else
 	{

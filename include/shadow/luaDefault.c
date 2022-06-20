@@ -1,2 +1,2 @@
 const char* lua_default_video = 
-"window = { x = 360, y = 240, name = \"Super Vergil\" }\n";
+"window = { x = 1280, y = 720, name = \"Super Vergil\", vsync = true, MSAA = false }\n";

@@ -8,6 +8,8 @@ int m_width = 0;
 int m_height = 0;
 std::string m_name = { 0 };
 bool m_active = false;
+bool m_vsync = false;
+bool m_MSAA = false;
 //Sys calls -----
 void shSys::initAuditorium()
 {
@@ -25,6 +27,8 @@ void sh::auditorium::createWindow()
     {
         shSys::panic(sh::sh_Panic::panic_resolution);
     }
+    if(m_vsync) SetConfigFlags(FLAG_VSYNC_HINT);
+    if(m_MSAA) SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(m_width, m_height, m_name.c_str());
     
     m_active = true;
@@ -70,4 +74,17 @@ void sh::auditorium::renameWindow(const char* name)
 bool sh::auditorium::isActive()
 {
     return m_active;
+}
+
+void sh::auditorium::setVsync(bool flag)
+{
+    m_vsync = flag;
+    if(m_vsync == true) SetWindowState(FLAG_VSYNC_HINT);
+    else ClearWindowState(FLAG_VSYNC_HINT);
+}
+
+void sh::auditorium::setMSAA(bool flag)
+{
+    m_MSAA = flag;
+    reloadWindow();
 }

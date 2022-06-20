@@ -32,4 +32,5 @@ void sh::play::ShadowStart()
         DrawFPS(0, 0);
         EndDrawing();
     }
+    lua_close(L);
 }
