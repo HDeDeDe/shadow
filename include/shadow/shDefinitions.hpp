@@ -1,4 +1,5 @@
 #pragma once
+#define SHADOWNAME "shadow"
 // ---------- Shadow ----------
 //All high level data should be stored here
 namespace sh
