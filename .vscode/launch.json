@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DebugWin64",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Shadow.exe",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "BuildWin64",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Shadow.exe",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Win64: Make Shadow.exe"
+        },
+        {
+            "name": "DebugMacOS",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Shadow",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "BuildMacOS",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Shadow",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "MacOS: Make Shadow"
+        }
+    ]
+}

@@ -1,8 +1,7 @@
 # Shadow Engine
-Shadow is a game engine built on lua 5.4.2 and raylib with the goal of being easy to use and easy to port. 
+Shadow is a game engine built on lua 5.4.2 and raylib 4.0.0 with the goal of being easy to use and easy to port. 
 
 ## Requirements
-[Raylib 4.0.0](https://github.com/raysan5/raylib/releases/tag/4.0.0) (Get source code download)  
 [VSCode](https://code.visualstudio.com/) (peferably)  
 ### Windows
 [MSYS2](https://www.msys2.org/) (Need for make, gcc, and libraries)  
@@ -22,8 +21,7 @@ C:\msys64\mingw64\bin
 ```
 git clone https://github.com/HDeDeDe/shadow
 ```
-otherwise download the master as a zip and extract to a prefered location.
-5. Download the Raylib 4.0.0 source and extract to a prefered known location.  
+otherwise download the master as a zip and extract to a prefered location.  
 ### MacOS
 **ONLY TESTED ON MONTERY**
 1. Follow the instructions on [brew.sh](https://brew.sh/) to install homebrew, then make sure it is up to date
@@ -37,14 +35,13 @@ brew install gcc
 git clone https://github.com/HDeDeDe/shadow
 ```
 in a prefered location, or download the master as zip.  
-5. Download the Raylib 4.0.0 source and extract to a prefered known location.  
 
 ### Compilation
 To compile a working executable, navigate to the root folder of the project and run:
 ```
-make PLATFORM RAYLIB=/path/to/raylib/src
+make PLATFORM
 ```
-where `PLATFORM` is either `WIN64`, `MACOS`, or `LINUX`(eventually), and `/path/to/raylib/src` is the path to your copy of /raylib/src.  
+where `PLATFORM` is either `WIN64`, `MACOS`, or `LINUX`(eventually).  
 If you are on windows, replace `make` with `C:\msys64\usr\bin\make.exe` or its equivalent path. If you do have a different install directory for MSYS2, append:
 ```
 WIN64MINGWLIBS=/path/to/msys64/mingw64/x86_64-w64-mingw32/lib
@@ -53,8 +50,8 @@ to the above command.
   
 Note: When running the executable on MacOS, run it from the terminal with `./Shadow`, as directly launching it may result in unknown issues occurring.
 ## Setup VSCode
-Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
-Clone the repository, then copy the files from .vscodeExample to .vscode and replace any instances of /path/to/ or platform with the apropriate values.
+Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
+Clone the repository, then open and select your os.
 ## Goals
 Shadow will have the following features at minimum:  
 - Window management (Auditorium)

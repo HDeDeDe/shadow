@@ -1,7 +1,6 @@
 // ---------- Include ----------
 #include <shadow.hpp>
 #include <shAuditorium.hpp>
-#include <rlgl.h>
 // ---------- Shadow ----------
 
 //Variables -----

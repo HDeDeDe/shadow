@@ -1,0 +1,43 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "MacOS: Make Shadow",
+            "command": "make",
+            "args": [
+                "MACOS"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Nightmare Nightmare"
+        },
+        {
+            "type": "cppbuild",
+            "label": "Win64: Make Shadow.exe",
+            "command": "C:\\msys64\\usr\\bin\\make.exe",
+            "args": [
+                "WIN64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Nightmare Nightmare Nightmare Nightmare Nightmare Nightmare"
+        }
+    ],
+    "version": "2.0.0"
+}
