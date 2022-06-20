@@ -124,7 +124,57 @@ void loadSettings()
 	#endif
 
 	#if (__APPLE__ == 1)
-	
+		std::string settingsLoc = sh::file::getHome();
+		settingsLoc.append("/." SHADOWNAME);
+		std::string settingsFolder = settingsLoc;
+		settingsLoc.append("/settings.lua");
+		if(FileExists(settingsLoc.c_str()))
+		{
+			if(LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
+			{
+				lua_getglobal(L, "window");
+				if(lua_istable(L, -1))
+				{
+					lua_pushstring(L, "x");
+					lua_gettable(L, -2);
+					l_resX = (int)lua_tonumber(L, -1);
+					lua_pop(L, 1);
+
+					lua_pushstring(L, "y");
+					lua_gettable(L, -2);
+					l_resY = (int)lua_tonumber(L, -1);
+					lua_pop(L, 1);
+
+					lua_pushstring(L, "vsync");
+					lua_gettable(L, -2);
+					l_vsync = lua_toboolean(L, -1);
+					lua_pop(L, 1);
+
+					lua_pushstring(L, "MSAA");
+					lua_gettable(L, -2);
+					l_MSAA = lua_toboolean(L, -1);
+					lua_pop(L, 1);
+					std::cout << "[SHADOW - INFO] Settings file loaded." << std::endl;
+				}
+				else{std::cout << "[SHADOW - WARNING] The settings file is corrupt. Continuing with defaults." << std::endl;}
+			}
+			else{std::cout << "[SHADOW - WARNING] The settings file is corrupt. Continuing with defaults." << std::endl;}
+		}
+		else
+		{
+			std::cout << "[SHADOW - INFO] There is no settings file. Attempting to create one." << std::endl;
+			std::cout << "[SHADOW - INFO] Checking for folder." << std::endl;
+			if(DirectoryExists(settingsFolder.c_str()));
+			else {
+				std::cout << "[SHADOW - INFO] Folder does not exist, creating." << std::endl;
+				sh::file::createSettingsFolder(settingsFolder.c_str());
+			}
+			if(SaveFileText(settingsLoc.c_str(), settingsFile))
+			{
+				std::cout << "[SHADOW - INFO] Settings file created successfully." << std::endl;
+			}
+			else std::cout << "[SHADOW - INFO] Could not create settings file." << std::endl;
+		}
 	#endif
 
 	#if (__gnu_linux__ == 1)
