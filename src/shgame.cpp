@@ -18,10 +18,6 @@ bool shExit(bool killApp = false)
 
 void sh::play::ShadowStart()
 {
-    //Create lua state and open libraries
-    lua_State *L = luaL_newstate();
-    luaL_openlibs(L);
-    
     while (sh::gameLoopActive)
     {
         if(shExit())break;
@@ -32,5 +28,4 @@ void sh::play::ShadowStart()
         DrawFPS(0, 0);
         EndDrawing();
     }
-    lua_close(L);
 }
