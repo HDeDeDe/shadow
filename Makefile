@@ -18,3 +18,6 @@ WIN64:
 MACOS: 
 	${GCCMACOS} ${CFLAGS} ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGETMACOS}
 #	@echo "cd 'dirname $$0'\n./Shadow" > Shadow.command
+
+all:
+	@echo "Please provide a compile option, either WIN64 or MACOS"
