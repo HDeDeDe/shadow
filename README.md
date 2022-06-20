@@ -8,6 +8,7 @@ Shadow is a game engine built on lua 5.4.2 and raylib 4.0.0 with the goal of bei
 [git](https://git-scm.com/download/win) (Need for git)  
 ### MacOS
 [Homebrew](https://brew.sh/) (Need for gcc)  
+[XCode](https://developer.apple.com/xcode/) (need for debuging)
 **Shadow will not support 32 bit systems**  
 ## Setup
 ### Windows
@@ -48,7 +49,8 @@ WIN64MINGWLIBS=/path/to/msys64/mingw64/x86_64-w64-mingw32/lib
 ```
 to the above command.  
   
-Note: When running the executable on MacOS, run it from the terminal with `./Shadow`, as directly launching it may result in unknown issues occurring.
+Note: When running the executable on MacOS, run it from the terminal with `./Shadow`, as directly launching it may result in unknown issues occurring.  
+**Warning:** Debugging on MacOS may require you to codesign a copy of gdb.
 ## Setup VSCode
 Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
 Clone the repository, then open and select your os.

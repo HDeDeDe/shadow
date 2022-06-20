@@ -2,34 +2,40 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "DebugWin64",
+            "name": "Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\Shadow.exe",
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "name": "BuildWin64",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}\\Shadow.exe",
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Win64: Make Shadow.exe"
+            "windows": {
+                "program": "${workspaceFolder}\\Shadow.exe"
+            },
+            "osx": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/local/Cellar/gdb/12.1/bin/gdb",
+                "program": "${workspaceFolder}/Shadow"
+            },
+            "linux": {
+                "program": "${workspaceFolder}/Shadow"
+            }
         },
         {
-            "name": "DebugMacOS",
+            "name": "Build",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Shadow",
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "name": "BuildMacOS",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/Shadow",
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "MacOS: Make Shadow"
+            "windows": {
+                "program": "${workspaceFolder}\\Shadow.exe",
+                "preLaunchTask": "Win64: Make Shadow.exe"
+            },
+            "osx": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/local/Cellar/gdb/12.1/bin/gdb",
+                "program": "${workspaceFolder}/Shadow",
+                "preLaunchTask": "MacOS: Make Shadow"
+            },
+            "linux": {
+                "program": "${workspaceFolder}/Shadow"
+            }
         }
     ]
 }
