@@ -12,12 +12,12 @@ LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib
 SHADOWLIB = -llua54 -lraylib
 
+Default:
+	@echo "Please state which platform you would like to compile for by appending WIN64 or MACOS to the make command."
+
 WIN64: 
 	${GCCWIN} ${CFLAGS} ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGETWIN64}
 
 MACOS: 
 	${GCCMACOS} ${CFLAGS} ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGETMACOS}
 #	@echo "cd 'dirname $$0'\n./Shadow" > Shadow.command
-
-all:
-	@echo "Please provide a compile option, either WIN64 or MACOS"
