@@ -13,7 +13,7 @@ Shadow.exe
 ShadowDebug.exe
 Shadow
 ShadowDebug
-Shadow.dSYM/
 ShadowDebug.dSYM/
 *.command
 !include/shadow
+Shadow.app/
