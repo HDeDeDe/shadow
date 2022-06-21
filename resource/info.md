@@ -1,1 +1,0 @@
-This is where resource files should be stored.
