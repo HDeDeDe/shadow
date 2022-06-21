@@ -8,6 +8,11 @@
 void startApp()
 {
 	std::cout << "[SHADOW - INFO] Starting..." << std::endl;
+	#if (__APPLE__ == 1 && DEBUGGING == 0)
+	ChangeDirectory(GetApplicationDirectory());
+	ChangeDirectory("../");
+	#endif
+	ChangeDirectory("./Resources");
 	shSys::initAuditorium();
 	loadSettings();
 	sh::gameLoopActive = true;
@@ -15,6 +20,8 @@ void startApp()
 	shSys::cleanTextureMan();
 	std::cout << "[SHADOW - INFO] Exiting..." << std::endl;
 }
+
+
 
 bool LuaCheck(lua_State *L, int r)
 {

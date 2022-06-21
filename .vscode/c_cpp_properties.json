@@ -9,7 +9,8 @@
                 "${workspaceFolder}/include/raylib"
             ],
             "defines": [
-                "SHADOWNAME=\"shadow\""
+                "SHADOWNAME=\"shadow\"",
+                "DEBUGGING=1"
             ],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
@@ -31,7 +32,8 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
-                "SHADOWNAME=\"shadow\""
+                "SHADOWNAME=\"shadow\"",
+                "DEBUGGING=1"
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",

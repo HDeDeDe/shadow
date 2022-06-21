@@ -6,7 +6,7 @@ GCCWIN = g++
 GCCMACOS = g++-11
 TARGET = -o ./Shadow
 SRC = ./src/*.cpp
-CFLAGS = -fdiagnostics-color=always -std=c++17 -DSHADOWNAME='"'${SHADOWNAME}'"'
+CFLAGS = -fdiagnostics-color=always -std=c++17 -DSHADOWNAME='"'${SHADOWNAME}'"' -DDEBUGGING=
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib
 SHADOWLIB = -llua54 -lraylib
@@ -15,16 +15,16 @@ Default:
 	@echo "Please state which platform you would like to compile for by appending WIN64 or MACOS to the make command."
 
 WIN64: 
-	${GCCWIN} ${CFLAGS} -g ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}Debug.exe
+	${GCCWIN} ${CFLAGS}1 -g ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}Debug.exe
 
 MACOS: 
-	${GCCMACOS} ${CFLAGS} -g ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}Debug
+	${GCCMACOS} ${CFLAGS}1 -g ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}Debug
 
 WIN64RELEASE:
-	${GCCWIN} ${CFLAGS} -s -mwindows ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}.exe
+	${GCCWIN} ${CFLAGS}0 -s -mwindows ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}.exe
 
 MACOSRELEASE:
-	${GCCMACOS} ${CFLAGS} -s ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}
+	${GCCMACOS} ${CFLAGS}0 ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}
 
 cleanWin:
 	del ShadowDebug.exe
