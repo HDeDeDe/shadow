@@ -20,6 +20,17 @@ void shSys::initAuditorium()
     sh::auditorium::createWindow();
     shSys::initTextureMan();
 }
+
+bool sh::play::Exit(bool killApp)
+{
+    if (WindowShouldClose() || killApp)
+        {
+            sh::gameLoopActive = false;
+            sh::auditorium::closeWindow();
+            return true;
+        }
+    return false;
+}
 //Auditorium ----
 void sh::auditorium::createWindow()
 {

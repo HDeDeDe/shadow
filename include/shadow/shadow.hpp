@@ -23,5 +23,9 @@ namespace sh
     {
         //Main loop
         void ShadowStart();
+        //Exit the game
+        bool Exit(bool killApp = false);
+        //Do not loop this code
+        //void ShadowGameLoop();
     }
 }
