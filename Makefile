@@ -20,10 +20,10 @@ WIN64:
 MACOS: 
 	${GCCMACOS} ${CFLAGS}1 -g ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}Debug
 
-WIN64RELEASE:
+WIN64_RELEASE:
 	${GCCWIN} ${CFLAGS}0 -s -mwindows ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}.exe
 
-MACOSRELEASE:
+MACOS_RELEASE:
 	${GCCMACOS} ${CFLAGS}0 ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}
 	mkdir temp
 	mkdir temp/Contents
