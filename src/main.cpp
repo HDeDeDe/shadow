@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
 			
 		}
 	}
+	
     try { startApp(); }
 	catch (sh::sh_Panic)
 	{

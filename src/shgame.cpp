@@ -15,7 +15,7 @@ void sh::play::ShadowStart()
         BeginDrawing();
         ClearBackground(BLACK);
         DrawFPS(0,0);
-        DrawText(wrkDir.c_str(), 0, 20, 15, WHITE);
+        DrawText(wrkDir.c_str(), 0, 20, 15, BLUE);
         EndDrawing();
     }
 }

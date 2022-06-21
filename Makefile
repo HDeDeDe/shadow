@@ -1,10 +1,10 @@
 #Not Defined
 WIN64MINGWLIBS = /c/msys64/mingw64/x86_64-w64-mingw32/lib
-SHADOWNAME = shadow
+SHADOWNAME = Shadow
 #Predefined
 GCCWIN = g++
 GCCMACOS = g++-11
-TARGET = -o ./Shadow
+TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
 CFLAGS = -fdiagnostics-color=always -std=c++17 -DSHADOWNAME='"'${SHADOWNAME}'"' -DDEBUGGING=
 LIBFOLDER = -L./platform/
@@ -25,11 +25,16 @@ WIN64RELEASE:
 
 MACOSRELEASE:
 	${GCCMACOS} ${CFLAGS}0 ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}
-
+	mkdir temp
+	mkdir temp/Contents
+	mkdir temp/Contents/MacOS
+	cp -R Resources temp/Contents/Resources
+	cp Info.plist temp/Contents/Info.plist
+	mv Shadow temp/Contents/MacOS/Shadow
+	rm -rf Shadow.app; mv temp Shadow.app
+	
 cleanWin:
-	del ShadowDebug.exe
-	del Shadow.exe
+	del ${SHADOWNAME}.exe
 	
 clean:
-	rm -rf ShadowDebug
-	rm -rf Shadow
+	rm -rf ${SHADOWNAME}.app
