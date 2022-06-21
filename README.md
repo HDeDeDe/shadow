@@ -8,7 +8,7 @@ Shadow is a game engine built on lua 5.4.2 and raylib 4.0.0 with the goal of bei
 [git](https://git-scm.com/download/win) (Need for git)  
 ### MacOS
 [Homebrew](https://brew.sh/) (Need for gcc)  
-[XCode](https://developer.apple.com/xcode/) (need for debuging)
+[XCode](https://developer.apple.com/xcode/) (need for debuging)  
 **Shadow will not support 32 bit systems**  
 ## Setup
 ### Windows
@@ -42,14 +42,20 @@ To compile a working executable, navigate to the root folder of the project and 
 ```
 make PLATFORM
 ```
-where `PLATFORM` is either `WIN64`, `MACOS`, or `LINUX`(eventually).  
-If you are on windows, replace `make` with `C:\msys64\usr\bin\make.exe` or its equivalent path. If you do have a different install directory for MSYS2, append:
-```
-WIN64MINGWLIBS=/path/to/msys64/mingw64/x86_64-w64-mingw32/lib
-```
-to the above command.  
+where `PLATFORM` is either `WIN64`, `MACOS`, or `LINUX`(eventually). 
   
-Note: When running the executable on MacOS, run it from the terminal with `./Shadow`, as directly launching it may result in unknown issues occurring.  
+To compile a release version of your executable, navigate to the root folder of the project and run:
+```
+make PLATFORM_RELEASE
+```
+where `PLATFORM` is either `WIN64`, `MACOS`, or `LINUX`(eventually). 
+  
+If you do have a different install directory for MSYS2 on windows, append:
+```
+WIN64MINGWLIBS=/drive_letter_lowercase/path/to/msys64/mingw64/x86_64-w64-mingw32/lib
+```
+to the above command and run `make` from its absolute path instead.  
+  
 **Warning:** Debugging on MacOS may require you to codesign a copy of gdb.
 ## Setup VSCode
 Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
