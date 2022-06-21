@@ -16,4 +16,3 @@ ShadowDebug
 Shadow.dSYM/
 *.command
 !include/shadow
-make.bat
