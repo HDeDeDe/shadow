@@ -18,18 +18,18 @@ WIN64:
 	${GCCWIN} ${CFLAGS} -g ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}Debug.exe
 
 MACOS: 
-	${GCCMACOS} ${CFLAGS} -g ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}Debug.out
+	${GCCMACOS} ${CFLAGS} -g ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}Debug
 
 WIN64RELEASE:
 	${GCCWIN} ${CFLAGS} -s -mwindows ${SRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}.exe
 
 MACOSRELEASE:
-	${GCCMACOS} ${CFLAGS} -s ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}.out
+	${GCCMACOS} ${CFLAGS} -s ${SRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${TARGET}
 
 cleanWin:
 	del ShadowDebug.exe
 	del Shadow.exe
 	
 clean:
-	rm -rf ShadowDebug.out
-	rm -rf Shadow.out
+	rm -rf ShadowDebug
+	rm -rf Shadow
