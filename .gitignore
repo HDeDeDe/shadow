@@ -10,7 +10,9 @@ x64/
 .DS_STORE
 *.pdb
 Shadow.exe
+ShadowDebug.exe
 Shadow
+ShadowDebug
 Shadow.dSYM/
 *.command
 !include/shadow

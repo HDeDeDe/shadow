@@ -7,15 +7,15 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "windows": {
-                "program": "${workspaceFolder}\\Shadow.exe"
+                "program": "${workspaceFolder}\\ShadowDebug.exe"
             },
             "osx": {
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/local/Cellar/gdb/12.1/bin/gdb",
-                "program": "${workspaceFolder}/Shadow"
+                "program": "${workspaceFolder}/ShadowDebug"
             },
             "linux": {
-                "program": "${workspaceFolder}/Shadow"
+                "program": "${workspaceFolder}/ShadowDebug"
             }
         },
         {
@@ -24,17 +24,17 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "windows": {
-                "program": "${workspaceFolder}\\Shadow.exe",
+                "program": "${workspaceFolder}\\ShadowDebug.exe",
                 "preLaunchTask": "Win64: Make Shadow.exe"
             },
             "osx": {
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/local/Cellar/gdb/12.1/bin/gdb",
-                "program": "${workspaceFolder}/Shadow",
+                "program": "${workspaceFolder}/ShadowDebug",
                 "preLaunchTask": "MacOS: Make Shadow"
             },
             "linux": {
-                "program": "${workspaceFolder}/Shadow"
+                "program": "${workspaceFolder}/ShadowDebug"
             }
         }
     ]
