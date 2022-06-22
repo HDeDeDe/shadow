@@ -37,6 +37,11 @@ void shSys::panic(sh::sh_Panic issue)
 		std::cout << "[SHADOW - ERROR] The default settings have been corrupted." << std::endl;
 	} break;
 
+	case sh::sh_Panic::panic_init_fail:
+	{
+		std::cout << "[SHADOW - ERROR] The initialization file is missing or corrupted." << std::endl;
+	} break;
+
 	default: break;
 	}
 	throw issue;

@@ -103,6 +103,5 @@ namespace sh {
         inline static void textDeloadAll() { return texture::sh_TextureManager::TextureDeloadAll(); };
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
         void drawScreen(sh::auditorium::viewport::sh_camera cam);
-        inline std::string wrkDir = { 0 };
     }
 }

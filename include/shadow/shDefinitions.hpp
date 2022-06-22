@@ -17,7 +17,9 @@ namespace sh
 		//A texture was loaded without a proper opengl context
 		panic_no_gl_context,
 		//The default settings have been corrupted
-		panic_default_corrupted
+		panic_default_corrupted,
+		//The initialization file is missing or corrupted
+		panic_init_fail
 	} sh_Panic;
 	//Stores relevant Theatric position data
 	typedef struct Dimension {

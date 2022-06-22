@@ -1,8 +1,8 @@
 // ---------- Include ----------
 #include <shAuditorium.hpp>
-#if (DEBUGGING == 1)
+//#if (DEBUGGING == 1)
 //#include <shDearImgui.hpp>
-#endif
+//#endif
 // ---------- Shadow ----------
 
 
@@ -18,7 +18,7 @@ void sh::auditorium::drawScreen(sh::auditorium::viewport::sh_camera cam)
 
         EndMode3D();
     }
-    
+
     if(sh::is2D == true)
     {
         BeginMode2D(cam.getCamera2D());
@@ -28,10 +28,8 @@ void sh::auditorium::drawScreen(sh::auditorium::viewport::sh_camera cam)
 
     //DrawHUD
     DrawFPS(0,0);
-    DrawText(sh::auditorium::wrkDir.c_str(), 0, 20, 15, BLUE);
-
-    #if (DEBUGGING == 1)
-
-    #endif
+    DrawText("Massive fukin nuts.", 40, 50, 50, RED);
+    // #if (DEBUGGING == 1)
+    // #endif
     EndDrawing();
 }

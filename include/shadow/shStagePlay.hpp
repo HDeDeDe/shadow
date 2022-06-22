@@ -23,13 +23,10 @@ namespace sh{namespace theatrics{
         
     };
     class stage : public detail::theatric{
-        virtual sh::auditorium::texture::sh_Texture* m_texture = 0;
+        sh::auditorium::texture::sh_Texture* m_texture;
         Mesh m_mesh = { 0 };
     public:
         bool visible = true;
         virtual void renderReady() = 0;
     };
-    class practical : public prop {
-
-    }
 }}

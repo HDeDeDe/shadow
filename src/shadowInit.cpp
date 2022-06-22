@@ -4,6 +4,7 @@
 #include <shAuditorium.hpp>
 #include <shFiles.hpp>
 #include <luaDefault.c>
+#include <shLua.hpp>
 // ---------- Shadow ----------
 void startApp()
 {
@@ -16,27 +17,11 @@ void startApp()
 	shSys::initAuditorium();
 	loadSettings();
 	sh::gameLoopActive = true;
-
-	if (FileExists("./Test.bin")) sh::auditorium::wrkDir = "Success";
-	else sh::auditorium::wrkDir = "Failed";
-	
 	sh::play::ShadowStart();
 	shSys::cleanTextureMan();
 	std::cout << "[SHADOW - INFO] Exiting..." << std::endl;
 }
 
-
-
-bool LuaCheck(lua_State *L, int r)
-{
-	if (r!= LUA_OK)
-	{
-		std::string errormsg = lua_tostring(L, -1);
-		std::cout << errormsg << std::endl;
-		return false;
-	}
-	return true;
-}
 
 void loadSettings()
 {
@@ -48,7 +33,7 @@ void loadSettings()
 	bool l_MSAA = false;
 	lua_State *L = luaL_newstate();
 	//Load default values
-	if(LuaCheck(L, luaL_dostring(L, lua_default_video)))
+	if(sh::lua::LuaCheck(L, luaL_dostring(L, lua_default_video)))
 	{
 		lua_getglobal(L, "window");
 		if(lua_istable(L, -1))
@@ -87,7 +72,7 @@ void loadSettings()
 		settingsLoc.append("\\settings.lua");
 		if(FileExists(settingsLoc.c_str()))
 		{
-			if(LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
+			if(sh::lua::LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
 			{
 				lua_getglobal(L, "window");
 				if(lua_istable(L, -1))
