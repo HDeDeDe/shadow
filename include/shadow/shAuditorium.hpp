@@ -80,7 +80,29 @@ namespace sh {
             };
         }
 
+        namespace viewport
+        {
+            class sh_camera
+            {
+                sh::Dimension m_dimension2D = { 0 };
+                sh::Dimension m_dimension3D = { 0 };
+                Camera3D m_3DCam = { 0 };
+                Camera2D m_2DCam = { 0 };
+            public:
+                Camera2D getCamera2D() { return m_2DCam; };
+                Camera3D getCamera3D() { return m_3DCam; };
+                void setDimension2D(sh::Dimension dimension) { m_dimension2D = dimension; };
+                sh::Dimension getDimension2D() { return m_dimension2D; };
+                void setDimension3D(sh::Dimension dimension) { m_dimension2D = dimension; };
+                sh::Dimension getDimension3D() { return m_dimension3D; };
+                void updateCameras();
+                //sh_camera();
+            };
+        }
+
         inline static void textDeloadAll() { return texture::sh_TextureManager::TextureDeloadAll(); };
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
+        void drawScreen(sh::auditorium::viewport::sh_camera cam);
+        inline std::string wrkDir = { 0 };
     }
 }

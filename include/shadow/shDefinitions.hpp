@@ -55,4 +55,7 @@ namespace sh
 		inline bool noSound = false;
 
 	}
+	//Should auditorium do 3D calls
+	inline bool is3D = false;
+	inline bool is2D = false;
 }

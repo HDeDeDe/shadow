@@ -16,6 +16,10 @@ void startApp()
 	shSys::initAuditorium();
 	loadSettings();
 	sh::gameLoopActive = true;
+
+	if (FileExists("./Test.bin")) sh::auditorium::wrkDir = "Success";
+	else sh::auditorium::wrkDir = "Failed";
+	
 	sh::play::ShadowStart();
 	shSys::cleanTextureMan();
 	std::cout << "[SHADOW - INFO] Exiting..." << std::endl;

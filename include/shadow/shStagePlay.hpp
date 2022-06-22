@@ -9,13 +9,13 @@ namespace sh{namespace theatrics{
         class theatric 
         {
             sh::Dimension m_dimension = { 0 };
+            bool m_is3D = false;
         public:
             sh::Dimension getDimension() { return m_dimension; }
         }
     }
     //Actors have lua virtual machines attatched to them
     class actor : public detail::theatric{
-        
         virtual lua_State *L = 0;
         
     };
