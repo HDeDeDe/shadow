@@ -5,16 +5,22 @@
 #include <shAuditorium.hpp> //Window and texture manager
 // ---------- Your Variables / Functions ----------
 
-sh::auditorium::texture::sh_Texture* ExampleTexture;
 std::string ExampleText;
-
+sh::Dimension ExampleDimension;
 // ---------- Shadow ----------
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
-
+    ExampleText = "Hello World!";
+    sh::auditorium::texture::sh_TextureManager::Create("Test", "./Test.png");
+    sh::auditorium::texture::sh_TextureManager::Load("Test");
+    ExampleDimension.X = 40.0f;
+    ExampleDimension.Y = 50.0f;
+    ExampleDimension.Size(50.0f);
+    float tempFloat = ExampleDimension.Size();
 }
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    
+    sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
+    sh::auditorium::draw::queueHUD(DTEXT, ExampleText, ExampleDimension, RED);
 }

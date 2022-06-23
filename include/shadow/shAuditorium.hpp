@@ -44,11 +44,6 @@ namespace sh {
             class sh_TextureManager
             {
             public:
-                //Block constructors
-                sh_TextureManager(const sh_TextureManager&) = delete;
-
-                //Access functions
-                static sh_TextureManager& Get();
                 //Create a new texture from a file
                 inline static void Create(std::string texture_reference, std::string file_location) { return Get().in_Create(texture_reference, file_location); };
                 //Destroy referenced texture
@@ -66,6 +61,8 @@ namespace sh {
                 //Clean up textures
                 inline static void CleanTextureMan() { return Get().in_CleanTextureMan(); };
             private:
+                //Access functions
+                static sh_TextureManager& Get();
                 //Internal functions
                 void in_Create(std::string texture_reference, std::string file_location);
                 void in_Destroy(std::string texture_reference);
@@ -78,6 +75,7 @@ namespace sh {
                 //Block constructors
                 sh_TextureManager& operator=(sh_TextureManager const&);
                 sh_TextureManager();
+                sh_TextureManager(const sh_TextureManager&);
             };
         }
 
@@ -107,7 +105,7 @@ namespace sh {
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
         namespace draw
         {
-
+            void queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
             void drawScreen(sh::auditorium::viewport::sh_camera cam);
         }
     }

@@ -1,4 +1,5 @@
 #pragma once
+
 // ---------- Shadow ----------
 //All high level data should be stored here
 namespace sh
@@ -32,6 +33,8 @@ namespace sh
 		float Roll = 0.0f;
 		float Pitch = 0.0f;
 		float Yaw = 0.0f;
+		void Size(float size) {Width = size; Height = size; Length = size;}
+		float Size() {float i; i = (Width + Height + Length) / 3; return i;}
 	} Dimension;
 	inline bool gameLoopActive = false;
 	
@@ -57,7 +60,17 @@ namespace sh
 		inline bool noSound = false;
 
 	}
+	typedef enum class renderType
+	{
+		texture = 0,
+		text
+	} renderType;
+
 	//Should auditorium do 3D calls
 	inline bool is3D = false;
+	//Should auditorium do 2D calls
 	inline bool is2D = false;
 }
+
+#define DTEXTURE sh::renderType::texture
+#define DTEXT sh::renderType::text
