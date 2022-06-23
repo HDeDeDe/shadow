@@ -1,6 +1,7 @@
 // ---------- Include ----------
 #include <shAuditorium.hpp>
 #include <missing.c>
+#include <shSys.hpp>
 
 // ---------- Shadow ----------
 
@@ -211,6 +212,11 @@ void sh::auditorium::texture::sh_TextureManager::in_TextureReloadAll()
 
 //Cleanup
 void shSys::cleanTextureMan()
+{
+	sh::auditorium::texture::sh_TextureManager::CleanTextureMan();
+}
+
+void sh::auditorium::texture::sh_TextureManager::in_CleanTextureMan()
 {
 	for (auto& [texture_reference, texture_store] : texture_map)
 	{

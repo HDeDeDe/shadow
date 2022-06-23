@@ -5,10 +5,7 @@
 //#endif
 // ---------- Shadow ----------
 
-
-
-
-void sh::auditorium::drawScreen(sh::auditorium::viewport::sh_camera cam)
+void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
 {
     BeginDrawing();
     ClearBackground(BLACK);

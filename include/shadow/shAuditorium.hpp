@@ -2,7 +2,6 @@
 // ---------- Include ----------
 
 #include <shadow.hpp>
-#include <shSys.hpp>
 
 // ---------- Shadow ----------
 namespace sh {
@@ -41,7 +40,6 @@ namespace sh {
                 sh_Texture(const sh_Texture&);
                 sh_Texture(std::string texture_location, std::string texture_reference);
                 friend class sh_TextureManager;
-                friend void shSys::cleanTextureMan();
             };
             class sh_TextureManager
             {
@@ -65,6 +63,8 @@ namespace sh {
                 inline static void TextureDeloadAll() { return Get().in_TextureDeloadAll(); };
                 //Get reference to texture, it's recomended to cache this for later use
                 inline static sh_Texture* GetTexturePointer(std::string texture_reference) { return Get().in_GetTexturePointer(texture_reference); };
+                //Clean up textures
+                inline static void CleanTextureMan() { return Get().in_CleanTextureMan(); };
             private:
                 //Internal functions
                 void in_Create(std::string texture_reference, std::string file_location);
@@ -74,6 +74,7 @@ namespace sh {
                 void in_TextureReloadAll();
                 void in_TextureDeloadAll();
                 sh_Texture* in_GetTexturePointer(std::string texture_reference);
+                void in_CleanTextureMan();
                 //Block constructors
                 sh_TextureManager& operator=(sh_TextureManager const&);
                 sh_TextureManager();
@@ -98,10 +99,16 @@ namespace sh {
                 void updateCameras();
                 //sh_camera();
             };
+
+            inline sh_camera GlobalCamera;
         }
 
         inline static void textDeloadAll() { return texture::sh_TextureManager::TextureDeloadAll(); };
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
-        void drawScreen(sh::auditorium::viewport::sh_camera cam);
+        namespace draw
+        {
+
+            void drawScreen(sh::auditorium::viewport::sh_camera cam);
+        }
     }
 }
