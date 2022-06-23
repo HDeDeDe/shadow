@@ -126,7 +126,7 @@ void loadSettings()
 		settingsLoc.append("/settings.lua");
 		if(FileExists(settingsLoc.c_str()))
 		{
-			if(LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
+			if(sh::lua::LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
 			{
 				lua_getglobal(L, "window");
 				if(lua_istable(L, -1))
