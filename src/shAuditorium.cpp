@@ -45,6 +45,7 @@ void sh::auditorium::createWindow()
     
     m_active = true;
     textReloadAll();
+    sh::auditorium::viewport::GlobalCamera.setOrigin();
 }
 
 void sh::auditorium::closeWindow()
@@ -100,3 +101,7 @@ void sh::auditorium::setMSAA(bool flag)
     m_MSAA = flag;
     reloadWindow();
 }
+
+int sh::auditorium::getResolutionX(){ return m_width; }
+
+int sh::auditorium::getResolutionY(){ return m_height; }

@@ -182,6 +182,18 @@ sh::auditorium::texture::sh_Texture* sh::auditorium::texture::sh_TextureManager:
 	return texture_map.at(texture_reference);
 }
 
+Texture sh::auditorium::texture::sh_TextureManager::in_GetTexture(std::string texture_reference)
+{
+	using namespace sh::auditorium::texture;
+    if (texture_map.find(texture_reference) == texture_map.end())
+	{
+		std::cout << "[SHADOW - WARNING] " << texture_reference << " does not exist in the texture map, returning missing." << std::endl;
+		return missing_vram;
+	}
+	sh_Texture* temp_ptr = texture_map.at(texture_reference);
+	return temp_ptr->getTexture();
+}
+
 void sh::auditorium::texture::sh_TextureManager::in_TextureDeloadAll()
 {
 	using namespace sh::auditorium::texture;

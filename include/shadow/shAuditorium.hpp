@@ -14,6 +14,8 @@ namespace sh {
         bool isActive();
         void setVsync(bool flag);
         void setMSAA(bool flag);
+        int getResolutionX();
+        int getResolutionY();
 
         //Textures are actively managed by Auditorium
         namespace texture
@@ -58,6 +60,8 @@ namespace sh {
                 inline static void TextureDeloadAll() { return Get().in_TextureDeloadAll(); };
                 //Get reference to texture, it's recomended to cache this for later use
                 inline static sh_Texture* GetTexturePointer(std::string texture_reference) { return Get().in_GetTexturePointer(texture_reference); };
+                //Get texture
+                inline static Texture GetTexture(std::string texture_reference) { return Get().in_GetTexture(texture_reference); };
                 //Clean up textures
                 inline static void CleanTextureMan() { return Get().in_CleanTextureMan(); };
             private:
@@ -71,6 +75,7 @@ namespace sh {
                 void in_TextureReloadAll();
                 void in_TextureDeloadAll();
                 sh_Texture* in_GetTexturePointer(std::string texture_reference);
+                Texture in_GetTexture(std::string texture_reference);
                 void in_CleanTextureMan();
                 //Block constructors
                 sh_TextureManager& operator=(sh_TextureManager const&);
@@ -95,7 +100,8 @@ namespace sh {
                 void setDimension3D(sh::Dimension dimension) { m_dimension2D = dimension; };
                 sh::Dimension getDimension3D() { return m_dimension3D; };
                 void updateCameras();
-                //sh_camera();
+                void setOrigin();
+                sh_camera(int fov = 45);
             };
 
             inline sh_camera GlobalCamera;
