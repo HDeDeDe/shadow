@@ -9,5 +9,6 @@ extern "C" {
 namespace sh{namespace lua{
     bool LuaCheck(lua_State *L, int r);
     void InitLuaGlobal();
+    lua_State* GetLuaGlobal();
     void CloseLuaGlobal();
 }}

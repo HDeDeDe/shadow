@@ -30,3 +30,8 @@ void sh::lua::CloseLuaGlobal()
 {
     lua_close(LGlobal);
 }
+
+lua_State* sh::lua::GetLuaGlobal()
+{
+    return LGlobal;
+}

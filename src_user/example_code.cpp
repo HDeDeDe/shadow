@@ -5,6 +5,7 @@
 #include <shAuditorium.hpp> //Window and texture manager
 // ---------- Your Variables / Functions ----------
 
+std::string ExampleText;
 sh::Dimension ExampleDimension;
 // ---------- Shadow ----------
 void sh::play::GameInit() //This is where you initialize any nesecary code
@@ -15,6 +16,9 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     ExampleDimension.Y = 50.0f;
     ExampleDimension.Size(50.0f);
     float tempFloat = ExampleDimension.Size();
+    lua_getglobal(sh::lua::GetLuaGlobal(), "a");
+    if(lua_isstring(sh::lua::GetLuaGlobal(), -1)) ExampleText = lua_tostring(sh::lua::GetLuaGlobal(), -1);
+    else ExampleText = "FAIL";
 }
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
