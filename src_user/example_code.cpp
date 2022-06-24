@@ -10,13 +10,15 @@ sh::Dimension ExampleDimension;
 // ---------- Shadow ----------
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
-    sh::auditorium::texture::sh_TextureManager::Create("Test", "./Test.png");
+    lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
+    sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
     sh::auditorium::texture::sh_TextureManager::Load("Test");
     ExampleDimension.X = 40.0f;
     ExampleDimension.Y = 50.0f;
     ExampleDimension.Size(50.0f);
     float tempFloat = ExampleDimension.Size();
-    lua_getglobal(sh::lua::GetLuaGlobal(), "a");
+    lua_getglobal(sh::lua::GetLuaGlobal(), "TextToDisplay");
     if(lua_isstring(sh::lua::GetLuaGlobal(), -1)) ExampleText = lua_tostring(sh::lua::GetLuaGlobal(), -1);
     else ExampleText = "FAIL";
     lua_pop(sh::lua::GetLuaGlobal(), -1);
