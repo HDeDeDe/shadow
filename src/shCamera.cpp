@@ -4,7 +4,6 @@ sh::auditorium::viewport::sh_camera::sh_camera(int fov)
 {
     m_dimension3D.Size((float)(fov));
     m_3DCam.projection = CAMERA_PERSPECTIVE;
-    SetCameraMode(m_3DCam, CAMERA_CUSTOM);
 }
 
 void sh::auditorium::viewport::sh_camera::setOrigin()
