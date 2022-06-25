@@ -17,7 +17,6 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     ExampleDimension.X = 40.0f;
     ExampleDimension.Y = 50.0f;
     ExampleDimension.Size(50.0f);
-    float tempFloat = ExampleDimension.Size();
     lua_getglobal(sh::lua::GetLuaGlobal(), "TextToDisplay");
     if(lua_isstring(sh::lua::GetLuaGlobal(), -1)) ExampleText = lua_tostring(sh::lua::GetLuaGlobal(), -1);
     else ExampleText = "FAIL";
