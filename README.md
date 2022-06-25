@@ -1,5 +1,5 @@
 # Shadow Engine
-Shadow is a game engine built on lua 5.4.2 and raylib 4.0.0 with the goal of being easy to use and easy to port. 
+Shadow is a game engine built on lua 5.4.2, raylib 4.0.0, and Dear imgui 1.87 with the goal of being easy to use and easy to port. 
 
 ## Requirements
 [VSCode](https://code.visualstudio.com/) (peferably)  
@@ -56,7 +56,8 @@ WIN64MINGWLIBS=/drive_letter_lowercase/path/to/msys64/mingw64/x86_64-w64-mingw32
 ```
 to the above command and run `make` from its absolute path instead.  
   
-**Warning:** Debugging on MacOS may require you to codesign a copy of gdb.
+**Warning:** Debugging on MacOS may require you to codesign a copy of gdb.  
+**Warning:** Dear imgui will not be rendered in HighDPI mode on MacOS.
 ## Setup VSCode
 Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
 Clone the repository, then open and select your os.
