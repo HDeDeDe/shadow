@@ -2,7 +2,9 @@
 #include <shadow.hpp>
 #include <shAuditorium.hpp>
 #include <shSys.hpp>
+#if (DEBUGGING == 1)
 #include <rlImGui.h>
+#endif
 // ---------- Shadow ----------
 
 //Variables -----
