@@ -3,11 +3,13 @@
 #include <shLua.hpp> //Access to LuaCheck and the global lua virtual machine
 #include <shStagePlay.hpp> //Entity manager
 #include <shAuditorium.hpp> //Window and texture manager
+
 // ---------- Your Variables / Functions ----------
 
 std::string ExampleText;
 sh::Dimension ExampleDimension;
 // ---------- Shadow ----------
+
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
@@ -28,3 +30,12 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, ExampleDimension, RED);
 }
+
+//This is where you put any code relating to Dear imgui
+#if (DEBUGGING == 1)
+#include <imgui.h>
+void sh::play::ImguiDebugDraw()
+{
+    ImGui::ShowDemoWindow();
+}
+#endif

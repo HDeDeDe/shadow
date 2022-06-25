@@ -29,5 +29,9 @@ namespace sh
         void GameInit();
         //This is run every frame
         void GameLoop();
+        #if (DEBUGGING == 1)
+        //This will only run if you are in debugging mode
+        void ImguiDebugDraw();
+        #endif
     }
 }

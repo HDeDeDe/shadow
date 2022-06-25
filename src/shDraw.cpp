@@ -68,7 +68,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     DrawFPS(0,0);
     #if (DEBUGGING == 1)
     rlImGuiBegin();
-    ImGui::ShowDemoWindow();
+    sh::play::ImguiDebugDraw();
     rlImGuiEnd();
     #endif
     EndDrawing();
