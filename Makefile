@@ -21,7 +21,7 @@ WIN64:
 	${GCCWIN} ${CFLAGS}1 -g ${SRC} -g ${USRSRC} -g ${DBGSRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${INCLUDEDBG} ${TARGET}Debug.exe
 
 MACOS: 
-	${GCCMACOS} ${CFLAGS}1 -g ${SRC} -g ${USRSRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${INCLUDEDBG} ${TARGET}Debug
+	${GCCMACOS} ${CFLAGS}1 -g ${SRC} -g ${USRSRC} -g ${DBGSRC} ${LIBFOLDER}MacOS ${SHADOWLIB} -framework IOKit -framework Cocoa -framework OpenGL ${INCLUDE} ${INCLUDEDBG} ${TARGET}Debug
 
 WIN64_RELEASE:
 	${GCCWIN} ${CFLAGS}0 -s -mwindows ${SRC} ${USRSRC} ${LIBFOLDER}Win64 ${SHADOWLIB} -L${WIN64MINGWLIBS} -lopengl32 -lgdi32 -lwinmm ${INCLUDE} ${TARGET}.exe
