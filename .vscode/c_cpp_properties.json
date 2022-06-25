@@ -6,8 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/lua",
                 "${workspaceFolder}/include/shadow",
-                "${workspaceFolder}/include/raylib"
-                //"${workspaceFolder}/include/dear_imgui"
+                "${workspaceFolder}/include/raylib",
+                "${workspaceFolder}/include/dear_imgui"
             ],
             "defines": [
                 "SHADOWNAME=\"shadow\"",
@@ -27,8 +27,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/lua",
                 "${workspaceFolder}/include/shadow",
-                "${workspaceFolder}/include/raylib"
-                //"${workspaceFolder}/include/dear_imgui"
+                "${workspaceFolder}/include/raylib",
+                "${workspaceFolder}/include/dear_imgui"
             ],
             "defines": [
                 "_DEBUG",

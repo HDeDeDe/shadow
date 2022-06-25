@@ -17,5 +17,3 @@ ShadowDebug.dSYM/
 *.command
 !include/shadow
 Shadow.app/
-include/dear_imgui
-src_dear_imgui

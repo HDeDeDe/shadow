@@ -2,6 +2,7 @@
 #include <shadow.hpp>
 #include <shAuditorium.hpp>
 #include <shSys.hpp>
+#include <rlImGui.h>
 // ---------- Shadow ----------
 
 //Variables -----
@@ -46,12 +47,18 @@ void sh::auditorium::createWindow()
     m_active = true;
     textReloadAll();
     sh::auditorium::viewport::GlobalCamera.setOrigin();
+    #if (DEBUGGING == 1)
+    rlImGuiSetup(true);
+    #endif
 }
 
 void sh::auditorium::closeWindow()
 {
     m_active = false;
     textDeloadAll();
+    #if (DEBUGGING == 1)
+    rlImGuiShutdown();
+    #endif
     CloseWindow();
 }
 

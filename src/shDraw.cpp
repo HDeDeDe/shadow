@@ -1,9 +1,10 @@
 // ---------- Include ----------
 #include <shAuditorium.hpp>
 #include <vector>
-//#if (DEBUGGING == 1)
-//#include <shDearImgui.hpp>
-//#endif
+#if (DEBUGGING == 1)
+#include <rlImGui.h>
+#include <imgui.h>
+#endif
 // ---------- Shadow ----------
 
 struct renderable
@@ -65,7 +66,10 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     }
     HUDQ.clear();
     DrawFPS(0,0);
-    // #if (DEBUGGING == 1)
-    // #endif
+    #if (DEBUGGING == 1)
+    rlImGuiBegin();
+    ImGui::ShowDemoWindow();
+    rlImGuiEnd();
+    #endif
     EndDrawing();
 }
