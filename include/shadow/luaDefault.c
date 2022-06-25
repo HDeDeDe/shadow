@@ -1,2 +1,2 @@
-const char* lua_default_video = "window = { x = 1280, y = 720, vsync = true, MSAA = false }\n";
-char settingsFile[] = "window[\"x\"] = 1280\nwindow[\"y\"] = 720\nwindow[\"vsync\"] = true\nwindow[\"MSAA\"] = false\n";
+const char* lua_default_video = "window = { x = 360, y = 240, vsync = false, MSAA = false }\n";
+char settingsFile[] = "window[\"x\"] = 360\nwindow[\"y\"] = 240\nwindow[\"vsync\"] = false\nwindow[\"MSAA\"] = false\n";
