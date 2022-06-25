@@ -17,3 +17,4 @@ ShadowDebug.dSYM/
 *.command
 !include/shadow
 Shadow.app/
+Resources/imgui.ini
