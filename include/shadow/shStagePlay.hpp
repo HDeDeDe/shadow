@@ -9,9 +9,11 @@ namespace sh{namespace theatrics{
         class theatric 
         {
             sh::Dimension m_dimension = { 0 };
-            bool m_is3D = false;
+            bool m_visible = false;
         public:
-            sh::Dimension getDimension() { return m_dimension; }
+            sh::Dimension getDimension() { return m_dimension; };
+            void setVisible(bool vis = true) { m_visible = vis; };
+            virtual void renderMe() = 0;
         };
     }
     //Actors have lua virtual machines attatched to them
@@ -23,10 +25,6 @@ namespace sh{namespace theatrics{
         
     };
     class stage : public detail::theatric{
-        sh::auditorium::texture::sh_Texture* m_texture;
-        Mesh m_mesh = { 0 };
-    public:
-        bool visible = true;
-        virtual void renderReady() = 0;
+
     };
 }}

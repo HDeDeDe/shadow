@@ -19,7 +19,7 @@ namespace sh
 		panic_no_gl_context,
 		//The default settings have been corrupted
 		panic_default_corrupted,
-		//The initialization file is missing or corrupted
+		//An initialization file is missing or corrupted
 		panic_init_fail
 	} sh_Panic;
 	//Stores relevant Theatric position data
@@ -30,9 +30,9 @@ namespace sh
 		float Width = 1.0f;
 		float Height = 1.0f;
 		float Length = 1.0f;
-		float Roll = 0.0f;
-		float Pitch = 0.0f;
-		float Yaw = 0.0f;
+		float Roll = 0.0f; //X axis
+		float Yaw = 0.0f; //Y axis
+		float Pitch = 0.0f; //Z axis
 		void Size(float size) {Width = size; Height = size; Length = size;}
 		float Size() {float i; i = (Width + Height + Length) / 3; return i;}
 	} Dimension;
@@ -63,7 +63,8 @@ namespace sh
 	typedef enum class renderType
 	{
 		texture = 0,
-		text
+		text,
+		theatric
 	} renderType;
 
 	//Should auditorium do background calls
@@ -78,3 +79,4 @@ namespace sh
 
 #define DTEXTURE sh::renderType::texture
 #define DTEXT sh::renderType::text
+#define DTHEATRIC sh::renderType::theatric

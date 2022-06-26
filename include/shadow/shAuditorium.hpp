@@ -84,22 +84,36 @@ namespace sh {
             };
         }
 
+        namespace model
+        {
+            void Load(std::string model_reference, std::string file_location);
+            void Unload(std::string model_reference);
+            Model GetModel(std::string model_reference);
+            void UnloadAll();
+        }
+
         namespace viewport
         {
             class sh_camera
             {
                 sh::Dimension m_dimension2D = { 0 };
                 sh::Dimension m_dimension3D = { 0 };
+                Vector3 m_target3D = { 0 };
                 Camera3D m_3DCam = { 0 };
                 Camera2D m_2DCam = { 0 };
             public:
                 Camera2D getCamera2D() { return m_2DCam; };
                 Camera3D getCamera3D() { return m_3DCam; };
+
                 void setDimension2D(sh::Dimension dimension) { m_dimension2D = dimension; };
                 sh::Dimension getDimension2D() { return m_dimension2D; };
-                void setDimension3D(sh::Dimension dimension) { m_dimension2D = dimension; };
+
+                void setDimension3D(sh::Dimension dimension) { m_dimension3D = dimension; };
                 sh::Dimension getDimension3D() { return m_dimension3D; };
-                void setCamPos(Vector3 pos3, Vector2 pos2);
+
+                Vector3 get3DTarget() { return m_target3D; };
+                void set3DTarget(Vector3 target) { m_target3D = target; };
+
                 void updateCameras();
                 void setOrigin();
                 sh_camera(int fov = 45);

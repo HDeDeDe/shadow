@@ -23,6 +23,7 @@ void shSys::initAuditorium()
     m_name = "[SHADOW] Starting...";
     sh::auditorium::createWindow();
     shSys::initTextureMan();
+    shSys::initModelMan();
 }
 
 bool sh::play::Exit(bool killApp)
@@ -31,6 +32,7 @@ bool sh::play::Exit(bool killApp)
         {
             sh::gameLoopActive = false;
             sh::auditorium::closeWindow();
+            sh::auditorium::model::UnloadAll();
             return true;
         }
     return false;
