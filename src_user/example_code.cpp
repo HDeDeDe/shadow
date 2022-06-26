@@ -37,6 +37,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 void sh::play::ImguiDebugDraw()
 {
     ImGui::Text("FPS: %d", GetFPS());
+    ImGui::Text("Frame Time: %d", GetFrameTime());
     ImGui::Checkbox("Render Background", &isBG);
     ImGui::Checkbox("Render 2D", &is2D);
     ImGui::Checkbox("Render 3D", &is3D);
