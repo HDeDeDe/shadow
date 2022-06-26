@@ -5,7 +5,7 @@
 
 Model missing = { 0 };
 
-shSys::initModelMan()
+void shSys::initModelMan()
 {
     if(FileExists("./missing.iqm"))
     {
@@ -32,9 +32,9 @@ struct sh_Model
     {
         UnloadModel(m_model);
     }
-}
+};
 
-std::unordered_map<std::string, sh_Model> modelMap;
+std::unordered_map<std::string, sh_Model*> modelMap;
 
 void sh::auditorium::model::Load(std::string model_reference, std::string file_location)
 {
@@ -85,8 +85,8 @@ Model sh::auditorium::model::GetModel(std::string model_reference)
 	}
     if (modelMap.find(model_reference) == modelMap.end())
 	{
-		std::cout << "[SHADOW - WARNING] " << model_reference << " is not a valid model." << std::endl;
-		return;
+		std::cout << "[SHADOW - WARNING] " << model_reference << " is not a valid model. Returning missing model." << std::endl;
+		return missing;
 	}
     sh_Model* temp_ptr = modelMap.at(model_reference);
     return temp_ptr->m_model;
@@ -95,10 +95,6 @@ Model sh::auditorium::model::GetModel(std::string model_reference)
 void sh::auditorium::model::UnloadAll()
 {
     using namespace sh::auditorium::model;
-    for (auto& [model_reference, model_store] : modelMap)
-	{
-		Unload(model_reference);
-	}
 	UnloadModel(missing);
 	return;
 }
