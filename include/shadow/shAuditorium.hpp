@@ -128,6 +128,7 @@ namespace sh {
         {
             inline Color bgDefault = BLACK;
             void queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
+            void queue3D(sh::renderType type, std::string content, std::string content2, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
             void drawScreen(sh::auditorium::viewport::sh_camera cam);
         }
     }
