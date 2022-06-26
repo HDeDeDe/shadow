@@ -13,32 +13,31 @@ struct renderable
     std::string m_content = { 0 };
     Color m_color;
     sh::Dimension m_dimension;
-    std::string m_content2 = { 0 };
 };
 
-std::vector<renderable> HUDQ;
-std::vector<renderable> 3DQ;
+std::vector<renderable> QHUD;
+std::vector<renderable> Q3D;
 
 void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor)
 {
     switch(type)
     {
     case DTEXT:
-        HUDQ.push_back({type, content, dColor, dDimension});
+        QHUD.push_back({type, content, dColor, dDimension});
         break;
     case DTEXTURE:
-        HUDQ.push_back({type, content, dColor, dDimension});
+        QHUD.push_back({type, content, dColor, dDimension});
         break;
     default: break;
     }
 }
 
-void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, std::string content2, sh::Dimension dDimension, Color dColor)
+void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor)
 {
     switch(type)
     {
     case DMODEL:
-        3DQ.push_back({type, content, dColor, dDimension, content2});
+        Q3D.push_back({type, content, dColor, dDimension});
         break;
     default: break;
     }
@@ -57,7 +56,17 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     {
         BeginMode3D(cam.getCamera3D());
         DrawGrid(20, 1.0f);
-        
+        for (renderable& r : Q3D)
+        {
+            switch (r.m_type)
+            {
+            case DMODEL:
+                DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{1.0f, 0.0f, 0.0f}, -90.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
+                break;
+            default: break;
+            }
+        }
+        QHUD.clear();
         EndMode3D();
     }
 
@@ -71,7 +80,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     //DrawHUD
     if(sh::isHUD == true)
     {
-        for (renderable& r : HUDQ)
+        for (renderable& r : QHUD)
         {
             switch (r.m_type)
             {
@@ -84,7 +93,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
             default: break;
             }
         }
-        HUDQ.clear();
+        QHUD.clear();
     }
     
     #if (DEBUGGING == 1)

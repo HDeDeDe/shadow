@@ -38,6 +38,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 {
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, ExampleDimension, RED);
+    sh::auditorium::draw::queue3D(DMODEL, "Test");
     sh::auditorium::viewport::GlobalCamera.updateCameras();
 }
 
@@ -63,14 +64,12 @@ void sh::play::ImguiDebugDraw()
 
     float dbg_3dCamPos[3] = {temp_cam3D.X, temp_cam3D.Y, temp_cam3D.Z};
     ImGui::DragFloat3("Camera3D Position", dbg_3dCamPos);
-    ImGui::Text("Camera3D FOV: %d", sh::auditorium::viewport::GlobalCamera.getCamera3D().fovy);
 
     float dbg_3dCamTarg[3] = {temp_3DTarg.x, temp_3DTarg.y, temp_3DTarg.z};
     ImGui::DragFloat3("Camera3D Target", dbg_3dCamTarg);
 
     float dbg_2dCamPos[2] = {temp_cam2D.X, temp_cam2D.Y};
     ImGui::DragFloat2("Camera2D Position", dbg_2dCamPos);
-    ImGui::Text("Camera2D Zoom: %d", sh::auditorium::viewport::GlobalCamera.getCamera2D().zoom);
 
     temp_cam2D.X = dbg_2dCamPos[0];
     temp_cam2D.Y = dbg_2dCamPos[1];
