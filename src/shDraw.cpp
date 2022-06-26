@@ -66,7 +66,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
             default: break;
             }
         }
-        QHUD.clear();
+        Q3D.clear();
         EndMode3D();
     }
 
