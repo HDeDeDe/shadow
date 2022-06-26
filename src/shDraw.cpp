@@ -17,7 +17,7 @@ struct renderable
 };
 
 std::vector<renderable> HUDQ;
-//std::vector<renderable> 3DQ;
+std::vector<renderable> 3DQ;
 
 void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor)
 {
@@ -33,16 +33,16 @@ void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, sh
     }
 }
 
-// void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor, std::string content2)
-// {
-//     switch(type)
-//     {
-//     case DMODEL:
-//         3DQ.push_back({type, content, dColor, dDimension, content2});
-//         break;
-//     default: break;
-//     }
-// }
+void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, std::string content2, sh::Dimension dDimension, Color dColor)
+{
+    switch(type)
+    {
+    case DMODEL:
+        3DQ.push_back({type, content, dColor, dDimension, content2});
+        break;
+    default: break;
+    }
+}
 
 void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
 {
