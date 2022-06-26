@@ -36,6 +36,10 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 #include <imgui.h>
 void sh::play::ImguiDebugDraw()
 {
-    ImGui::ShowDemoWindow();
+    ImGui::Text("FPS: %d", GetFPS());
+    ImGui::Checkbox("Render Background", &isBG);
+    ImGui::Checkbox("Render 2D", &is2D);
+    ImGui::Checkbox("Render 3D", &is3D);
+    ImGui::Checkbox("Render HUD", &isHUD);
 }
 #endif

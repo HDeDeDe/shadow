@@ -34,7 +34,12 @@ void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, sh
 void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
 {
     BeginDrawing();
-    ClearBackground(BLACK);
+    
+    if(sh::isBG == true)
+    {
+        ClearBackground(bgDefault);
+    }
+
     if(sh::is3D == true)
     {
         BeginMode3D(cam.getCamera3D());
@@ -50,22 +55,24 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     }
 
     //DrawHUD
-    
-    for (renderable& r : HUDQ)
+    if(sh::isHUD == true)
     {
-        switch (r.m_type)
+        for (renderable& r : HUDQ)
         {
-        case DTEXT:
-            DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
-            break;
-        case DTEXTURE:
-            DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
-            break;
-        default: break;
+            switch (r.m_type)
+            {
+            case DTEXT:
+                DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
+                break;
+            case DTEXTURE:
+                DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
+                break;
+            default: break;
+            }
         }
+        HUDQ.clear();
     }
-    HUDQ.clear();
-    DrawFPS(0,0);
+    
     #if (DEBUGGING == 1)
     rlImGuiBegin();
     sh::play::ImguiDebugDraw();

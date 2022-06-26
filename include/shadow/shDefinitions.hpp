@@ -66,10 +66,14 @@ namespace sh
 		text
 	} renderType;
 
+	//Should auditorium do background calls
+	inline bool isBG = true;
 	//Should auditorium do 3D calls
 	inline bool is3D = false;
 	//Should auditorium do 2D calls
 	inline bool is2D = false;
+	//Should auditorium do HUD calls
+	inline bool isHUD = true;
 }
 
 #define DTEXTURE sh::renderType::texture

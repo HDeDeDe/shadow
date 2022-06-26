@@ -111,6 +111,7 @@ namespace sh {
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
         namespace draw
         {
+            inline Color bgDefault = BLACK;
             void queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
             void drawScreen(sh::auditorium::viewport::sh_camera cam);
         }
