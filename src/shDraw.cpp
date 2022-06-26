@@ -43,14 +43,15 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     if(sh::is3D == true)
     {
         BeginMode3D(cam.getCamera3D());
-
+        DrawGrid(20, 1.0f);
+        DrawCube(Vector3{ 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 1.0f, WHITE);
         EndMode3D();
     }
 
     if(sh::is2D == true)
     {
         BeginMode2D(cam.getCamera2D());
-
+        DrawRectangle(0, 0, 50, 50, RED);
         EndMode2D();
     }
 

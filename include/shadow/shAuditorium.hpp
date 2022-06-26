@@ -99,6 +99,7 @@ namespace sh {
                 sh::Dimension getDimension2D() { return m_dimension2D; };
                 void setDimension3D(sh::Dimension dimension) { m_dimension2D = dimension; };
                 sh::Dimension getDimension3D() { return m_dimension3D; };
+                void setCamPos(Vector3 pos3, Vector2 pos2);
                 void updateCameras();
                 void setOrigin();
                 sh_camera(int fov = 45);

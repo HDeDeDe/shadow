@@ -41,5 +41,14 @@ void sh::play::ImguiDebugDraw()
     ImGui::Checkbox("Render 2D", &is2D);
     ImGui::Checkbox("Render 3D", &is3D);
     ImGui::Checkbox("Render HUD", &isHUD);
+    float dbg_colors[4] = {((float)sh::auditorium::draw::bgDefault.r / 255.0f), ((float)sh::auditorium::draw::bgDefault.g  / 255.0f), ((float)sh::auditorium::draw::bgDefault.b / 255.0f), ((float)sh::auditorium::draw::bgDefault.a / 255.0f)};
+    ImGui::ColorEdit4("Background Color", dbg_colors);
+    sh::auditorium::draw::bgDefault = CLITERAL(Color){(unsigned char)(dbg_colors[0] * 255.0f),(unsigned char)(dbg_colors[1] * 255.0f),(unsigned char)(dbg_colors[2]* 255.0f),(unsigned char)255};
+    sh::auditorium::viewport::sh_camera dbg_globalCam = sh::auditorium::viewport::GlobalCamera;
+    float dbg_3dCamPos[3] = {dbg_globalCam.getCamera3D().position.x, dbg_globalCam.getCamera3D().position.y, dbg_globalCam.getCamera3D().position.z};
+    ImGui::DragFloat3("Camera3D Position", dbg_3dCamPos);
+    float dbg_2dCamPos[2] = {dbg_globalCam.getCamera2D().target.x, dbg_globalCam.getCamera2D().target.y};
+    ImGui::DragFloat2("Camera2D Position", dbg_2dCamPos);
+    sh::auditorium::viewport::GlobalCamera.setCamPos(Vector3{dbg_3dCamPos[0], dbg_3dCamPos[1], dbg_3dCamPos[2]}, Vector2{dbg_2dCamPos[0], dbg_2dCamPos[1]});
 }
 #endif
