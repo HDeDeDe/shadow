@@ -50,6 +50,7 @@ void sh::auditorium::createWindow()
     
     m_active = true;
     textReloadAll();
+    sh::auditorium::model::RegenerateModels();
     sh::auditorium::viewport::GlobalCamera.setOrigin();
     #if (DEBUGGING == 1)
     rlImGuiSetup(true);

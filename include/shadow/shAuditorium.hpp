@@ -89,7 +89,9 @@ namespace sh {
             void Load(std::string model_reference, std::string file_location);
             void Unload(std::string model_reference);
             Model GetModel(std::string model_reference);
+            void SetModelMaterial(std::string model_reference, std::string texture_reference, int material = 0, int materialMap = MATERIAL_MAP_DIFFUSE);
             void UnloadAll();
+            void RegenerateModels();
         }
 
         namespace viewport
@@ -132,6 +134,8 @@ namespace sh {
             void queueHUD(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
             void queue3D(sh::renderType type, std::string content, unsigned int layer = 0, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
             void queue3D(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
+            void queue2D(sh::renderType type, std::string content, unsigned int layer = 0, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
+            void queue2D(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
             void drawScreen(sh::auditorium::viewport::sh_camera cam);
             void enableLayer(int layer);
             void disableLayer(int layer);
