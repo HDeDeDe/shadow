@@ -15,6 +15,8 @@ sh::Dimension ExampleDimension;
 
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
+    sh::auditorium::draw::enableLayer(0);
+
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
     sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
     lua_pop(sh::lua::GetLuaGlobal(), -1);
@@ -37,7 +39,7 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
-    sh::auditorium::draw::queueHUD(DTEXT, ExampleText, ExampleDimension, RED);
+    sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimension, RED);
     sh::auditorium::draw::queue3D(DMODEL, "Test");
     sh::auditorium::viewport::GlobalCamera.updateCameras();
 }
@@ -48,7 +50,6 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 void sh::play::ImguiDebugDraw()
 {
     ImGui::Text("FPS: %d", GetFPS());
-    ImGui::Text("Frame Time: %d", GetFrameTime());
     ImGui::Checkbox("Render Background", &isBG);
     ImGui::Checkbox("Render 2D", &is2D);
     ImGui::Checkbox("Render 3D", &is3D);

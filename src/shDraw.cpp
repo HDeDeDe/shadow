@@ -15,29 +15,37 @@ struct renderable
     sh::Dimension m_dimension;
 };
 
-std::vector<renderable> QHUD;
-std::vector<renderable> Q3D;
+struct renderBucket
+{
+    bool enabled = false;
+    std::vector<renderable> QHUD;
+    std::vector<renderable> Q3D;
+    std::vector<renderable> Q2D;
+    std::vector<renderable> QBG;
+};
 
-void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor)
+renderBucket bucket[16];
+
+void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
 {
     switch(type)
     {
     case DTEXT:
-        QHUD.push_back({type, content, dColor, dDimension});
+        bucket[layer].QHUD.push_back({type, content, dColor, dDimension});
         break;
     case DTEXTURE:
-        QHUD.push_back({type, content, dColor, dDimension});
+        bucket[layer].QHUD.push_back({type, content, dColor, dDimension});
         break;
     default: break;
     }
 }
 
-void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, sh::Dimension dDimension, Color dColor)
+void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
 {
     switch(type)
     {
     case DMODEL:
-        Q3D.push_back({type, content, dColor, dDimension});
+        bucket[layer].Q3D.push_back({type, content, dColor, dDimension});
         break;
     default: break;
     }
@@ -46,60 +54,83 @@ void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, sh:
 void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
 {
     BeginDrawing();
-    
     if(sh::isBG == true)
     {
         ClearBackground(bgDefault);
     }
 
-    if(sh::is3D == true)
+    for (int i = 0; i < 16; i++)
     {
-        BeginMode3D(cam.getCamera3D());
-        DrawGrid(20, 1.0f);
-        for (renderable& r : Q3D)
+        if(bucket[i].enabled)
         {
-            switch (r.m_type)
+            //Draw 3D
+            if(sh::is3D == true)
             {
-            case DMODEL:
-                DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{1.0f, 0.0f, 0.0f}, -90.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
-                break;
-            default: break;
+                BeginMode3D(cam.getCamera3D());
+                DrawGrid(20, 1.0f);
+                
+                for (renderable& r : bucket[i].Q3D)
+                {
+                    switch (r.m_type)
+                    {
+                    case DMODEL:
+                        DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{1.0f, 0.0f, 0.0f}, -90.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
+                        break;
+                    default: break;
+                    }
+                }
+                bucket[i].Q3D.clear();
+                
+                EndMode3D();
+            }
+
+            //Draw 2D
+            if(sh::is2D == true)
+            {
+                BeginMode2D(cam.getCamera2D());
+                
+                EndMode2D();
             }
         }
-        Q3D.clear();
-        EndMode3D();
     }
-
-    if(sh::is2D == true)
-    {
-        BeginMode2D(cam.getCamera2D());
-        DrawRectangle(0, 0, 50, 50, RED);
-        EndMode2D();
-    }
-
     //DrawHUD
     if(sh::isHUD == true)
     {
-        for (renderable& r : QHUD)
+        for (int i = 0; i < 16; i++)
         {
-            switch (r.m_type)
+            if(bucket[i].enabled)
             {
-            case DTEXT:
-                DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
-                break;
-            case DTEXTURE:
-                DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
-                break;
-            default: break;
+                for (renderable& r : bucket[i].QHUD)
+                {
+                    switch (r.m_type)
+                    {
+                    case DTEXT:
+                        DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
+                        break;
+                    case DTEXTURE:
+                        DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
+                        break;
+                    default: break;
+                    }
+                }
+                bucket[i].QHUD.clear();
             }
         }
-        QHUD.clear();
     }
-    
     #if (DEBUGGING == 1)
     rlImGuiBegin();
     sh::play::ImguiDebugDraw();
     rlImGuiEnd();
     #endif
     EndDrawing();
+}
+
+void sh::auditorium::draw::enableLayer(int layer)
+{
+    bucket[layer].enabled = true;
+}
+
+void sh::auditorium::draw::disableLayer(int layer)
+{
+    bucket[layer].enabled = false;
 }
