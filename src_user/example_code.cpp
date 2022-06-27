@@ -51,10 +51,6 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
         ExampleDimensionCube.Y = hitGround.point.y;
         ExampleDimensionCube.Z = hitGround.point.z;
     }
-    if(IsKeyPressed(KEY_R))
-    {
-        sh::auditorium::reloadWindow();
-    }
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
     sh::auditorium::draw::queue3D(DMODEL, "Test", 0, ExampleDimensionCube);
