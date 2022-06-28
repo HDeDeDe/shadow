@@ -4,7 +4,7 @@ Shadow is a game engine built on lua 5.4.2, raylib 4.0.0, and Dear imgui 1.87 wi
 ## Requirements
 [VSCode](https://code.visualstudio.com/) (peferably)  
 ### Windows
-[MSYS2](https://www.msys2.org/) (Need for make, gcc, and libraries)  
+[MSYS2](https://www.msys2.org/) (Need for make and gcc)  
 [git](https://git-scm.com/download/win) (Need for git)  
 ### MacOS
 [Homebrew](https://brew.sh/) (Need for gcc)  
