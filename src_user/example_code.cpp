@@ -55,6 +55,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
     sh::auditorium::draw::queue3D(DMODEL, "Test", 0, ExampleDimensionCube);
+    sh::auditorium::draw::queue2D(DTESTRECT, "", 0);
     sh::auditorium::viewport::GlobalCamera.updateCameras();
 }
 

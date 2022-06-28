@@ -65,7 +65,8 @@ namespace sh
 		texture = 0,
 		text,
 		model,
-		theatric
+		theatric,
+		testRect
 	} renderType;
 
 	//Should auditorium do background calls
@@ -82,4 +83,5 @@ namespace sh
 #define DTEXT sh::renderType::text
 #define DMODEL sh::renderType::model
 #define DTHEATRIC sh::renderType::theatric
+#define DTESTRECT sh::renderType::testRect
 #define ZERODIMENSION sh::Dimension{ 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f}

@@ -61,6 +61,33 @@ void sh::auditorium::draw::queueHUD(sh::renderType type, theatricPtr theatric, u
     }
 }
 
+void sh::auditorium::draw::queue2D(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
+{
+    switch(type)
+    {
+    case DTEXT:
+        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        break;
+    case DTEXTURE:
+        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        break;
+    case DTESTRECT:
+        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        break;
+    default: break;
+    }
+}
+void sh::auditorium::draw::queue2D(sh::renderType type, theatricPtr theatric, unsigned int layer)
+{
+    switch(type)
+    {
+    case DTHEATRIC:
+        bucket[layer].Q2D.push_back({type, "", BLACK, ZERODIMENSION, theatric.m_ptr});
+        break;
+    default: break;
+    }
+}
+
 void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
 {
     switch(type)
@@ -135,6 +162,9 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
                         break;
                     case DTHEATRIC:
                         r.m_theatric->renderMe();
+                        break;
+                    case DTESTRECT:
+                        DrawRectangle(0, 0, 40, 40, RED);
                         break;
                     default: break;
                     }
