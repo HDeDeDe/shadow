@@ -100,7 +100,7 @@ namespace sh {
             {
                 sh::Dimension m_dimension2D = { 0 };
                 sh::Dimension m_dimension3D = { 0 };
-                Vector3 m_target3D = { 0 };
+                //Vector3 m_target3D = { 0 };
                 Camera3D m_3DCam = { 0 };
                 Camera2D m_2DCam = { 0 };
             public:
@@ -113,8 +113,8 @@ namespace sh {
                 void setDimension3D(sh::Dimension dimension) { m_dimension3D = dimension; };
                 sh::Dimension getDimension3D() { return m_dimension3D; };
 
-                Vector3 get3DTarget() { return m_target3D; };
-                void set3DTarget(Vector3 target) { m_target3D = target; };
+                Vector3 get3DTarget() { return m_3DCam.target; };
+                // void set3DTarget(Vector3 target) { m_target3D = target; };
 
                 void updateCameras();
                 void setOrigin();

@@ -106,7 +106,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
                     switch (r.m_type)
                     {
                     case DMODEL:
-                        DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{1.0f, 0.0f, 0.0f}, -90.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
+                        DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
                         break;
                     case DTHEATRIC:
                         r.m_theatric->renderMe();
