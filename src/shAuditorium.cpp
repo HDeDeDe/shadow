@@ -18,8 +18,8 @@ bool m_MSAA = false;
 void shSys::initAuditorium()
 {
     SetExitKey(KEY_NULL);
-    m_width = 360;
-    m_height = 240;
+    m_width = 640;
+    m_height = 480;
     m_name = "[SHADOW] Starting...";
     sh::auditorium::createWindow();
     shSys::initTextureMan();
@@ -40,7 +40,7 @@ bool sh::play::Exit(bool killApp)
 //Auditorium ----
 void sh::auditorium::createWindow()
 {
-    if ((m_width < 360) || (m_height < 240))
+    if ((m_width < 640) || (m_height < 480))
     {
         shSys::panic(sh::sh_Panic::panic_resolution);
     }
@@ -75,15 +75,15 @@ void sh::auditorium::reloadWindow()
 
 void sh::auditorium::resizeWindow(int width, int height)
 {
-    if (width < 360)
+    if (width < 640)
     {
         std::cout << "[SHADOW - WARNING] Window width is too small, setting to valid size." << std::endl;
-        width = 360;
+        width = 640;
     }
-    if (height < 240)
+    if (height < 480)
     {
         std::cout << "[SHADOW - WARNING] Window height is too small, setting to valid size." << std::endl;
-        height = 240;
+        height = 480;
     }
     m_width = width;
     m_height = height;
