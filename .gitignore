@@ -17,4 +17,13 @@ ShadowDebug.dSYM/
 *.command
 !include/shadow
 Shadow.app/
-Resources/imgui.ini
+Resources/
+!Resources/lua/initialize.lua
+!Resources/info.md
+!Resources/missing.iqm
+!Resources/Test.bin
+!Resources/Test.iqm
+!Resources/Test.png
+src_user/
+!src_user/example_code.cpp
+!src_user/template.txt
