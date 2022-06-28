@@ -20,6 +20,7 @@ Vector3 g3 = { 10.0f, 0.0f, -10.0f };
 
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
+    sh::auditorium::renameWindow("Super Vergil");
     sh::auditorium::draw::enableLayer(0);
 
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");

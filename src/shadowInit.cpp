@@ -28,7 +28,7 @@ void loadSettings()
 	//set temporary values
 	int l_resX = 640;
 	int l_resY = 480;
-	std::string winName = "Super Vergil";
+	std::string winName = "Shadow Engine Game";
 	bool l_vsync = false;
 	bool l_MSAA = false;
 	lua_State *L = luaL_newstate();
