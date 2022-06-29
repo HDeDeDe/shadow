@@ -31,11 +31,13 @@ void loadSettings()
 	std::string winName = "Shadow Engine Game";
 	bool l_vsync = false;
 	bool l_MSAA = false;
+	bool l_fullscreen = false;
+	bool l_borderless = false;
 	lua_State *L = luaL_newstate();
 	//Load default values
 	if(sh::lua::LuaCheck(L, luaL_dostring(L, lua_default_video)))
 	{
-		lua_getglobal(L, "window");
+		lua_getglobal(L, "Window");
 		if(lua_istable(L, -1))
 		{
 			lua_pushstring(L, "x");
@@ -57,6 +59,16 @@ void loadSettings()
 			lua_gettable(L, -2);
 			l_MSAA = lua_toboolean(L, -1);
 			lua_pop(L, 1);
+
+			lua_pushstring(L, "fullscreen");
+			lua_gettable(L, -2);
+			l_fullscreen = lua_toboolean(L, -1);
+			lua_pop(L, 1);
+
+			lua_pushstring(L, "borderless");
+			lua_gettable(L, -2);
+			l_borderless = lua_toboolean(L, -1);
+			lua_pop(L, 1);
 		}
 		else{shSys::panic(sh::sh_Panic::panic_default_corrupted);}
 	}
@@ -64,19 +76,22 @@ void loadSettings()
 	{
 		shSys::panic(sh::sh_Panic::panic_default_corrupted);
 	}
+	const char* videoSettings = "video.lua";
 	//Check for settings file depending on platform
 	#if (_WIN64 == 1)
 		std::string settingsLoc = sh::file::getAppdata();
 		settingsLoc.append("\\." SHADOWNAME);
 		std::string settingsFolder = settingsLoc;
-		settingsLoc.append("\\settings.lua");
+		settingsLoc.append("\\");
+		settingsLoc.append(videoSettings);
 	#endif
 
 	#if (__APPLE__ == 1)
 		std::string settingsLoc = sh::file::getHome();
 		settingsLoc.append("/." SHADOWNAME);
 		std::string settingsFolder = settingsLoc;
-		settingsLoc.append("/settings.lua");
+		settingsLoc.append("/");
+		settingsLoc.append(videoSettings);
 	#endif
 
 	#if (__gnu_linux__ == 1)
@@ -87,7 +102,7 @@ void loadSettings()
 		{
 			if(sh::lua::LuaCheck(L, luaL_dofile(L, settingsLoc.c_str())))
 			{
-				lua_getglobal(L, "window");
+				lua_getglobal(L, "Window");
 				if(lua_istable(L, -1))
 				{
 					lua_pushstring(L, "x");
@@ -108,6 +123,16 @@ void loadSettings()
 					lua_pushstring(L, "MSAA");
 					lua_gettable(L, -2);
 					l_MSAA = lua_toboolean(L, -1);
+					lua_pop(L, 1);
+
+					lua_pushstring(L, "fullscreen");
+					lua_gettable(L, -2);
+					l_fullscreen = lua_toboolean(L, -1);
+					lua_pop(L, 1);
+
+					lua_pushstring(L, "borderless");
+					lua_gettable(L, -2);
+					l_borderless = lua_toboolean(L, -1);
 					lua_pop(L, 1);
 					std::cout << "[SHADOW - INFO] Settings file loaded." << std::endl;
 				}
@@ -135,5 +160,8 @@ void loadSettings()
 	sh::auditorium::resizeWindow(l_resX, l_resY);
 	sh::auditorium::renameWindow(winName.c_str());
 	sh::auditorium::setVsync(l_vsync);
+	sh::auditorium::setBorderless(l_borderless);
 	sh::auditorium::setMSAA(l_MSAA);
+	sh::auditorium::reloadWindow();
+	sh::auditorium::setFullscreen(l_fullscreen);
 }

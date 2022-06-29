@@ -14,6 +14,8 @@ std::string m_name = { 0 };
 bool m_active = false;
 bool m_vsync = false;
 bool m_MSAA = false;
+bool m_fullscreen = false;
+bool m_borderless = false;
 float m_2DFactor = 1.0f;
 //Sys calls -----
 void shSys::initAuditorium()
@@ -47,20 +49,36 @@ void sh::auditorium::createWindow()
     }
     if(m_vsync) SetConfigFlags(FLAG_VSYNC_HINT);
     if(m_MSAA) SetConfigFlags(FLAG_MSAA_4X_HINT);
+    if(m_fullscreen) SetConfigFlags(FLAG_FULLSCREEN_MODE);
+    if(m_borderless) SetConfigFlags(FLAG_WINDOW_UNDECORATED);
     InitWindow(m_width, m_height, m_name.c_str());
+    
     
     m_active = true;
     textReloadAll();
     sh::auditorium::model::RegenerateModels();
     sh::auditorium::viewport::GlobalCamera.setOrigin();
-
-    if (m_height >= m_width)
+    if(IsWindowFullscreen())
     {
-       m_2DFactor = (float)m_width / 640.0f;
+        if (GetMonitorHeight(0) >= GetMonitorWidth(0))
+        {
+            m_2DFactor = (float)GetMonitorWidth(0) / 640.0f;
+        }
+        else
+        {
+            m_2DFactor = (float)GetMonitorHeight(0) / 480.0f;
+        }
     }
     else
     {
-        m_2DFactor = (float)m_height / 480.0f;
+        if (m_height >= m_width)
+        {
+            m_2DFactor = (float)m_width / 640.0f;
+        }
+        else
+        {
+            m_2DFactor = (float)m_height / 480.0f;
+        }
     }
     #if (DEBUGGING == 1)
     rlImGuiSetup(true);
@@ -98,6 +116,14 @@ void sh::auditorium::resizeWindow(int width, int height)
     m_width = width;
     m_height = height;
     SetWindowSize(m_width, m_height);
+    if (m_height >= m_width)
+    {
+       m_2DFactor = (float)m_width / 640.0f;
+    }
+    else
+    {
+        m_2DFactor = (float)m_height / 480.0f;
+    }
 }
 
 void sh::auditorium::renameWindow(const char* name)
@@ -114,18 +140,59 @@ bool sh::auditorium::isActive()
 void sh::auditorium::setVsync(bool flag)
 {
     m_vsync = flag;
-    if(m_vsync == true) SetWindowState(FLAG_VSYNC_HINT);
-    else ClearWindowState(FLAG_VSYNC_HINT);
 }
 
 void sh::auditorium::setMSAA(bool flag)
 {
     m_MSAA = flag;
-    reloadWindow();
 }
 
-int sh::auditorium::getResolutionX(){ return m_width; }
+void sh::auditorium::setFullscreen(bool flag)
+{
+    m_fullscreen = flag;
+    if(m_fullscreen) 
+    {
+        SetWindowState(FLAG_FULLSCREEN_MODE);
+        if (GetMonitorHeight(0) >= GetMonitorWidth(0))
+        {
+            m_2DFactor = (float)GetMonitorWidth(0) / 640.0f;
+        }
+        else
+        {
+            m_2DFactor = (float)GetMonitorHeight(0) / 480.0f;
+        }
+    }
+    else 
+    {
+        ClearWindowState(FLAG_FULLSCREEN_MODE);
+        SetWindowSize(m_width, m_height);
+        if (m_height >= m_width)
+        {
+            m_2DFactor = (float)m_width / 640.0f;
+        }
+        else
+        {
+            m_2DFactor = (float)m_height / 480.0f;
+        }
+    }
+}
 
-int sh::auditorium::getResolutionY(){ return m_height; }
+void sh::auditorium::setBorderless(bool flag)
+{
+    m_borderless = flag;
+}
+
+int sh::auditorium::getResolutionX()
+{ 
+    if(m_fullscreen) return GetMonitorWidth(0);
+    return m_width; 
+}
+
+int sh::auditorium::getResolutionY()
+{
+    if(m_fullscreen) return GetMonitorHeight(0);
+    return m_height; 
+}
 
 float sh::auditorium::get2DFactor(){ return m_2DFactor; }
+bool sh::auditorium::isFullscreen(){ return m_fullscreen; }

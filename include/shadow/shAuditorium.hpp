@@ -12,8 +12,11 @@ namespace sh {
         void resizeWindow(int width, int height);
         void renameWindow(const char* name);
         bool isActive();
+        bool isFullscreen();
         void setVsync(bool flag);
         void setMSAA(bool flag);
+        void setBorderless(bool flag);
+        void setFullscreen(bool flag);
         int getResolutionX();
         int getResolutionY();
         float get2DFactor();
