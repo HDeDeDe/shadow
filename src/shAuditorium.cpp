@@ -34,8 +34,8 @@ bool sh::play::Exit(bool killApp)
     if (WindowShouldClose() || killApp)
         {
             sh::gameLoopActive = false;
-            sh::auditorium::closeWindow();
             sh::auditorium::model::UnloadAll();
+            sh::auditorium::closeWindow();
             return true;
         }
     return false;
