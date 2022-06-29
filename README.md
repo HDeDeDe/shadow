@@ -1,5 +1,5 @@
 # Shadow Engine
-Shadow is a game engine built on lua 5.4.2, raylib 4.0.0, and Dear imgui 1.87 with the goal of being easy to use and easy to port. 
+Shadow is a game engine built on [lua 5.4.2](https://sourceforge.net/projects/luabinaries/files/5.4.2/), [raylib 4.0.0](https://github.com/raysan5/raylib/releases/tag/4.0.0), and [Dear imgui 1.88](https://github.com/ocornut/imgui/releases/tag/v1.88) with the goal of being easy to use and easy to port. 
 
 ## Requirements
 [VSCode](https://code.visualstudio.com/) (peferably)  
