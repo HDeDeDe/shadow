@@ -1,5 +1,4 @@
-#Not Defined
-WIN64MINGWLIBS = /c/msys64/mingw64/x86_64-w64-mingw32/lib
+#You can change these
 SHADOWNAME = Shadow
 #Predefined
 GCCWIN = g++
@@ -10,7 +9,7 @@ USRSRC = ./src_user/*.cpp
 DBGSRC = ./src_dear_imgui/*.cpp
 CFLAGS = -fdiagnostics-color=always -std=c++17 -DSHADOWNAME='"'${SHADOWNAME}'"' -DDEBUGGING=
 LIBFOLDER = -L./platform/
-INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib
+INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
 INCLUDEDBG = -I./include/dear_imgui
 SHADOWLIB = -llua54 -lraylib

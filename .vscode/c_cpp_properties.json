@@ -7,10 +7,11 @@
                 "${workspaceFolder}/include/lua",
                 "${workspaceFolder}/include/shadow",
                 "${workspaceFolder}/include/raylib",
-                "${workspaceFolder}/include/dear_imgui"
+                "${workspaceFolder}/include/dear_imgui",
+                "${workspaceFolder}/include/usr"
             ],
             "defines": [
-                "SHADOWNAME=\"shadow\"",
+                "SHADOWNAME=\"Shadow\"",
                 "DEBUGGING=1"
             ],
             "macFrameworkPath": [
@@ -28,13 +29,14 @@
                 "${workspaceFolder}/include/lua",
                 "${workspaceFolder}/include/shadow",
                 "${workspaceFolder}/include/raylib",
-                "${workspaceFolder}/include/dear_imgui"
+                "${workspaceFolder}/include/dear_imgui",
+                "${workspaceFolder}/include/usr"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
-                "SHADOWNAME=\"shadow\"",
+                "SHADOWNAME=\"Shadow\"",
                 "DEBUGGING=1"
             ],
             "windowsSdkVersion": "10.0.19041.0",
