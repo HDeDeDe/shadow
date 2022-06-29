@@ -24,7 +24,8 @@ namespace sh
         //Main loop
         void ShadowStart();
         //Exit the game
-        bool Exit(bool killApp = false);
+        bool Exit();
+        void Exit(bool killApp);
         //This is run after the global lua virtual machine is initialized, but before the game loops
         void GameInit();
         //This is run every frame

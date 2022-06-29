@@ -18,6 +18,7 @@ void startApp()
 	loadSettings();
 	sh::gameLoopActive = true;
 	sh::play::ShadowStart();
+	sh::auditorium::model::UnloadAll();
 	shSys::cleanTextureMan();
 	std::cout << "[SHADOW - INFO] Exiting..." << std::endl;
 }

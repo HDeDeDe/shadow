@@ -17,6 +17,7 @@ bool m_MSAA = false;
 bool m_fullscreen = false;
 bool m_borderless = false;
 float m_2DFactor = 1.0f;
+bool killApp = false;
 //Sys calls -----
 void shSys::initAuditorium()
 {
@@ -29,16 +30,19 @@ void shSys::initAuditorium()
     shSys::initModelMan();
 }
 
-bool sh::play::Exit(bool killApp)
+bool sh::play::Exit()
 {
     if (WindowShouldClose() || killApp)
         {
             sh::gameLoopActive = false;
-            sh::auditorium::model::UnloadAll();
             sh::auditorium::closeWindow();
             return true;
         }
     return false;
+}
+void sh::play::Exit(bool quit)
+{
+    killApp = quit;
 }
 //Auditorium ----
 void sh::auditorium::createWindow()
