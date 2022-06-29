@@ -16,6 +16,7 @@ namespace sh {
         void setMSAA(bool flag);
         int getResolutionX();
         int getResolutionY();
+        float get2DFactor();
 
         //Textures are actively managed by Auditorium
         namespace texture

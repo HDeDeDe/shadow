@@ -14,6 +14,7 @@ std::string m_name = { 0 };
 bool m_active = false;
 bool m_vsync = false;
 bool m_MSAA = false;
+float m_2DFactor = 1.0f;
 //Sys calls -----
 void shSys::initAuditorium()
 {
@@ -52,6 +53,15 @@ void sh::auditorium::createWindow()
     textReloadAll();
     sh::auditorium::model::RegenerateModels();
     sh::auditorium::viewport::GlobalCamera.setOrigin();
+
+    if (m_height >= m_width)
+    {
+       m_2DFactor = (float)m_width / 640.0f;
+    }
+    else
+    {
+        m_2DFactor = (float)m_height / 480.0f;
+    }
     #if (DEBUGGING == 1)
     rlImGuiSetup(true);
     #endif
@@ -117,3 +127,5 @@ void sh::auditorium::setMSAA(bool flag)
 int sh::auditorium::getResolutionX(){ return m_width; }
 
 int sh::auditorium::getResolutionY(){ return m_height; }
+
+float sh::auditorium::get2DFactor(){ return m_2DFactor; }

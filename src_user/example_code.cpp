@@ -22,6 +22,7 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 {
     sh::auditorium::renameWindow("Super Vergil");
     sh::auditorium::draw::enableLayer(0);
+    sh::auditorium::draw::enableLayer(1);
 
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
     sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
@@ -54,7 +55,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     }
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
-    sh::auditorium::draw::queue3D(DMODEL, "Test", 0, ExampleDimensionCube);
+    sh::auditorium::draw::queue3D(DMODEL, "Test", 1, ExampleDimensionCube);
     sh::auditorium::draw::queue2D(DTESTRECT, "", 0);
     sh::auditorium::viewport::GlobalCamera.updateCameras();
 }

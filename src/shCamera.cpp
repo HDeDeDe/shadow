@@ -16,14 +16,12 @@ void sh::auditorium::viewport::sh_camera::setOrigin()
 void sh::auditorium::viewport::sh_camera::updateCameras()
 {
     m_2DCam.rotation = m_dimension2D.Roll;
-    m_2DCam.zoom = m_dimension2D.Size();
+    m_2DCam.zoom = m_dimension2D.Size() * sh::auditorium::get2DFactor();
     m_2DCam.target = Vector2{m_dimension2D.X, m_dimension2D.Y};
 
     m_3DCam.fovy = m_dimension3D.Size();
     m_3DCam.position = Vector3{m_dimension3D.X, m_dimension3D.Y, m_dimension3D.Z};
-    // m_3DCam.target = m_target3D;
-    //sin(m_dimension3D.Pitch) * sin(m_dimension3D.Yaw), cos(m_dimension3D.Pitch), sin(m_dimension3D.Pitch) * cos(m_dimension3D.Yaw)
-    ///m_3DCam.up = Vector3();
+    
     float roll = m_dimension3D.Roll + 90.0f;
 
     float forward[3];
