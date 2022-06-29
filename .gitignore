@@ -27,3 +27,5 @@ Resources/
 src_user/
 !src_user/example_code.cpp
 !src_user/template.txt
+include/user/
+!include/user/example_header.h
