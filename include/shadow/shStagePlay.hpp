@@ -8,23 +8,19 @@ namespace sh{namespace theatrics{
     namespace detail {
         class theatric 
         {
+        protected:
             sh::Dimension m_dimension = { 0 };
-            bool m_visible = false;
         public:
             sh::Dimension getDimension() { return m_dimension; };
-            void setVisible(bool vis = true) { m_visible = vis; };
             virtual void renderMe() = 0;
         };
     }
     //Actors have lua virtual machines attatched to them
     class actor : public detail::theatric{
+    protected:
         lua_State *L;
-        
     };
     class prop : public detail::theatric{
         
-    };
-    class stage : public detail::theatric{
-
     };
 }}
