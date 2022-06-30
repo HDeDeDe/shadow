@@ -17,7 +17,7 @@ ShadowDebug.dSYM/
 *.command
 !include/shadow
 Shadow.app/
-
+Resources/
 !Resources/lua/initialize.lua
 !Resources/lua/inifile.lua
 !Resources/info.md
