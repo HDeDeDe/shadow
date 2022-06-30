@@ -8,7 +8,7 @@
                 "${workspaceFolder}/include/shadow",
                 "${workspaceFolder}/include/raylib",
                 "${workspaceFolder}/include/dear_imgui",
-                "${workspaceFolder}/include/usr"
+                "${workspaceFolder}/include/user"
             ],
             "defines": [
                 "SHADOWNAME=\"Shadow\"",
@@ -30,7 +30,7 @@
                 "${workspaceFolder}/include/shadow",
                 "${workspaceFolder}/include/raylib",
                 "${workspaceFolder}/include/dear_imgui",
-                "${workspaceFolder}/include/usr"
+                "${workspaceFolder}/include/user"
             ],
             "defines": [
                 "_DEBUG",
