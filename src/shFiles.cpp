@@ -3,21 +3,15 @@
 #include <filesystem>
 // ---------- Shadow ----------
 #if (_WIN64 == 1)
-std::string appdata = getenv("APPDATA");
-
-std::string sh::file::getAppdata()
-{
-    return appdata;
-}
+std::string environment = getenv("APPDATA");
 #endif
 #if (__APPLE__ == 1)
-std::string home = getenv("HOME");
-
-std::string sh::file::getHome()
-{
-    return home;
-}
+std::string environment = getenv("HOME");
 #endif
+std::string sh::file::getEnvironment()
+{
+    return environment;
+}
 void sh::file::createSettingsFolder(const char* settingsFolder)
 {
     if(std::filesystem::create_directory(settingsFolder))std::cout << "[SHADOW - INFO] Folder created successfully" << std::endl;

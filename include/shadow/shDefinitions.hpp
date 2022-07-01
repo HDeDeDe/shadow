@@ -58,6 +58,8 @@ namespace sh
 		inline bool noVid = false;
 		//Disable all audio
 		inline bool noSound = false;
+		//Disable saving, this is set automatically if the settings file can't be created
+		inline bool noSave = false;
 
 	}
 	typedef enum class renderType
