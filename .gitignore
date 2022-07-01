@@ -19,6 +19,7 @@ ShadowDebug.dSYM/
 Shadow.app/
 Resources/
 !Resources/lua/initialize.lua
+!Resources/lua/packages/*.lua
 !Resources/lua/inifile.lua
 !Resources/info.md
 !Resources/missing.iqm
