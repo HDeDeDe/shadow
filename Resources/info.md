@@ -1,1 +1,0 @@
-This is where resource files should be stored. It is also the engine working directory. It is recomended you do not try to change this.
