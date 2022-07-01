@@ -33,7 +33,7 @@ MACOS_RELEASE:
 	mkdir temp/Contents
 	mkdir temp/Contents/MacOS
 	cp -R Resources temp/Contents/Resources
-	rm -rf temp/Contents/Resources/info.md
+	rm -rf temp/Contents/Resources/README
 	rm -rf temp/Contents/Resources/imgui.ini
 	cp Info.plist temp/Contents/Info.plist
 	mv ${SHADOWNAME} temp/Contents/MacOS/${SHADOWNAME}
