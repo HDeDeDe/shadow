@@ -7,7 +7,7 @@ TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
 USRSRC = ./src_user/*.cpp
 DBGSRC = ./src_dear_imgui/*.cpp
-CFLAGS = -fdiagnostics-color=always -std=c++17 -DSHADOWNAME='"'${SHADOWNAME}'"' -DDEBUGGING=
+CFLAGS = -fdiagnostics-color=always -std=c++17 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DDEBUGGING=
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
