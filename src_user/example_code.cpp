@@ -6,6 +6,16 @@
 
 // ---------- Your Variables / Functions ----------
 
+class barHelper : public sh::theatrics::actorHelper
+{
+    
+};
+
+class bar : public sh::theatrics::actor
+{
+    
+};
+
 std::string ExampleText;
 sh::Dimension ExampleDimensionText;
 sh::Dimension ExampleDimensionCube;
