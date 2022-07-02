@@ -132,14 +132,14 @@ namespace sh {
         inline static void textReloadAll() { return texture::sh_TextureManager::TextureReloadAll(); };
         namespace draw
         {
-            struct theatricPtr;
+            class sh::theatrics::detail::theatric;
             inline Color bgDefault = BLACK;
             void queueHUD(sh::renderType type, std::string content, unsigned int layer = 0, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
-            void queueHUD(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
+            void queueHUD(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer = 0);
             void queue3D(sh::renderType type, std::string content, unsigned int layer = 0, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
-            void queue3D(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
+            void queue3D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer = 0);
             void queue2D(sh::renderType type, std::string content, unsigned int layer = 0, sh::Dimension dDimension = sh::Dimension{ 0 }, Color dColor = WHITE);
-            void queue2D(sh::renderType type, theatricPtr theatric, unsigned int layer = 0);
+            void queue2D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer = 0);
             void drawScreen(sh::auditorium::viewport::sh_camera cam);
             void enableLayer(int layer);
             void disableLayer(int layer);

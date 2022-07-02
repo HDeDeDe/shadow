@@ -8,15 +8,6 @@
 #endif
 // ---------- Shadow ----------
 
-struct sh::auditorium::draw::theatricPtr
-{
-    sh::theatrics::detail::theatric* m_ptr;
-    theatricPtr(sh::theatrics::detail::theatric* ptr)
-    {
-        m_ptr = ptr;
-    }
-};
-
 struct renderable
 {
     sh::renderType m_type;
@@ -50,12 +41,12 @@ void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, un
     default: break;
     }
 }
-void sh::auditorium::draw::queueHUD(sh::renderType type, theatricPtr theatric, unsigned int layer)
+void sh::auditorium::draw::queueHUD(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].QHUD.push_back({type, "", BLACK, ZERODIMENSION, theatric.m_ptr});
+        bucket[layer].QHUD.push_back({type, "", BLACK, ZERODIMENSION, theatric});
         break;
     default: break;
     }
@@ -77,12 +68,12 @@ void sh::auditorium::draw::queue2D(sh::renderType type, std::string content, uns
     default: break;
     }
 }
-void sh::auditorium::draw::queue2D(sh::renderType type, theatricPtr theatric, unsigned int layer)
+void sh::auditorium::draw::queue2D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].Q2D.push_back({type, "", BLACK, ZERODIMENSION, theatric.m_ptr});
+        bucket[layer].Q2D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
         break;
     default: break;
     }
@@ -99,12 +90,12 @@ void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, uns
     }
 }
 
-void sh::auditorium::draw::queue3D(sh::renderType type, theatricPtr theatric, unsigned int layer)
+void sh::auditorium::draw::queue3D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].Q3D.push_back({type, "", BLACK, ZERODIMENSION, theatric.m_ptr});
+        bucket[layer].Q3D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
         break;
     default: break;
     }
