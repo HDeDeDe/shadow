@@ -123,7 +123,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
         if(bucket[i].enabled)
         {
             //Draw 3D
-            if(sh::is3D == true)
+            if(sh::is3D == true && !bucket[i].Q3D.empty())
             {
                 BeginMode3D(cam.getCamera3D());
                 DrawGrid(20, 1.0f);
@@ -147,7 +147,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
             }
 
             //Draw 2D
-            if(sh::is2D == true)
+            if(sh::is2D == true && !bucket[i].Q2D.empty())
             {
                 BeginMode2D(cam.getCamera2D());
                 for (renderable& r : bucket[i].Q2D)
@@ -179,7 +179,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     {
         for (int i = 0; i < 16; i++)
         {
-            if(bucket[i].enabled)
+            if(bucket[i].enabled && !bucket[i].QHUD.empty())
             {
                 for (renderable& r : bucket[i].QHUD)
                 {
