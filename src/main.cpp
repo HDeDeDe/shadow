@@ -1,18 +1,27 @@
 #include <shSys.hpp>
 #include <shInit.hpp>
 
+#define NONE sh::flags::argCase::none
+#define DEMO sh::flags::argCase::demo
+#define WINDOWED sh::flags::argCase::windowed
+#define NOVID sh::flags::argCase::novid
+#define NOSOUND sh::flags::argCase::noSound
+#define NOSAVE sh::flags::argCase::noSave
+#define HELP sh::flags::argCase::help
+
 sh::flags::argCase hashFunc(const char* arg) 
 {
 	std::string m_arg = arg;
 	char dash = m_arg[0];
-	if(dash != '-') return sh::flags::argCase::none;
+	if(dash != '-') return NONE;
 	m_arg.erase(0, 1);
-	if(m_arg == "demo") return sh::flags::argCase::demo;
-	if(m_arg == "windowed") return sh::flags::argCase::windowed;
-	if(m_arg == "novid") return sh::flags::argCase::novid;
-	if(m_arg == "nosound") return sh::flags::argCase::noSound;
-	if(m_arg == "help") return sh::flags::argCase::help;
-	return sh::flags::argCase::none;
+	if(m_arg == "demo") return DEMO;
+	if(m_arg == "windowed") return WINDOWED;
+	if(m_arg == "novid") return NOVID;
+	if(m_arg == "nosound") return NOSOUND;
+	if(m_arg == "nosave") return NOSAVE;
+	if(m_arg == "help") return HELP;
+	return NONE;
 }
 
 int main(int argc, char *argv[])
@@ -23,28 +32,34 @@ int main(int argc, char *argv[])
 		{
 			switch(hashFunc(argv[i]))
 			{
-			case sh::flags::argCase::demo:
+			case DEMO:
 			{
 				sh::flags::demo = true;
 			} break;
-			case sh::flags::argCase::windowed:
+			case WINDOWED:
 			{
 				sh::flags::windowed = true;
 			} break;
-			case sh::flags::argCase::novid:
+			case NOVID:
 			{
 				sh::flags::noVid = true;
 			}break;
-			case sh::flags::argCase::noSound:
+			case NOSOUND:
 			{
 				sh::flags::noSound = true;
 			}break;
-			case sh::flags::argCase::help:
+			case NOSAVE:
 			{
-				std::cout << "-demo: Run in demo mode\n" 
+				sh::flags::noSave = true;
+			}break;
+			case HELP:
+			{
+				std::cout << "-help: Display this list\n"
+				"-demo: Run in demo mode\n" 
 				"-windowed: Run in windowed mode\n"
 				"-novid: Skip startup animations.\n"
 				"-nosound: Disable all audio.\n"
+				"-nosave: Disable saving.\n"
 				<< std::endl;
 				return 0;
 			}break;

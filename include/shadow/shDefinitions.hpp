@@ -48,7 +48,8 @@ namespace sh
 			windowed,
 			novid,
 			noSound,
-			help
+			help,
+			noSave
 		};
 		//Run in demo mode
 		inline bool demo = false;
