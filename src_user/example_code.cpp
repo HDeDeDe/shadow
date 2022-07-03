@@ -31,8 +31,6 @@ Vector3 g3 = { 10.0f, 0.0f, -10.0f };
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
     sh::auditorium::renameWindow("Super Vergil");
-    sh::auditorium::draw::enableLayer(0);
-    sh::auditorium::draw::enableLayer(1);
 
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
     sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
@@ -56,13 +54,17 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
-    RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
-    if (hitGround.hit) {
-        ExampleDimensionCube.X = hitGround.point.x;
-        ExampleDimensionCube.Y = hitGround.point.y;
-        ExampleDimensionCube.Z = hitGround.point.z;
+    if(sh::is3D)
+    {
+        spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
+        RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
+        if (hitGround.hit) {
+            ExampleDimensionCube.X = hitGround.point.x;
+            ExampleDimensionCube.Y = hitGround.point.y;
+            ExampleDimensionCube.Z = hitGround.point.z;
+        }
     }
+    
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
     sh::auditorium::draw::queue3D(DMODEL, "Test", 1, ExampleDimensionCube);

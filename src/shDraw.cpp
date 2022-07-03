@@ -8,6 +8,12 @@
 #endif
 // ---------- Shadow ----------
 
+unsigned int bucketClamp(unsigned int layer)
+{
+    if(layer >= BUCKETSIZE) layer = BUCKETSIZE - 1;
+    return layer;
+}
+
 struct renderable
 {
     sh::renderType m_type;
@@ -19,34 +25,41 @@ struct renderable
 
 struct renderBucket
 {
-    bool enabled = false;
+    bool enabledHUD = false;
+    bool enabled3D = false;
+    bool enabled2D = false;
     std::vector<renderable> QHUD;
     std::vector<renderable> Q3D;
     std::vector<renderable> Q2D;
     std::vector<renderable> QBG;
 };
 
-renderBucket bucket[16];
+renderBucket bucket[BUCKETSIZE];
 
 void sh::auditorium::draw::queueHUD(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
-{
+{   
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DTEXT:
-        bucket[layer].QHUD.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].QHUD.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabledHUD = true;
         break;
     case DTEXTURE:
-        bucket[layer].QHUD.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].QHUD.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabledHUD = true;
         break;
     default: break;
     }
 }
 void sh::auditorium::draw::queueHUD(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].QHUD.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].QHUD.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].enabledHUD = true;
         break;
     default: break;
     }
@@ -54,26 +67,32 @@ void sh::auditorium::draw::queueHUD(sh::renderType type, sh::theatrics::detail::
 
 void sh::auditorium::draw::queue2D(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
 {
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DTEXT:
-        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabled2D = true;
         break;
     case DTEXTURE:
-        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabled2D = true;
         break;
     case DTESTRECT:
-        bucket[layer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].Q2D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabled2D = true;
         break;
     default: break;
     }
 }
 void sh::auditorium::draw::queue2D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].Q2D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].Q2D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].enabled2D = true;
         break;
     default: break;
     }
@@ -81,10 +100,12 @@ void sh::auditorium::draw::queue2D(sh::renderType type, sh::theatrics::detail::t
 
 void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, unsigned int layer, sh::Dimension dDimension, Color dColor)
 {
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DMODEL:
-        bucket[layer].Q3D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].Q3D.push_back({type, content, dColor, dDimension});
+        bucket[clampedLayer].enabled3D = true;
         break;
     default: break;
     }
@@ -92,10 +113,12 @@ void sh::auditorium::draw::queue3D(sh::renderType type, std::string content, uns
 
 void sh::auditorium::draw::queue3D(sh::renderType type, sh::theatrics::detail::theatric* theatric, unsigned int layer)
 {
+    unsigned int clampedLayer = bucketClamp(layer);
     switch(type)
     {
     case DTHEATRIC:
-        bucket[layer].Q3D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].Q3D.push_back({type, "", BLACK, ZERODIMENSION, theatric});
+        bucket[clampedLayer].enabled3D = true;
         break;
     default: break;
     }
@@ -109,68 +132,66 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
         ClearBackground(bgDefault);
     }
 
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < BUCKETSIZE; i++)
     {
-        if(bucket[i].enabled)
+        //Draw 3D
+        if(sh::is3D == true && bucket[i].enabled3D)
         {
-            //Draw 3D
-            if(sh::is3D == true && !bucket[i].Q3D.empty())
+            BeginMode3D(cam.getCamera3D());
+            DrawGrid(20, 1.0f);
+            
+            for (renderable& r : bucket[i].Q3D)
             {
-                BeginMode3D(cam.getCamera3D());
-                DrawGrid(20, 1.0f);
-                
-                for (renderable& r : bucket[i].Q3D)
+                switch (r.m_type)
                 {
-                    switch (r.m_type)
-                    {
-                    case DMODEL:
-                        DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
-                        break;
-                    case DTHEATRIC:
-                        r.m_theatric->renderMe();
-                        break;
-                    default: break;
-                    }
+                case DMODEL:
+                    DrawModelEx(sh::auditorium::model::GetModel(r.m_content), Vector3{r.m_dimension.X, r.m_dimension.Y, r.m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{r.m_dimension.Length, r.m_dimension.Width, r.m_dimension.Height}, r.m_color);
+                    break;
+                case DTHEATRIC:
+                    r.m_theatric->renderMe();
+                    break;
+                default: break;
                 }
-                bucket[i].Q3D.clear();
-                
-                EndMode3D();
             }
+            bucket[i].Q3D.clear();
+            bucket[i].enabled3D = false;
+            EndMode3D();
+        }
 
-            //Draw 2D
-            if(sh::is2D == true && !bucket[i].Q2D.empty())
+        //Draw 2D
+        if(sh::is2D == true && bucket[i].enabled2D)
+        {
+            BeginMode2D(cam.getCamera2D());
+            for (renderable& r : bucket[i].Q2D)
             {
-                BeginMode2D(cam.getCamera2D());
-                for (renderable& r : bucket[i].Q2D)
+                switch (r.m_type)
                 {
-                    switch (r.m_type)
-                    {
-                    case DTEXT:
-                        DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
-                        break;
-                    case DTEXTURE:
-                        DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
-                        break;
-                    case DTHEATRIC:
-                        r.m_theatric->renderMe();
-                        break;
-                    case DTESTRECT:
-                        DrawRectanglePro(Rectangle{0.0f, 0.0f, 40.0f, 40.0f}, Vector2{0.5f, 0.5f}, 0.0f, RED);
-                        break;
-                    default: break;
-                    }
+                case DTEXT:
+                    DrawText(r.m_content.c_str(), (int)r.m_dimension.X, (int)r.m_dimension.Y, (int)r.m_dimension.Size(), r.m_color);
+                    break;
+                case DTEXTURE:
+                    DrawTexture(sh::auditorium::texture::sh_TextureManager::GetTexture(r.m_content), (int)r.m_dimension.X, (int)r.m_dimension.Y, r.m_color);
+                    break;
+                case DTHEATRIC:
+                    r.m_theatric->renderMe();
+                    break;
+                case DTESTRECT:
+                    DrawRectanglePro(Rectangle{0.0f, 0.0f, 40.0f, 40.0f}, Vector2{0.5f, 0.5f}, 0.0f, RED);
+                    break;
+                default: break;
                 }
-                bucket[i].Q2D.clear();
-                EndMode2D();
             }
+            bucket[i].Q2D.clear();
+            bucket[i].enabled2D = false;
+            EndMode2D();
         }
     }
     //DrawHUD
     if(sh::isHUD == true)
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < BUCKETSIZE; i++)
         {
-            if(bucket[i].enabled && !bucket[i].QHUD.empty())
+            if(bucket[i].enabledHUD)
             {
                 for (renderable& r : bucket[i].QHUD)
                 {
@@ -189,6 +210,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
                     }
                 }
                 bucket[i].QHUD.clear();
+                bucket[i].enabledHUD = false;
             }
         }
     }
@@ -198,14 +220,4 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
     rlImGuiEnd();
     #endif
     EndDrawing();
-}
-
-void sh::auditorium::draw::enableLayer(int layer)
-{
-    bucket[layer].enabled = true;
-}
-
-void sh::auditorium::draw::disableLayer(int layer)
-{
-    bucket[layer].enabled = false;
 }
