@@ -68,3 +68,7 @@ Shadow will have the following features at minimum:
 - Steam integration
 - Netcode (maybe, hoplefully, I really want to add this but have no clue how)
 - VR (pipedream, not at all a priority)  
+  
+### Notes
+`SHADOWNAME` Controls the name of the application, which defines where the settings file is located and the name of the resulting executable.  
+`BUCKETSIZE` Controls the number of layers the engine has access to. More layers means more time to render so be sure not to set this value too high.  
