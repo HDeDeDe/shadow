@@ -18,7 +18,7 @@
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
             ],
-            "compilerPath": "/usr/local/Cellar/gcc/11.3.0_1/bin/g++-11",
+            "compilerPath": "/usr/local/Cellar/gcc@12/12.1.0_1/bin/g++-12",
             "cStandard": "c17",
             "cppStandard": "c++23",
             "intelliSenseMode": "macos-gcc-x64"

@@ -3,7 +3,7 @@ SHADOWNAME = Shadow
 BUCKETSIZE = 4
 #Predefined
 GCCWIN = g++
-GCCMACOS = g++-11
+GCCMACOS = g++-12
 TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
 USRSRC = ./src_user/*.cpp

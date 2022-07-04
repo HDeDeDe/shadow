@@ -30,15 +30,15 @@ C:\msys64\mingw64\bin
 ```
 git clone https://github.com/HDeDeDe/shadow
 ```
-otherwise download the master as a zip and extract to a prefered location.  
+in a prefered location, otherwise download the master as zip.
 ### MacOS
 **ONLY TESTED ON MONTERY**
 1. Follow the instructions on [brew.sh](https://brew.sh/) to install homebrew, then make sure it is up to date
 2. Install gcc with:
 ```
-brew install gcc
+brew install gcc@12
 ```
-3. Type `gcc-11` in a terminal, if you get an error retry step 2.
+3. Type `gcc-12` in a terminal, if you get an error retry step 2.
 4. Type:
 ```
 git clone https://github.com/HDeDeDe/shadow
