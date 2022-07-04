@@ -22,7 +22,7 @@
         {
             "type": "cppbuild",
             "label": "Win64: Make Shadow.exe",
-            "command": "C:\\msys64\\usr\\bin\\make.exe",
+            "command": "C:\\msys64\\mingw64\\bin\\mingw32-make.exe",
             "args": [
                 "WIN64"
             ],
