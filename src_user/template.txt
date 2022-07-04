@@ -3,6 +3,7 @@
 #include <shLua.hpp> //Access to LuaCheck and the global lua virtual machine
 #include <shStagePlay.hpp> //Entity manager
 #include <shAuditorium.hpp> //Window and texture manager
+#include <shInput.hpp> //Input functions
 
 // ---------- Your Variables / Functions ----------
 

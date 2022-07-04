@@ -2,6 +2,7 @@
 #include <shadow.hpp>
 #include <shAuditorium.hpp>
 #include <shLua.hpp>
+#include <shInput.hpp>
 #include <math.h>
 // ---------- Shadow ----------
 
