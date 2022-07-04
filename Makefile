@@ -3,12 +3,12 @@ SHADOWNAME = Shadow
 BUCKETSIZE = 4
 #Predefined
 GCCWIN = g++
-GCCMACOS = g++-11
+GCCMACOS = g++-12
 TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
 USRSRC = ./src_user/*.cpp
 DBGSRC = ./src_dear_imgui/*.cpp
-CFLAGS = -fdiagnostics-color=always -std=c++17 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DBUCKETSIZE=${BUCKETSIZE} -DDEBUGGING=
+CFLAGS = -fdiagnostics-color=always -std=c++23 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DBUCKETSIZE=${BUCKETSIZE} -DDEBUGGING=
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
@@ -26,10 +26,10 @@ MACOS:
 	${GCCMACOS} ${CFLAGS}1 -g ${SRC} -g ${USRSRC} -g ${DBGSRC} ${LIBFOLDER}MacOS ${SHADOWLIB} ${MACOSFRAMEWORK} ${INCLUDE} ${INCLUDEDBG} ${TARGET}Debug
 
 WIN64_RELEASE:
-	${GCCWIN} ${CFLAGS}0 -s -mwindows ${SRC} ${USRSRC} ${LIBFOLDER}Win64 ${SHADOWLIB} ${WIN64LIB} ${INCLUDE} ${TARGET}.exe
+	${GCCWIN} ${CFLAGS}0 -O2 -s -mwindows ${SRC} ${USRSRC} ${LIBFOLDER}Win64 ${SHADOWLIB} ${WIN64LIB} ${INCLUDE} ${TARGET}.exe
 
 MACOS_RELEASE:
-	${GCCMACOS} ${CFLAGS}0 ${SRC} ${USRSRC} ${LIBFOLDER}MacOS ${SHADOWLIB} ${MACOSFRAMEWORK} ${INCLUDE} ${TARGET}
+	${GCCMACOS} ${CFLAGS}0 -O2 ${SRC} ${USRSRC} ${LIBFOLDER}MacOS ${SHADOWLIB} ${MACOSFRAMEWORK} ${INCLUDE} ${TARGET}
 	mkdir temp
 	mkdir temp/Contents
 	mkdir temp/Contents/MacOS

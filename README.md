@@ -13,24 +13,32 @@ Shadow is a game engine built on [lua 5.4.2](https://sourceforge.net/projects/lu
 ## Setup
 ### Windows
 1. Install MSYS2. It will default to `C:\msys64`, if your copy is not installed there, be sure to remember where it is installed.
-2. Add the following to your user environment variables (replace with location of install if necessary):
+2. Open MSYS2 and make sure to run the following commands:  
+```
+pacman -Syyu
+pacman -S mingw-w64-x86_64-gcc
+pacman -S mingw-w64-x86_64-gdb
+pacman -S mingw-w64-x86_64-make
+```
+ensure that the packages and their dependencies are up to date
+3. Add the following to your user environment variables (replace with location of install if necessary):
 ```
 C:\msys64\mingw64\bin
 ```
-3. Open a terminal and type `gcc --version`, if it says there is no command or file retry step 2.
-4. If you have git, simply type:
+4. Open a terminal and type `gcc --version`, if it says there is no command or file retry step 2.
+5. If you have git, simply type:
 ```
 git clone https://github.com/HDeDeDe/shadow
 ```
-otherwise download the master as a zip and extract to a prefered location.  
+in a prefered location, otherwise download the master as zip.
 ### MacOS
 **ONLY TESTED ON MONTERY**
 1. Follow the instructions on [brew.sh](https://brew.sh/) to install homebrew, then make sure it is up to date
 2. Install gcc with:
 ```
-brew install gcc
+brew install gcc@12
 ```
-3. Type `gcc-11` in a terminal, if you get an error retry step 2.
+3. Type `gcc-12` in a terminal, if you get an error retry step 2.
 4. Type:
 ```
 git clone https://github.com/HDeDeDe/shadow
