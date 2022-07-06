@@ -144,4 +144,6 @@ namespace sh {namespace input
     bool checkInput(GamepadButton key, int gamepad, inputType input);
     //Will return NaN if the requested gamepad is not available
     float checkInput(GamepadAxis key, int gamepad);
+    //Get last input, good for remapping, be sure to wait 1 frame before checking this if you are remapping
+    inputKey getInput();
 }}
