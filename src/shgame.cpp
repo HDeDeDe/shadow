@@ -217,9 +217,16 @@ bool sh::input::checkInput(inputKey key, inputType input)
     case MOUSE_3:           return checkInput(MOUSE_BUTTON_MIDDLE, input);
     case MOUSE_4:           return checkInput(MOUSE_BUTTON_BACK, input);
     case MOUSE_5:           return checkInput(MOUSE_BUTTON_FORWARD, input);
+    case MOUSE_WHEEL_UP:    
+        if(GetMouseWheelMove() > 0.0f) return true; 
+        break;
+    case MOUSE_WHEEL_DOWN:    
+        if(GetMouseWheelMove() < 0.0f) return true; 
+        break;
     //Special keys, null, and invalid keys
-    default:                return false;
+    default:                break;
     }
+    return false;
 }
 
 bool sh::input::checkInputSpecial(inputKey key, inputType input)
@@ -350,5 +357,7 @@ sh::input::inputKey sh::input::getInput()
     if(IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE)) return MOUSE_3;
     if(IsMouseButtonPressed(MOUSE_BUTTON_BACK)) return MOUSE_4;
     if(IsMouseButtonPressed(MOUSE_BUTTON_FORWARD)) return MOUSE_5;
+    if(GetMouseWheelMove() > 0.0f) return MOUSE_WHEEL_UP;
+    if(GetMouseWheelMove() < 0.0f) return MOUSE_WHEEL_DOWN;
     return NULL_INPUT;
 }

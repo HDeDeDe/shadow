@@ -124,6 +124,8 @@ namespace sh {namespace input
         MOUSE_3         = 99,   //Key: Middle Mouse
         MOUSE_4         = 100,  //Key: Back Mouse
         MOUSE_5         = 101,  //Key: Forward Mouse
+        MOUSE_WHEEL_UP  = 111,  //Key: Wheel Up
+        MOUSE_WHEEL_DOWN= 112,  //Key: Wheel Down
         //Special Keys
         //These are ignored by check input and get input
         KB_NUM_LOCK     = 102,  //Key: Num Lock
