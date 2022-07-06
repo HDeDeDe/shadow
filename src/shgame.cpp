@@ -105,3 +105,8 @@ float sh::input::checkInput(GamepadAxis key, int gamepad)
     }
     return NAN;
 }
+
+bool sh::input::checkInput(inputKey key, inputType input)
+{
+    return false;
+}

@@ -45,7 +45,7 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    if(sh::is3D)
+    if(sh::input::checkInput(MOUSE_BUTTON_LEFT, sh::input::INPUT_DOWN))
     {
         spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
         RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
