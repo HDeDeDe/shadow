@@ -129,8 +129,8 @@ namespace sh {namespace input
         KB_NUM_LOCK     = 102,  //Key: Num Lock
         KB_PRINT_SCREEN = 103,  //Key: Print Screen
         KB_ESCAPE       = 104,  //Key: Escape
-        KB_LEFT_SUPER   = 105,  //Key: ⊞ / ❖ / Start / ⌘ Key
-        KB_RIGHT_SUPER  = 106,  //Key: ⊞ / ❖ / Start / ⌘ Key
+        KB_LEFT_SUPER   = 105,  //Key: ⊞ / ❖ / Start / ⌘ Key (Note: May not be detected if start menu takes priority)
+        KB_RIGHT_SUPER  = 106,  //Key: ⊞ / ❖ / Start / ⌘ Key (Note: May not be detected if start menu takes priority)
         MOUSE_SIDE      = 108,  //Key: IDK
         MOUSE_EXTRA     = 109   //Key: IDK
     } inputKey;
