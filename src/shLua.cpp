@@ -20,6 +20,7 @@ void sh::lua::InitLuaGlobal()
 {
     if(!isInitialized){
     LGlobal = luaL_newstate();
+    luaL_openlibs(LGlobal);
     if(sh::lua::LuaCheck(LGlobal, luaL_dofile(LGlobal, "./lua/initialize.lua"))) isInitialized = true;
     else shSys::panic(sh::sh_Panic::panic_init_fail);
     }
