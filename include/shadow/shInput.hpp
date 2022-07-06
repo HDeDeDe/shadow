@@ -117,20 +117,20 @@ namespace sh {namespace input
         KB_LEFT_ALT     = 94,   //Key: Left Alt
         KB_RIGHT_SHIFT  = 95,   //Key: Right Shift
         KB_RIGHT_ALT    = 96,   //Key: Right Alt
-        KB_MENU_KEY     = 107,  //Key: Menu button
+        KB_MENU_KEY     = 107,  //Key: ≣
         //Mouse buttons
-        MOUSE_1         = 97,   //Key: Left
-        MOUSE_2         = 98,   //Key: Right
-        MOUSE_3         = 99,   //Key: Middle
-        MOUSE_4         = 100,  //Key: Forward
-        MOUSE_5         = 101,  //Key: Back
+        MOUSE_1         = 97,   //Key: Left Mouse
+        MOUSE_2         = 98,   //Key: Right Mouse
+        MOUSE_3         = 99,   //Key: Middle Mouse
+        MOUSE_4         = 100,  //Key: Forward Mouse
+        MOUSE_5         = 101,  //Key: Back Mouse
         //Special Keys
         //These are ignored by check input and get input
         KB_NUM_LOCK     = 102,  //Key: Num Lock
         KB_PRINT_SCREEN = 103,  //Key: Print Screen
         KB_ESCAPE       = 104,  //Key: Escape
-        KB_LEFT_SUPER   = 105,  //Key: IDK
-        KB_RIGHT_SUPER  = 106,  //Key: IDK
+        KB_LEFT_SUPER   = 105,  //Key: ⊞ / ❖ / Start / ⌘ Key
+        KB_RIGHT_SUPER  = 106,  //Key: ⊞ / ❖ / Start / ⌘ Key
         MOUSE_SIDE      = 108,  //Key: IDK
         MOUSE_EXTRA     = 109   //Key: IDK
     } inputKey;
