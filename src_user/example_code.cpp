@@ -45,7 +45,7 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    if(sh::input::checkInput(MOUSE_BUTTON_LEFT, sh::input::INPUT_DOWN))
+    if(sh::input::checkInput(sh::input::MOUSE_1, sh::input::INPUT_DOWN))
     {
         spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
         RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
@@ -61,6 +61,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     sh::auditorium::draw::queue3D(DMODEL, "Test", 1, ExampleDimensionCube);
     sh::auditorium::draw::queue2D(DTESTRECT, "", 0);
     sh::auditorium::viewport::GlobalCamera.updateCameras();
+    if(sh::input::checkInputSpecial(sh::input::KB_ESCAPE, sh::input::INPUT_PRESSED)) sh::play::Exit(true);
 }
 
 //This is where you put any code relating to Dear imgui

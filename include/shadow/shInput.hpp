@@ -122,8 +122,8 @@ namespace sh {namespace input
         MOUSE_1         = 97,   //Key: Left Mouse
         MOUSE_2         = 98,   //Key: Right Mouse
         MOUSE_3         = 99,   //Key: Middle Mouse
-        MOUSE_4         = 100,  //Key: Forward Mouse
-        MOUSE_5         = 101,  //Key: Back Mouse
+        MOUSE_4         = 100,  //Key: Back Mouse
+        MOUSE_5         = 101,  //Key: Forward Mouse
         //Special Keys
         //These are ignored by check input and get input
         KB_NUM_LOCK     = 102,  //Key: Num Lock
@@ -134,7 +134,10 @@ namespace sh {namespace input
         MOUSE_SIDE      = 108,  //Key: IDK
         MOUSE_EXTRA     = 109   //Key: IDK
     } inputKey;
+    //Use to check for input with Shadow's bindings
     bool checkInput(inputKey key, inputType input);
+    bool checkInputSpecial(inputKey key, inputType input);
+    //Use to directly check inputs with Raylib's binding
     bool checkInput(KeyboardKey key, inputType input);
     bool checkInput(MouseButton key, inputType input);
     //Will return false if the requested gamepad is not available
