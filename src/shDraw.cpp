@@ -176,7 +176,7 @@ void sh::auditorium::draw::drawScreen(sh::auditorium::viewport::sh_camera cam)
                     r.m_theatric->renderMe();
                     break;
                 case DTESTRECT:
-                    DrawRectanglePro(Rectangle{0.0f, 0.0f, 40.0f, 40.0f}, Vector2{0.5f, 0.5f}, 0.0f, RED);
+                    DrawRectanglePro(Rectangle{-20.0f, -20.0f, 20.0f, 20.0f}, Vector2{0.5f, 0.5f}, 0.0f, RED);
                     break;
                 default: break;
                 }
