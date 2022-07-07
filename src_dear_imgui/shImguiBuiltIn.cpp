@@ -58,5 +58,8 @@ void sh::debug::DebugImgui()
     ImGui::Text("Global Timer: %lu", sh::globalTimer);
     ImGui::Text("Previous Frame: %lu", sh::play::previousInternalFrame);
     ImGui::Text("Frame difference: %d", sh::play::frameDiff);
+    std::string time = "On Time";
+    if(sh::play::previousInternalFrame < (sh::globalTimer - 1)) time = "Behind";
+    ImGui::Text(time.c_str());
     if(ImGui::Button("Quit")) sh::play::Exit(true);
 }
