@@ -85,14 +85,14 @@ void loadSettings()
 	//Check for settings file depending on platform
 	#if (_WIN64 == 1)
 		sh::file::settingsLoc.append("\\." SHADOWNAME);
-		std::string settingsFolder = sh::file::settingsLoc;
+		sh::file::settingsFolder = sh::file::settingsLoc;
 		sh::file::settingsLoc.append("\\");
 		sh::file::settingsLoc.append(settings);
 	#endif
 
 	#if (__APPLE__ == 1)
 		sh::file::settingsLoc.append("/." SHADOWNAME);
-		std::string settingsFolder = sh::file::settingsLoc;
+		sh::file::settingsFolder = sh::file::settingsLoc;
 		sh::file::settingsLoc.append("/");
 		sh::file::settingsLoc.append(settings);
 	#endif
@@ -159,10 +159,10 @@ void loadSettings()
 		{
 			std::cout << "[SHADOW - INFO] There is no settings file. Attempting to create one." << std::endl;
 			std::cout << "[SHADOW - INFO] Checking for folder." << std::endl;
-			if(DirectoryExists(settingsFolder.c_str()));
+			if(DirectoryExists(sh::file::settingsFolder.c_str()));
 			else {
 				std::cout << "[SHADOW - INFO] Folder does not exist, creating." << std::endl;
-				sh::file::createSettingsFolder(settingsFolder.c_str());
+				sh::file::createSettingsFolder(sh::file::settingsFolder.c_str());
 			}
 			if(sh::lua::LuaCheck(L, luaL_dostring(L, lua_ini_create)))
 			{

@@ -17,6 +17,9 @@ Vector3 g1 = { -10.0f, 0.0f, 10.0f };
 Vector3 g2 = { 10.0f, 0.0f, 10.0f };
 Vector3 g3 = { 10.0f, 0.0f, -10.0f };
 
+sh::input::inputKey ExampleInput;
+bool ExampleInputPressed = false;
+
 // ---------- Shadow ----------
 
 void sh::play::GameInit() //This is where you initialize any nesecary code
@@ -40,11 +43,16 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     sh::auditorium::model::Load("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
     lua_pop(sh::lua::GetLuaGlobal(), -1);
     sh::auditorium::model::SetModelMaterial("Test", "Test");
+    
+    lua_getglobal(sh::lua::GetLuaGlobal(), "ExampleInput");
+    ExampleInput = (sh::input::inputKey)(unsigned char)(int)lua_tonumber(sh::lua::GetLuaGlobal(), -1);
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
 }
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    if(sh::input::checkInput(sh::input::MOUSE_1, sh::input::INPUT_DOWN))
+    if(sh::input::checkInput(sh::input::MOUSE_1, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
+    for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
     {
         spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
         RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
@@ -53,6 +61,8 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
             ExampleDimensionCube.Y = hitGround.point.y;
             ExampleDimensionCube.Z = hitGround.point.z;
         }
+
+        ExampleInputPressed = false;
     }
     
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
