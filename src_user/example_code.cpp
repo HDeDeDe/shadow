@@ -45,15 +45,12 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 {
     if(sh::is3D)
     {
-        for(int i = 0; i < frameDiff; i++)
-        {
-            spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
-            RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
-            if (hitGround.hit) {
-                ExampleDimensionCube.X = hitGround.point.x;
-                ExampleDimensionCube.Y = hitGround.point.y;
-                ExampleDimensionCube.Z = hitGround.point.z;
-            }
+        spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
+        RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
+        if (hitGround.hit) {
+            ExampleDimensionCube.X = hitGround.point.x;
+            ExampleDimensionCube.Y = hitGround.point.y;
+            ExampleDimensionCube.Z = hitGround.point.z;
         }
     }
     
