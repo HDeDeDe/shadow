@@ -6,7 +6,6 @@
 
 void sh::play::ShadowStart()
 {
-    float timeInc = 1.0f / (int)INFRAMERATE;
     float frameTime = 0.0f;
     sh::lua::InitLuaGlobal();
     sh::play::GameInit();
