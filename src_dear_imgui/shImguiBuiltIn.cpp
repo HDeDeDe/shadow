@@ -30,9 +30,9 @@ void sh::debug::DebugImgui()
     ImGui::DragFloat3("Camera3D Rotation", dbg_3dCamRot);
 
     float dbg_3dCamTarg[3] = {temp_3DTarg.x, temp_3DTarg.y, temp_3DTarg.z};
-    ImGui::Text("Camera3D Target X: %d", dbg_3dCamTarg[0]);
-    ImGui::Text("Camera3D Target Y: %d", dbg_3dCamTarg[1]);
-    ImGui::Text("Camera3D Target Z: %d", dbg_3dCamTarg[2]);
+    // ImGui::Text("Camera3D Target X: %f", dbg_3dCamTarg[0]);
+    // ImGui::Text("Camera3D Target Y: %f", dbg_3dCamTarg[1]);
+    // ImGui::Text("Camera3D Target Z: %f", dbg_3dCamTarg[2]);
 
     float dbg_2dCamPos[2] = {temp_cam2D.X, temp_cam2D.Y};
     ImGui::DragFloat2("Camera2D Position", dbg_2dCamPos);
