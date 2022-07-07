@@ -71,7 +71,7 @@ void sh::play::ImguiDebugDraw()
 {
     std::string time = "On Time";
     sh::debug::DebugImgui();
-    if(sh::play::previousInternalFrame > (sh::globalTimer - 1)) time = "Behind";
+    if(sh::play::previousInternalFrame < (sh::globalTimer - 1)) time = "Behind";
     ImGui::Text(time.c_str());
 }
 #endif
