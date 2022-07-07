@@ -84,7 +84,8 @@ namespace sh
 	inline const unsigned char internalFramerate = INFRAMERATE;
 	//Global timer
 	inline unsigned long globalTimer = 0;
-	inline const float timeInc = 1.0f / INFRAMERATE;
+	//Time for internal frame
+	inline const float fixedDeltaTime = 1.0f / INFRAMERATE;
 }
 
 #define DTEXTURE sh::renderType::texture

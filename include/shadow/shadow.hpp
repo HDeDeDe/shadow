@@ -34,7 +34,9 @@ namespace sh
         //This will only run if you are in debugging mode
         void ImguiDebugDraw();
         #endif
+        //The last frame that was processed
         inline unsigned long previousInternalFrame = 0;
+        //The difference between the current fixed frame and last fixed frame
         inline int frameDiff = 0;
     }
 }

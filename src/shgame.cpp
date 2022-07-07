@@ -19,10 +19,10 @@ void sh::play::ShadowStart()
             frameDiff++;
         }
         frameTime += GetFrameTime();
-        while(frameTime > timeInc)
+        while(frameTime > fixedDeltaTime)
         {
             sh::globalTimer++;
-            frameTime -= timeInc;
+            frameTime -= fixedDeltaTime;
         }
         sh::play::GameLoop();
         sh::auditorium::draw::drawScreen(sh::auditorium::viewport::GlobalCamera);
