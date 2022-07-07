@@ -12,8 +12,13 @@ void sh::play::ShadowStart()
     sh::play::GameInit();
     while (sh::gameLoopActive)
     {
+        frameDiff = 0;
         if(sh::play::Exit())break;
-        if(previousInternalFrame != sh::globalTimer) previousInternalFrame++;
+        while(previousInternalFrame != sh::globalTimer)
+        {
+            previousInternalFrame++;
+            frameDiff++;
+        }
         frameTime += GetFrameTime();
         while(frameTime > timeInc)
         {

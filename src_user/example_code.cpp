@@ -21,7 +21,6 @@ Vector3 g3 = { 10.0f, 0.0f, -10.0f };
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
     sh::auditorium::renameWindow("Super Vergil");
-
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
     sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
     lua_pop(sh::lua::GetLuaGlobal(), -1);
@@ -46,7 +45,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 {
     if(sh::is3D)
     {
-        if(sh::play::previousInternalFrame != sh::globalTimer)
+        for(int i = 0; i < frameDiff; i++)
         {
             spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
             RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
@@ -72,7 +71,7 @@ void sh::play::ImguiDebugDraw()
 {
     std::string time = "On Time";
     sh::debug::DebugImgui();
-    if(sh::play::previousInternalFrame != sh::globalTimer) time = "Behind";
+    if(sh::play::previousInternalFrame > (sh::globalTimer - 1)) time = "Behind";
     ImGui::Text(time.c_str());
 }
 #endif

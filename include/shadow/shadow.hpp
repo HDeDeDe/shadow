@@ -35,5 +35,6 @@ namespace sh
         void ImguiDebugDraw();
         #endif
         inline unsigned long previousInternalFrame = 0;
+        inline int frameDiff = 0;
     }
 }
