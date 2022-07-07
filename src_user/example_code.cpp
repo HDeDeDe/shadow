@@ -3,6 +3,7 @@
 #include <shLua.hpp> //Access to LuaCheck and the global lua virtual machine
 #include <shStagePlay.hpp> //Entity manager
 #include <shAuditorium.hpp> //Window and texture manager
+#include <shInput.hpp> //Input functions
 
 // ---------- Your Variables / Functions ----------
 
@@ -25,6 +26,9 @@ Vector3 g0 = { -10.0f, 0.0f, -10.0f };
 Vector3 g1 = { -10.0f, 0.0f, 10.0f };
 Vector3 g2 = { 10.0f, 0.0f, 10.0f };
 Vector3 g3 = { 10.0f, 0.0f, -10.0f };
+
+sh::input::inputKey ExampleInput;
+bool ExampleInputPressed = false;
 
 // ---------- Shadow ----------
 
@@ -49,11 +53,16 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     sh::auditorium::model::Load("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
     lua_pop(sh::lua::GetLuaGlobal(), -1);
     sh::auditorium::model::SetModelMaterial("Test", "Test");
+    
+    lua_getglobal(sh::lua::GetLuaGlobal(), "ExampleInput");
+    ExampleInput = (sh::input::inputKey)(unsigned char)(int)lua_tonumber(sh::lua::GetLuaGlobal(), -1);
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
 }
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
 {
-    if(sh::is3D)
+    if(sh::input::checkInput(ExampleInput, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
+    for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
     {
         spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
         RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
@@ -62,6 +71,8 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
             ExampleDimensionCube.Y = hitGround.point.y;
             ExampleDimensionCube.Z = hitGround.point.z;
         }
+
+        ExampleInputPressed = false;
     }
     
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
@@ -69,6 +80,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     sh::auditorium::draw::queue3D(DMODEL, "Test", 1, ExampleDimensionCube);
     sh::auditorium::draw::queue2D(DTESTRECT, "", 0);
     sh::auditorium::viewport::GlobalCamera.updateCameras();
+    if(sh::input::checkInputSpecial(sh::input::KB_ESCAPE, sh::input::INPUT_PRESSED)) sh::play::Exit(true);
 }
 
 //This is where you put any code relating to Dear imgui

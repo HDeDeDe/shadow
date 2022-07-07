@@ -39,4 +39,9 @@ namespace sh
         //The difference between the current fixed frame and last fixed frame
         inline int frameDiff = 0;
     }
+    namespace file
+    {
+        inline std::string settingsLoc = { 0 };
+        inline std::string settingsFolder = { 0 };
+    }
 }
