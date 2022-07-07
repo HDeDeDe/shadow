@@ -54,6 +54,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
     if(sh::input::checkInput(ExampleInput, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
     for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
     {
+        //This is kind of a bad example, you should track mouse movement every frame regardless of input time
         spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
         RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
         if (hitGround.hit) {
