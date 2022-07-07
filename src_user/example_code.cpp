@@ -70,6 +70,9 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 #include <shImGuiBuiltin.hpp>
 void sh::play::ImguiDebugDraw()
 {
+    std::string time = "On Time";
     sh::debug::DebugImgui();
+    if(sh::play::previousInternalFrame != sh::globalTimer) time = "Behind";
+    ImGui::Text(time.c_str());
 }
 #endif
