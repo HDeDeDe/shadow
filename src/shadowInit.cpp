@@ -98,7 +98,10 @@ void loadSettings()
 	#endif
 
 	#if (__gnu_linux__ == 1)
-
+		sh::file::settingsLoc.append("/." SHADOWNAME);
+		sh::file::settingsFolder = sh::file::settingsLoc;
+		sh::file::settingsLoc.append("/");
+		sh::file::settingsLoc.append(settings);
 	#endif
 	//if(!sh::lua::LuaCheck(L, lua_do(L, "./lua/inifile.lua"))) shSys::panic(sh::sh_Panic::panic_init_fail);
 

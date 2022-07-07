@@ -8,6 +8,9 @@ std::string environment = getenv("APPDATA");
 #if (__APPLE__ == 1)
 std::string environment = getenv("HOME");
 #endif
+#if (__gnu_linux__ == 1)
+std::string environment = getenv("HOME");
+#endif
 std::string sh::file::getEnvironment()
 {
     return environment;
