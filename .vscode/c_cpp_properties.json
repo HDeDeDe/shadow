@@ -13,7 +13,8 @@
             "defines": [
                 "SHADOWNAME=\"Shadow\"",
                 "DEBUGGING=1",
-                "BUCKETSIZE=4"
+                "BUCKETSIZE=4",
+                "INFRAMERATE=60"
             ],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
@@ -39,7 +40,8 @@
                 "_UNICODE",
                 "SHADOWNAME=\"Shadow\"",
                 "DEBUGGING=1",
-                "BUCKETSIZE=4"
+                "BUCKETSIZE=4",
+                "INFRAMERATE=60"
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",

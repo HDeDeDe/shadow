@@ -55,6 +55,6 @@ void sh::debug::DebugImgui()
     sh::auditorium::viewport::GlobalCamera.setDimension3D(temp_cam3D);
     sh::auditorium::viewport::GlobalCamera.setDimension2D(temp_cam2D);
     // sh::auditorium::viewport::GlobalCamera.set3DTarget(temp_3DTarg);
-
+    ImGui::Text("Global Timer: %lu", sh::globalTimer);
     if(ImGui::Button("Quit")) sh::play::Exit(true);
 }

@@ -80,6 +80,10 @@ namespace sh
 	inline bool is2D = false;
 	//Should auditorium do HUD calls
 	inline bool isHUD = true;
+	//Internal framerate
+	inline const unsigned char internalFramerate = INFRAMERATE;
+	//Global timer
+	inline unsigned long globalTimer = 0;
 }
 
 #define DTEXTURE sh::renderType::texture

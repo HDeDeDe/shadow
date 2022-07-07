@@ -34,5 +34,6 @@ namespace sh
         //This will only run if you are in debugging mode
         void ImguiDebugDraw();
         #endif
+        inline unsigned long previousInternalFrame = 0;
     }
 }
