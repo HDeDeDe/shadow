@@ -1,6 +1,7 @@
 #You can change these
 SHADOWNAME = Shadow
 BUCKETSIZE = 4
+INFRAMERATE = 60
 #Predefined
 GCCWIN = g++
 GCCMACOS = g++-12
@@ -8,7 +9,7 @@ TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
 USRSRC = ./src_user/*.cpp
 DBGSRC = ./src_dear_imgui/*.cpp
-CFLAGS = -fdiagnostics-color=always -std=c++23 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DBUCKETSIZE=${BUCKETSIZE} -DDEBUGGING=
+CFLAGS = -fdiagnostics-color=always -std=c++23 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DINFRAMERATE=${INFRAMERATE} -DBUCKETSIZE=${BUCKETSIZE} -DDEBUGGING=
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
