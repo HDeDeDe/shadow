@@ -135,6 +135,7 @@ void sh::play::GameLoopPriority() //This is where priority events happen, use th
     if(sh::input::checkInput(ExampleInput, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
     for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
     {
+        //Bad example
         ExampleCubeHelper::Get().active = true;
         ExampleInputPressed = false;
     }
