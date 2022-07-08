@@ -7,25 +7,96 @@
 
 // ---------- Your Variables / Functions ----------
 
-class barHelper : public sh::theatrics::actorHelper
+class ExampleCube : public sh::theatrics::actor
 {
-    
+    friend class ExampleCubeHelper;
+    sh::theatrics::actorHelper* m_helper;
+public:
+    ExampleCube(unsigned int Type, sh::theatrics::actorHelper* helper) 
+    : actor(Type)
+    {
+        m_helper = helper;
+    }
+    void renderMe()
+    {
+        DrawModelEx(sh::auditorium::model::GetModel("Test"), Vector3{m_dimension.X, m_dimension.Y, m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{m_dimension.Length, m_dimension.Width, m_dimension.Height}, WHITE);
+    }
+    void update()
+    {
+        m_helper->update(this);
+    }
 };
 
-class bar : public sh::theatrics::actor
+class ExampleCubeHelper : public sh::theatrics::actorHelper
 {
+    Ray spaget = { 0 };
+    Vector3 g0 = { -10.0f, 0.0f, -10.0f };
+    Vector3 g1 = { -10.0f, 0.0f, 10.0f };
+    Vector3 g2 = { 10.0f, 0.0f, 10.0f };
+    Vector3 g3 = { 10.0f, 0.0f, -10.0f };
+
+    ExampleCubeHelper()
+    {
+        actorType = 1;
+        Init();
+    }
+public:
+    unsigned int ExampleID = 0;
+    bool active = false;
+    ExampleCubeHelper(const ExampleCubeHelper&) = delete;
     
+    static ExampleCubeHelper& Get()
+    {
+        static ExampleCubeHelper instance;
+        return instance;
+    }
+
+    void Init()
+    {
+        CreateActor();
+    }
+    void CreateActor()
+    {
+        ExampleCube* temp_ptr = new ExampleCube(actorType, this);
+        ExampleID = temp_ptr->actorID;
+    }
+    void DestroyActor(unsigned int actorID)
+    {
+        sh::theatrics::actor* act_ptr = sh::theatrics::getActorPointer(actorID);
+        if(act_ptr != nullptr && act_ptr->getActorType() == actorType)
+        {
+            delete (ExampleCube*)act_ptr;
+            sh::theatrics::clearSlot(actorID);
+        }
+    }
+    void DestroyActor(ExampleCube* act_ptr)
+    {
+        delete act_ptr;
+    }
+    void update(sh::theatrics::actor* act_ptr)
+    {
+        if(act_ptr != nullptr)
+            if(act_ptr->getActorType() == actorType)
+                update((ExampleCube*)act_ptr);
+    }
+    void update(ExampleCube* act_ptr)
+    {
+        if(active)
+        {
+            spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
+            RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
+            if (hitGround.hit) {
+                act_ptr->m_dimension.X = hitGround.point.x;
+                act_ptr->m_dimension.Y = hitGround.point.y;
+                act_ptr->m_dimension.Z = hitGround.point.z;
+            }
+            active = false;
+        }
+    }
 };
 
 std::string ExampleText;
 sh::Dimension ExampleDimensionText;
-sh::Dimension ExampleDimensionCube;
-
-Ray spaget = { 0 };
-Vector3 g0 = { -10.0f, 0.0f, -10.0f };
-Vector3 g1 = { -10.0f, 0.0f, 10.0f };
-Vector3 g2 = { 10.0f, 0.0f, 10.0f };
-Vector3 g3 = { 10.0f, 0.0f, -10.0f };
 
 sh::input::inputKey ExampleInput;
 bool ExampleInputPressed = false;
@@ -59,25 +130,21 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     lua_pop(sh::lua::GetLuaGlobal(), -1);
 }
 
-void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
+void sh::play::GameLoopPriority() //This is where priority events happen, use this to do things like check for input
 {
     if(sh::input::checkInput(ExampleInput, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
     for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
     {
-        spaget = GetMouseRay(GetMousePosition(), sh::auditorium::viewport::GlobalCamera.getCamera3D());
-        RayCollision hitGround = GetRayCollisionQuad(spaget, g0, g1, g2, g3);
-        if (hitGround.hit) {
-            ExampleDimensionCube.X = hitGround.point.x;
-            ExampleDimensionCube.Y = hitGround.point.y;
-            ExampleDimensionCube.Z = hitGround.point.z;
-        }
-
+        ExampleCubeHelper::Get().active = true;
         ExampleInputPressed = false;
     }
-    
+}
+
+void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
+{
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
-    sh::auditorium::draw::queue3D(DMODEL, "Test", 1, ExampleDimensionCube);
+    sh::auditorium::draw::queue3D(DTHEATRIC, sh::theatrics::getActorPointer(ExampleCubeHelper::Get().ExampleID), 1);
     sh::auditorium::draw::queue2D(DTESTRECT, "", 0);
     sh::auditorium::viewport::GlobalCamera.updateCameras();
     if(sh::input::checkInputSpecial(sh::input::KB_ESCAPE, sh::input::INPUT_PRESSED)) sh::play::Exit(true);

@@ -28,6 +28,8 @@ namespace sh
         void Exit(bool killApp);
         //This is run after the global lua virtual machine is initialized, but before the game loops
         void GameInit();
+        //This is run every frame before the main game loop and actor updates.
+        void GameLoopPriority();
         //This is run every frame
         void GameLoop();
         #if (DEBUGGING == 1)

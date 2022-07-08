@@ -1,26 +1,72 @@
 // ---------- Include ----------
 #include <shStagePlay.hpp>
 #include <shAuditorium.hpp>
-
+#include <vector>
 // ---------- Shadow ----------
 
-unsigned int sh::theatrics::actorHelper::assignID(sh::theatrics::actor* newActor)
+std::vector<sh::theatrics::actor*> actorList;
+
+sh::theatrics::actor::~actor()
+{}
+
+sh::theatrics::actor::actor(unsigned int type)
 {
-    if(newActor->getId() != 0)
+    if(type == 0) delete this;
+    for(unsigned int i = 1; i < actorList.size(); i++)
     {
-        std::cout << "[SHADOW - WARNING] This actor already exists." << std::endl;
-        return newActor->getId();
+        if(actorList[i] == nullptr)
+        {
+            actorList[i] = this;
+            actorType = type;
+            actorID = i;
+            return;
+        }
     }
-    actorList.push_back(newActor);
-    return actorList.size();
+    actorType = type;
+    actorList.push_back(this);
+    actorID = actorList.size() - 1;
 }
-    
+
 sh::theatrics::actorHelper::~actorHelper()
 {
     lua_close(L);
-    for(auto inst : actorList)
+}
+
+void sh::theatrics::start()
+{
+    if(actorList.begin() == actorList.end())
     {
-        delete inst;
+        actorList.push_back(nullptr);
+    }
+    else std::cout << "[SHADOW - WARNING] Actor list has already been initialized." << std::endl;
+}
+
+void sh::theatrics::update()
+{
+    for(unsigned int i = 1; i < actorList.size(); i++)
+    {
+        if(actorList[i] != nullptr)actorList[i]->update();
+    }
+}
+
+void sh::theatrics::clear()
+{
+    for(unsigned int i = 1; i < actorList.size(); i++)
+    {
+        if(actorList[i] != nullptr) {
+            delete actorList[i];
+            actorList[i] = nullptr;
+            }
     }
     actorList.clear();
+}
+
+sh::theatrics::actor* sh::theatrics::getActorPointer(unsigned int actorID)
+{
+    return actorList[actorID];
+}
+
+void sh::theatrics::clearSlot(unsigned int actorID)
+{
+    actorList[actorID] = nullptr;
 }

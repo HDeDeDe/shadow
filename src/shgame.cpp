@@ -3,6 +3,7 @@
 #include <shAuditorium.hpp>
 #include <shLua.hpp>
 #include <shInput.hpp>
+#include <shStagePlay.hpp>
 #include <math.h>
 // ---------- Shadow ----------
 
@@ -11,6 +12,7 @@ void sh::play::ShadowStart()
     float frameTime = 0.0f;
     sh::lua::InitLuaGlobal();
     sh::play::GameInit();
+    sh::theatrics::start();
     while (sh::gameLoopActive)
     {
         frameDiff = 0;
@@ -26,9 +28,12 @@ void sh::play::ShadowStart()
             sh::globalTimer++;
             frameTime -= fixedDeltaTime;
         }
+        sh::play::GameLoopPriority();
+        sh::theatrics::update();
         sh::play::GameLoop();
         sh::auditorium::draw::drawScreen(sh::auditorium::viewport::GlobalCamera);
     }
+    sh::theatrics::clear();
     sh::lua::CloseLuaGlobal();
 }
 
