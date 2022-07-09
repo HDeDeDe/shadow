@@ -13,15 +13,16 @@ class ExampleCube : public sh::theatrics::actor
     sh::theatrics::actorHelper* m_helper;
 public:
     ExampleCube(unsigned int Type, sh::theatrics::actorHelper* helper) 
-    : actor(Type)
-    {
+        : actor(Type) //This is nesecary to initialize actors. Not including this can result unintended behavior.
+    {//This code will never run if actor type 0 is provided
+        //Set the actor helper here. This can be done however you want, but this way avoids forward declerations
         m_helper = helper;
     }
-    void renderMe()
+    void renderMe() //Required function
     {
         DrawModelEx(sh::auditorium::model::GetModel("Test"), Vector3{m_dimension.X, m_dimension.Y, m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{m_dimension.Length, m_dimension.Width, m_dimension.Height}, WHITE);
     }
-    void update()
+    void update() //Required function. This runs every frame for each actor
     {
         m_helper->update(this);
     }
@@ -29,6 +30,7 @@ public:
 
 class ExampleCubeHelper : public sh::theatrics::actorHelper
 {
+private:
     Ray spaget = { 0 };
     Vector3 g0 = { -10.0f, 0.0f, -10.0f };
     Vector3 g1 = { -10.0f, 0.0f, 10.0f };
@@ -37,14 +39,18 @@ class ExampleCubeHelper : public sh::theatrics::actorHelper
 
     ExampleCubeHelper()
     {
+        //Set the actor type for this helper here.
+        //Every actor has an actor type which is unique to that class. 
+        //Overlapping actor types may have problems.
         actorType = 1;
+        //Ideally you should initialize lua code here. This is only an example so this calls a simple spawn function.
         Init();
     }
 public:
     unsigned int ExampleID = 0;
     bool active = false;
-    ExampleCubeHelper(const ExampleCubeHelper&) = delete;
     
+    ExampleCubeHelper(const ExampleCubeHelper&) = delete;
     static ExampleCubeHelper& Get()
     {
         static ExampleCubeHelper instance;
@@ -65,15 +71,17 @@ public:
         sh::theatrics::actor* act_ptr = sh::theatrics::getActorPointer(actorID);
         if(act_ptr != nullptr && act_ptr->getActorType() == actorType)
         {
-            delete (ExampleCube*)act_ptr;
-            sh::theatrics::clearSlot(actorID);
+            sh::theatrics::clearSlot(actorID); //Use this do delete an actor. Never try to manualy delete an actor or you will encounter segmentation faults
         }
     }
     void DestroyActor(ExampleCube* act_ptr)
     {
-        delete act_ptr;
+        if(act_ptr != nullptr)
+        {
+            sh::theatrics::clearSlot(act_ptr->actorID);  
+        }
     }
-    void update(sh::theatrics::actor* act_ptr)
+    void update(sh::theatrics::actor* act_ptr) //Required function. Use this to check for the actor type.
     {
         if(act_ptr != nullptr)
             if(act_ptr->getActorType() == actorType)
@@ -106,6 +114,7 @@ bool ExampleInputPressed = false;
 void sh::play::GameInit() //This is where you initialize any nesecary code
 {
     sh::auditorium::renameWindow("Super Vergil");
+
     lua_getglobal(sh::lua::GetLuaGlobal(), "PictureToLoad");
     sh::auditorium::texture::sh_TextureManager::Create("Test", lua_tostring(sh::lua::GetLuaGlobal(), -1));
     lua_pop(sh::lua::GetLuaGlobal(), -1);
@@ -141,7 +150,7 @@ void sh::play::GameLoopPriority() //This is where priority events happen, use th
     }
 }
 
-void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop
+void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your drawing here
 {
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);

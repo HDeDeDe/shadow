@@ -68,5 +68,6 @@ sh::theatrics::actor* sh::theatrics::getActorPointer(unsigned int actorID)
 
 void sh::theatrics::clearSlot(unsigned int actorID)
 {
+    delete actorList[actorID];
     actorList[actorID] = nullptr;
 }

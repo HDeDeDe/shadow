@@ -22,6 +22,7 @@ namespace sh{namespace theatrics{
     {
     private:
         friend void clear();
+        friend void clearSlot(unsigned int actorID);
     protected:
         virtual ~actor();
         unsigned int actorType = 0;
