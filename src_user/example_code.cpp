@@ -21,7 +21,7 @@ public:
     void renderMe() //Required function
     {
         //This is where You define how the actor should be rendered. Every actor and prop must have this defined, even if empty.
-        DrawModelEx(sh::auditorium::model::GetModel("Test"), Vector3{m_dimension.X, m_dimension.Y, m_dimension.Z}, Vector3{0.0f, 0.0f, 0.0f}, 0.0f, Vector3{m_dimension.Length, m_dimension.Width, m_dimension.Height}, WHITE);
+        DrawModelEx(sh::auditorium::model::GetModel("Test"), Vector3{m_dimension.X, m_dimension.Y, m_dimension.Z}, Vector3{0.0f, 0.0f, 1.0f}, -90.0f, Vector3{m_dimension.Length, m_dimension.Width, m_dimension.Height}, WHITE);
     }
     void update() //Required function. This runs every frame for each actor
     {
