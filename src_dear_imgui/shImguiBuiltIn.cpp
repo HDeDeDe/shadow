@@ -61,5 +61,6 @@ void sh::debug::DebugImgui()
     std::string time = "On Time";
     if(sh::play::previousInternalFrame < (sh::globalTimer - 1)) time = "Behind";
     ImGui::Text(time.c_str());
+    ImGui::Text("Actor Count: %d", getActorCount());
     if(ImGui::Button("Quit")) sh::play::Exit(true);
 }

@@ -71,3 +71,11 @@ void sh::theatrics::clearSlot(unsigned int actorID)
     delete actorList[actorID];
     actorList[actorID] = nullptr;
 }
+
+#if (DEBUGGING == 1)
+#include <shImGuiBuiltin.hpp>
+    int sh::debug::getActorCount()
+    {
+        return actorList.size() - 1;
+    }
+#endif

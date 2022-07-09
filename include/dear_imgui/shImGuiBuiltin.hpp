@@ -6,4 +6,5 @@
 
 namespace sh{namespace debug{
     void DebugImgui();
+    int getActorCount();
 }}
