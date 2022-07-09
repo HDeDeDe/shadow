@@ -121,9 +121,16 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     lua_pop(sh::lua::GetLuaGlobal(), -1);
 
     sh::auditorium::texture::sh_TextureManager::Load("Test");
-    ExampleDimensionText.X = 40.0f;
-    ExampleDimensionText.Y = 50.0f;
-    ExampleDimensionText.Size(50.0f);
+
+    lua_getglobal(sh::lua::GetLuaGlobal(), "TextX");
+    ExampleDimensionText.X = lua_tonumber(sh::lua::GetLuaGlobal(), -1);
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
+    lua_getglobal(sh::lua::GetLuaGlobal(), "TextY");
+    ExampleDimensionText.Y = lua_tonumber(sh::lua::GetLuaGlobal(), -1);;
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
+    lua_getglobal(sh::lua::GetLuaGlobal(), "TextSize");
+    ExampleDimensionText.Size(lua_tonumber(sh::lua::GetLuaGlobal(), -1));
+    lua_pop(sh::lua::GetLuaGlobal(), -1);
 
     lua_getglobal(sh::lua::GetLuaGlobal(), "TextToDisplay");
     if(lua_isstring(sh::lua::GetLuaGlobal(), -1)) ExampleText = lua_tostring(sh::lua::GetLuaGlobal(), -1);

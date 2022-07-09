@@ -9,3 +9,6 @@ TextToDisplay = "Hello World!"
 PictureToLoad = "./Test.png"
 ModelToLoad = "./Test.iqm"
 ExampleInput = shadowinput.StringToInput("MOUSE_1")
+TextX = 40
+TextY = 50
+TextSize = 50
