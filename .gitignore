@@ -26,6 +26,7 @@ Resources/*
 !Resources/lua/
 Resources/lua/*
 !Resources/lua/initialize.lua
+!Resources/lua/initialize_template.txt
 !Resources/lua/packages/
 Resources/lua/packages/*
 !Resources/lua/packages/shadowInput.lua

@@ -158,7 +158,7 @@ void sh::play::GameLoopPriority() //This is where priority events happen, use th
     }
 }
 
-void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your drawing here
+void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
 {
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
