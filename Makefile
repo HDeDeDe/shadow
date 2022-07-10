@@ -3,6 +3,7 @@ SHADOWNAME = Shadow
 BUCKETSIZE = 4
 INFRAMERATE = 60
 #Predefined
+GCC = g++
 GCCWIN = g++
 GCCMACOS = g++-12
 TARGET = -o ./${SHADOWNAME}
@@ -13,6 +14,7 @@ CFLAGS = -fdiagnostics-color=always -std=c++23 -m64 -DSHADOWNAME='"'${SHADOWNAME
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
+LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11
 INCLUDEDBG = -I./include/dear_imgui
 SHADOWLIB = -llua54 -lraylib
 MACOSFRAMEWORK = -framework IOKit -framework Cocoa -framework OpenGL
@@ -40,3 +42,6 @@ MACOS_RELEASE:
 	cp Info.plist temp/Contents/Info.plist
 	mv ${SHADOWNAME} temp/Contents/MacOS/${SHADOWNAME}
 	rm -rf ${SHADOWNAME}.app; mv temp ${SHADOWNAME}.app
+
+LINUX:
+	${GCC} ${CFLAGS}1 -g ${SRC} -g ${USRSRC} -g ${DBGSRC} ${LINUXLIB} ${LIBFOLDER}Linux64 ${SHADOWLIB} ${INCLUDE} ${INCLUDEDBG} ${TARGET}Debug
