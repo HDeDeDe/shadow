@@ -9,6 +9,8 @@
 #define NOSAVE sh::flags::argCase::noSave
 #define HELP sh::flags::argCase::help
 
+bool crash = false;
+
 sh::flags::argCase hashFunc(const char* arg) 
 {
 	std::string m_arg = arg;
@@ -21,6 +23,7 @@ sh::flags::argCase hashFunc(const char* arg)
 	if(m_arg == "nosound") return NOSOUND;
 	if(m_arg == "nosave") return NOSAVE;
 	if(m_arg == "help") return HELP;
+	if(m_arg == "crash") crash = true;
 	return NONE;
 }
 
@@ -69,7 +72,11 @@ int main(int argc, char *argv[])
 		}
 	}
 	
-    try { startApp(); }
+    try 
+	{ 
+		if(crash) shSys::panic(sh::sh_Panic::panic_manual);
+		startApp(); 
+	}
 	catch (sh::sh_Panic)
 	{
 		std::cin.get();

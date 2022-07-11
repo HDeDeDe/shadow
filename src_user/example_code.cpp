@@ -4,6 +4,7 @@
 #include <shStagePlay.hpp> //Entity manager
 #include <shAuditorium.hpp> //Window and texture manager
 #include <shInput.hpp> //Input functions
+#include <shSys.hpp>
 
 // ---------- Your Variables / Functions ----------
 
@@ -160,6 +161,7 @@ void sh::play::GameLoopPriority() //This is where priority events happen, use th
 
 void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
 {
+    if(sh::input::checkInput(sh::input::KB_F, sh::input::INPUT_DOWN)) shSys::panic(sh::sh_Panic::panic_manual);
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");
     sh::auditorium::draw::queueHUD(DTEXT, ExampleText, 0, ExampleDimensionText, RED);
     sh::auditorium::draw::queue3D(DTHEATRIC, sh::theatrics::getActorPointer(ExampleCubeHelper::Get().ExampleID), 1);
