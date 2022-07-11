@@ -14,7 +14,7 @@ CFLAGS = -fdiagnostics-color=always -std=c++17 -m64 -DSHADOWNAME='"'${SHADOWNAME
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
-LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11 -I./include/stl
+LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11
 INCLUDEDBG = -I./include/dear_imgui
 SHADOWLIB = -llua54 -lraylib
 MACOSFRAMEWORK = -framework IOKit -framework Cocoa -framework OpenGL
