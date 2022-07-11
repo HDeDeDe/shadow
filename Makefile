@@ -3,7 +3,7 @@ SHADOWNAME = Shadow
 BUCKETSIZE = 4
 INFRAMERATE = 60
 #Predefined
-GCC = g++-11
+GCC = g++
 GCCWIN = g++
 GCCMACOS = g++-12
 TARGET = -o ./${SHADOWNAME}
@@ -14,7 +14,7 @@ CFLAGS = -fdiagnostics-color=always -std=c++17 -m64 -DSHADOWNAME='"'${SHADOWNAME
 LIBFOLDER = -L./platform/
 INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
-LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11
+LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11 -I./include/stl
 INCLUDEDBG = -I./include/dear_imgui
 SHADOWLIB = -llua54 -lraylib
 MACOSFRAMEWORK = -framework IOKit -framework Cocoa -framework OpenGL
