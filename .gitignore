@@ -34,5 +34,3 @@ Resources/lua/packages/*
 !Resources/lua/packages/inifile.lua
 src_user/
 !src_user/template.txt
-include/user/
-!include/user/example_header.txt
