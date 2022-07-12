@@ -35,4 +35,4 @@ Resources/lua/packages/*
 src_user/
 !src_user/template.txt
 include/user/
-!include/user/example_header.h
+!include/user/example_header.txt
