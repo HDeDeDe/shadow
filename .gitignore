@@ -17,6 +17,7 @@ ShadowDebug.dSYM/
 *.command
 !include/shadow
 Shadow.app/
+!example/src_user/example_code.cpp
 Resources/*
 !Resources/info.md
 !Resources/missing.iqm
@@ -32,7 +33,6 @@ Resources/lua/packages/*
 !Resources/lua/packages/shadowInput.lua
 !Resources/lua/packages/inifile.lua
 src_user/
-!src_user/example_code.cpp
 !src_user/template.txt
 include/user/
 !include/user/example_header.h
