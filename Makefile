@@ -1,7 +1,7 @@
 #You can change these
-SHADOWNAME = Shadow
-BUCKETSIZE = 4
-INFRAMERATE = 60
+SHADOWNAME ?= Shadow
+BUCKETSIZE ?= 4
+INFRAMERATE ?= 60
 #Predefined
 GCC = g++
 GCCWIN = g++
