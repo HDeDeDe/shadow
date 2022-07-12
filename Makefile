@@ -8,11 +8,11 @@ GCCWIN = g++
 GCCMACOS = g++-12
 TARGET = -o ./${SHADOWNAME}
 SRC = ./src/*.cpp
-USRSRC = ./src_user/*.cpp
+USRSRC = ./user/src/*.cpp
 DBGSRC = ./src_dear_imgui/*.cpp
 CFLAGS = -fdiagnostics-color=always -std=c++23 -m64 -DSHADOWNAME='"'${SHADOWNAME}'"' -DINFRAMERATE=${INFRAMERATE} -DBUCKETSIZE=${BUCKETSIZE} -DDEBUGGING=
 LIBFOLDER = -L./platform/
-INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./include/usr
+INCLUDE = -I./include/shadow -I./include/lua -I./include/raylib -I./user/headers
 WIN64LIB = -lopengl32 -lgdi32 -lwinmm
 LINUXLIB = -lpthread -lGL -lm -ldl -lrt -lX11
 INCLUDEDBG = -I./include/dear_imgui

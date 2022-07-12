@@ -16,7 +16,6 @@ ShadowDebug
 *.command
 !include/shadow
 Shadow.app/
-!example/src_user/example_code.cpp
 Resources/*
 !Resources/README
 !Resources/missing.iqm
@@ -27,7 +26,11 @@ Resources/lua/*
 Resources/lua/packages/*
 !Resources/lua/packages/shadowInput.lua
 !Resources/lua/packages/inifile.lua
-src_user/*
-!src_user/template.txt
-include/user/*
-!include/user/README
+!user/
+user/*
+!user/src/
+!user/headers/
+user/src/*
+user/headers/*
+!user/src/template.txt
+!user/headers/README
