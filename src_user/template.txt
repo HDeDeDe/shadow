@@ -26,7 +26,7 @@ void sh::play::GameLoop() //This is where the main game loop occurrs, rendering 
 
 //This is where you put any code relating to Dear imgui
 #if (DEBUGGING == 1)
-#include <imgui.h>
+#include <shImGuiBuiltin.hpp>
 void sh::play::ImguiDebugDraw()
 {
 
