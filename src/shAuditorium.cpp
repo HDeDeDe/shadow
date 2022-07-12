@@ -21,10 +21,6 @@ bool killApp = false;
 //Sys calls -----
 void shSys::initAuditorium()
 {
-    SetExitKey(KEY_NULL);
-    m_width = 640;
-    m_height = 480;
-    m_name = "[SHADOW] Starting...";
     sh::auditorium::createWindow();
     shSys::initTextureMan();
     shSys::initModelMan();
@@ -119,7 +115,7 @@ void sh::auditorium::resizeWindow(int width, int height)
     }
     m_width = width;
     m_height = height;
-    SetWindowSize(m_width, m_height);
+    if (m_active) SetWindowSize(m_width, m_height);
     if (m_height >= m_width)
     {
        m_2DFactor = (float)m_width / 640.0f;
@@ -133,7 +129,7 @@ void sh::auditorium::resizeWindow(int width, int height)
 void sh::auditorium::renameWindow(const char* name)
 {
     m_name = name;
-    SetWindowTitle(m_name.c_str());
+    if (m_active) SetWindowTitle(m_name.c_str());
 }
 
 bool sh::auditorium::isActive()
@@ -154,9 +150,10 @@ void sh::auditorium::setMSAA(bool flag)
 void sh::auditorium::setFullscreen(bool flag)
 {
     m_fullscreen = flag;
+
     if(m_fullscreen) 
     {
-        SetWindowState(FLAG_FULLSCREEN_MODE);
+        if (m_active) SetWindowState(FLAG_FULLSCREEN_MODE);
         if (GetMonitorHeight(0) >= GetMonitorWidth(0))
         {
             m_2DFactor = (float)GetMonitorWidth(0) / 640.0f;
@@ -166,10 +163,13 @@ void sh::auditorium::setFullscreen(bool flag)
             m_2DFactor = (float)GetMonitorHeight(0) / 480.0f;
         }
     }
-    else 
+    else
     {
-        ClearWindowState(FLAG_FULLSCREEN_MODE);
-        SetWindowSize(m_width, m_height);
+        if (m_active) 
+        {
+            ClearWindowState(FLAG_FULLSCREEN_MODE);
+            SetWindowSize(m_width, m_height);
+        }
         if (m_height >= m_width)
         {
             m_2DFactor = (float)m_width / 640.0f;

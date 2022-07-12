@@ -9,13 +9,13 @@
 void startApp()
 {
 	std::cout << "[SHADOW - INFO] Starting..." << std::endl;
-	#if (__APPLE__ == 1 && DEBUGGING == 0)
 	ChangeDirectory(GetApplicationDirectory());
+	#if (__APPLE__ == 1 && DEBUGGING == 0)
 	ChangeDirectory("../");
 	#endif
 	ChangeDirectory("./Resources");
-	shSys::initAuditorium();
 	loadSettings();
+	shSys::initAuditorium();
 	sh::gameLoopActive = true;
 	sh::play::ShadowStart();
 	sh::auditorium::model::UnloadAll();
@@ -190,6 +190,5 @@ void loadSettings()
 	sh::auditorium::setVsync(l_vsync);
 	sh::auditorium::setBorderless(l_borderless);
 	sh::auditorium::setMSAA(l_MSAA);
-	sh::auditorium::reloadWindow();
 	sh::auditorium::setFullscreen(l_fullscreen);
 }
