@@ -9,11 +9,10 @@ x64/
 *.sln
 .DS_STORE
 *.pdb
-Shadow.exe
-ShadowDebug.exe
+*.exe
 Shadow
 ShadowDebug
-ShadowDebug.dSYM/
+*.dSYM/
 *.command
 !include/shadow
 Shadow.app/
@@ -32,5 +31,7 @@ Resources/lua/*
 Resources/lua/packages/*
 !Resources/lua/packages/shadowInput.lua
 !Resources/lua/packages/inifile.lua
-src_user/
+src_user/*
 !src_user/template.txt
+include/user/*
+!include/user/README
