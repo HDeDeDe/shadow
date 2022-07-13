@@ -34,3 +34,4 @@ user/src/*
 user/headers/*
 !user/src/template.txt
 !user/headers/README
+shadow_panic.log
