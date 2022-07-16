@@ -83,4 +83,4 @@ Shadow will have the following features at minimum:
 `INFRAMERATE` Controls how often the global timer increments. This affects fixed delta time.  
   
 ### A note for linux support
-While I would like to actively support linux, doing so at this time is not feasible, as I currently have no way to compile the engine for my target distro (SteamOS 3.0). If a solution that does not involve unlocking the rootfs is made in the future, I will be sure to begin actively supporting it right away. While a library file was present, it was removed due to complications.
+While I would like to actively support linux, I'm currently only capable of supporting SteamOS at this time. The linux settings are currently designed to target a remote device running SteamOS 3.0.
