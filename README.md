@@ -84,4 +84,10 @@ Shadow will have the following features at minimum:
 `INFRAMERATE` Controls how often the global timer increments. This affects fixed delta time.  
   
 ### A note for linux support
-While I would like to actively support linux, I'm currently only capable of supporting SteamOS at this time. The linux settings are currently designed to target a remote device running SteamOS 3.0.
+The Linux binary was compiled on Arch Linux running under wsl. The specific steps I took are as follows:  
+1. Download (ArchWSL)[https://github.com/yuk7/ArchWSL/releases/tag/22.3.18.0] as an appx.
+2. Install Arch but do not update any packages or set up user accounts
+3. Replace the entire included mirrorlist file with `Server = https://steamdeck-packages.steamos.cloud/archlinux-mirror/$repo/os/$arch`
+4. Run `pacman -Syy`, `pacman -Syu`, `pacman -S gcc`, `pacman -S xorg` (install all), and `pacman -S make`  
+  
+Binaries compiled with this setup should be compatible with SteamOS 3.0. I don't plan on supporting any other configuration at this time.
