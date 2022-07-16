@@ -51,7 +51,7 @@
             "cwd": "${workspaceRoot}", 
             "gdbpath": "C:\\msys64\\mingw64\\bin\\gdb-multiarch.exe",
             "autorun": [
-                    ""
+                    "set sysroot"
                 ]
         }
     ]

@@ -21,7 +21,7 @@
             ],
             "compilerPath": "/usr/local/Cellar/gcc@12/12.1.0_1/bin/g++-12",
             "cStandard": "c17",
-            "cppStandard": "c++23",
+            "cppStandard": "c++17",
             "intelliSenseMode": "macos-gcc-x64"
         },
         {
@@ -46,7 +46,7 @@
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
             "cStandard": "c17",
-            "cppStandard": "c++23",
+            "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],

@@ -63,7 +63,7 @@ If you do have a different install directory for MSYS2 on windows run `make` fro
 **Warning:** Debugging on MacOS may require you to codesign a copy of gdb.  
 **Warning:** Dear imgui will not be rendered in HighDPI mode on MacOS.  
 ## Setup VSCode
-Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
+Install [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), [Native Debug](https://marketplace.visualstudio.com/items?itemName=webfreak.debug) and [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).  
 Clone the repository, then open and select your os.
 ## Goals
 Shadow will have the following features at minimum:  
