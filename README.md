@@ -85,7 +85,7 @@ Shadow will have the following features at minimum:
   
 ### A note for linux support
 The Linux binary was compiled on Arch Linux running under wsl. The specific steps I took are as follows:  
-1. Download (ArchWSL)[https://github.com/yuk7/ArchWSL/releases/tag/22.3.18.0] as an appx.
+1. Download [ArchWSL](https://github.com/yuk7/ArchWSL/releases/tag/22.3.18.0) as an appx.
 2. Install Arch but do not update any packages or set up user accounts
 3. Replace the entire included mirrorlist file with `Server = https://steamdeck-packages.steamos.cloud/archlinux-mirror/$repo/os/$arch`
 4. Run `pacman -Syy`, `pacman -Syu`, `pacman -S gcc`, `pacman -S xorg` (install all), and `pacman -S make`  
