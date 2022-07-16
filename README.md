@@ -18,6 +18,7 @@ Shadow is a game engine built on [lua 5.4.2](https://sourceforge.net/projects/lu
 pacman -Syyu
 pacman -S mingw-w64-x86_64-gcc
 pacman -S mingw-w64-x86_64-gdb
+pacman -S mingw-w64-x86_64-gdb-multiarch
 pacman -S mingw-w64-x86_64-make
 ```
 ensure that the packages and their dependencies are up to date
