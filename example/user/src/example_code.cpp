@@ -148,7 +148,7 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
     lua_pop(sh::lua::GetLuaGlobal(), -1);
 }
 
-void sh::play::GameLoopPriority() //This is where priority events happen, use this to do things like check for input
+void sh::play::PreUpdate() //This is where priority events happen, use this to do things like check for input
 {
     if(sh::input::checkInput(ExampleInput, sh::input::INPUT_DOWN)) ExampleInputPressed = true;
     for(int i = 0; (i < frameDiff) && ExampleInputPressed; i++)
@@ -159,7 +159,7 @@ void sh::play::GameLoopPriority() //This is where priority events happen, use th
     }
 }
 
-void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
+void sh::play::PostUpdate() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
 {
     if(sh::input::checkInput(sh::input::KB_F, sh::input::INPUT_DOWN)) shSys::panic(sh::sh_Panic::panic_manual);
     sh::auditorium::draw::queueHUD(DTEXTURE, "Test");

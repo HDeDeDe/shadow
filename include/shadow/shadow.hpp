@@ -29,9 +29,9 @@ namespace sh
         //This is run after the global lua virtual machine is initialized, but before the game loops
         void GameInit();
         //This is run every frame before the main game loop and actor updates.
-        void GameLoopPriority();
+        void PreUpdate();
         //This is run every frame
-        void GameLoop();
+        void PostUpdate();
         #if (DEBUGGING == 1)
         //This will only run if you are in debugging mode
         void ImguiDebugDraw();
