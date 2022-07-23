@@ -14,12 +14,12 @@ void sh::play::GameInit() //This is where you initialize any nesecary code
 
 }
 
-void sh::play::GameLoopPriority() //This is where priority events happen, use this to do things like check for input
+void sh::play::PreUpdate() //This is where priority events happen, use this to do things like check for input
 {
 
 }
 
-void sh::play::GameLoop() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
+void sh::play::PostUpdate() //This is where the main game loop occurrs, rendering is handled outside of this loop but you should do all of your draw queuing here
 {
 
 }
